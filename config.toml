@@ -1,0 +1,7 @@
+baseURL = 'https://vagonai.ru/'
+languageCode = 'ru-ru'
+title = 'VAGONAI'
+theme = []
+
+[pagination]
+  pagerSize = 20

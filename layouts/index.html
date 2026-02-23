@@ -1,0 +1,229 @@
+{{ define "main" }}
+<!-- Hero & Chat Section -->
+<section
+    id="hero-section"
+    class="relative h-screen w-full flex flex-col items-center justify-center pt-20 overflow-hidden"
+>
+    <!-- Subtle Grid Overlay -->
+    <div
+        class="absolute inset-0 z-0 opacity-10 pointer-events-none"
+        style="
+            background-image: radial-gradient(
+                circle,
+                #3b82f6 1px,
+                transparent 1px
+            );
+            background-size: 40px 40px;
+        "
+    ></div>
+
+    <div
+        id="hero-text"
+        class="relative z-10 text-center pointer-events-none px-6 mt-auto mb-8 translate-y-[40px] transition-all duration-500"
+    >
+        <h2
+            class="text-4xl md:text-5xl font-black tracking-tighter text-white mb-2 leading-[1.1]"
+        >
+            Грузовые вагоны <br />
+            <span class="text-[#0FA47A]"
+                >с завода производителя</span
+            >
+        </h2>
+        <p
+            class="text-xs md:text-sm text-zinc-100 max-w-2xl mx-auto font-medium tracking-tight drop-shadow-md"
+        >
+            B2B-продажа грузовых вагонов на основе искусственного
+            интеллекта.
+        </p>
+    </div>
+
+    <!-- Chat Container -->
+    <div
+        id="chat-container"
+        class="relative z-20 w-full max-w-7xl px-6 transition-all duration-700 ease-in-out mt-4 mb-8 md:mb-12"
+    >
+        <!-- Active Chat Window -->
+        <div
+            id="chat-window"
+            class="hidden glass rounded-[32px] shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col h-[80vh]"
+        >
+            <div
+                class="p-4 border-b border-white/5 flex items-center justify-between bg-white/5"
+            >
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-[#0FA47A] rounded-xl flex items-center justify-center text-white shadow-2xl shadow-[#0FA47A]/20"
+                    >
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-black text-white">
+                            ИИ менеджер
+                        </p>
+                        <p
+                            class="text-[9px] text-[#0FA47A] font-bold uppercase tracking-widest"
+                        >
+                            Завод производитель
+                        </p>
+                    </div>
+                </div>
+                <button
+                    id="close-chat"
+                    class="p-2 hover:bg-white/5 rounded-xl transition-all text-zinc-100 border border-transparent hover:border-white/5"
+                >
+                    <i data-lucide="x" class="w-4.5 h-4.5"></i>
+                </button>
+            </div>
+
+            <div
+                id="chat-messages"
+                class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar"
+            >
+                <div class="flex gap-4">
+                    <div
+                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-800 text-[#0FA47A] border border-white/5"
+                    >
+                        <i data-lucide="bot" class="w-4 h-4"></i>
+                    </div>
+                    <div
+                        class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-zinc-800/50 border border-white/5 text-zinc-100"
+                    >
+                        Здравствуйте! Я ИИ-менеджер по продаже
+                        грузовых вагонов. Какие вагоны Вас
+                        интересуют?
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-black/40 border-t border-white/5">
+                <div class="relative max-w-xl mx-auto">
+                    <input
+                        id="chat-input"
+                        type="text"
+                        placeholder="Задайте вопрос..."
+                        class="w-full pl-6 pr-28 py-4 bg-zinc-900/50 backdrop-blur-md border border-white/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#0FA47A]/10 focus:border-[#0FA47A]/50 transition-all text-white placeholder:text-zinc-500 text-sm font-medium"
+                    />
+                    <div
+                        class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
+                    >
+                        <button
+                            class="p-3 text-zinc-400 hover:text-[#0FA47A] transition-colors"
+                        >
+                            <i
+                                data-lucide="mic"
+                                class="w-4.5 h-4.5"
+                            ></i>
+                        </button>
+                        <button
+                            id="send-btn"
+                            class="p-3 bg-[#0FA47A] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-2xl shadow-[#0FA47A]/30 hover:scale-105 active:scale-95"
+                        >
+                            <i
+                                data-lucide="send"
+                                class="w-4.5 h-4.5"
+                            ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initial UI -->
+        <div
+            id="initial-ui"
+            class="flex flex-col items-center w-full"
+        >
+            <div class="mb-4 text-center">
+                <p
+                    class="text-[9px] text-zinc-400 uppercase tracking-widest mt-1"
+                >
+                    Искусственный интеллект корпоративного уровня.
+                </p>
+            </div>
+
+            <div class="relative w-full max-w-xl">
+                <input
+                    id="initial-input"
+                    type="text"
+                    placeholder="Задайте вопрос ИИ менеджеру..."
+                    class="w-full pl-6 pr-28 py-4 bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] focus:outline-none transition-all text-white placeholder:text-zinc-500 text-sm font-medium"
+                />
+                <div
+                    class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
+                >
+                    <button
+                        class="p-2.5 text-zinc-500 hover:text-[#0FA47A] transition-colors"
+                    >
+                        <i
+                            data-lucide="mic"
+                            class="w-4.5 h-4.5"
+                        ></i>
+                    </button>
+                    <div
+                        class="p-2.5 bg-white/5 rounded-xl text-zinc-500"
+                    >
+                        <i
+                            data-lucide="send"
+                            class="w-4.5 h-4.5"
+                        ></i>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="wagon-types"
+                class="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center"
+            >
+                <!-- Types injected by JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catalog Section -->
+<div class="bg-zinc-950 relative z-10 mt-24">
+    <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div
+            class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
+        >
+            <div>
+                <h2 class="text-4xl font-black mb-4 text-white">
+                    Каталог грузовых вагонов
+                </h2>
+                <p class="text-zinc-500 max-w-xl">
+                    Широкий спектр грузовых вагонов напрямую с
+                    завода производителя, спроектированных для
+                    максимальной эффективности вашей логистики.
+                </p>
+            </div>
+        </div>
+
+        <div
+            id="catalog-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+            <!-- Catalog cards injected by JS -->
+        </div>
+    </section>
+</div>
+
+<!-- FAQ Section -->
+<section class="py-24 px-8 bg-zinc-900 relative z-10">
+    <div class="max-w-3xl mx-auto px-8">
+        <h2
+            class="text-4xl font-black text-center mb-16 text-white"
+        >
+            Часто задаваемые вопросы
+        </h2>
+        <div id="faq-list" class="space-y-4">
+            <!-- FAQ items injected by JS -->
+        </div>
+    </div>
+</section>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script type="module" src="/js/trains.js"></script>
+<script type="module" src="/js/home.js"></script>
+{{ end }}

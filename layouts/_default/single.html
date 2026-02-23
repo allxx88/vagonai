@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="relative z-10 pt-32 pb-24 px-8 max-w-3xl mx-auto min-h-screen">
+    <a href="/blog" class="inline-flex items-center gap-2 text-zinc-400 hover:text-white mb-8 transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Назад к списку
+    </a>
+    
+    <h1 class="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">{{ .Title }}</h1>
+    
+    <div class="text-zinc-400 text-sm mb-12 border-b border-white/10 pb-8">
+        <span>{{ .Date.Format "02.01.2006" }}</span>
+    </div>
+
+    <div class="article-content text-zinc-300 leading-relaxed space-y-6">
+        {{ .Content }}
+    </div>
+</div>
+
+<style>
+    .article-content h2 { font-size: 1.5rem; font-weight: 700; color: white; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-content h3 { font-size: 1.25rem; font-weight: 600; color: white; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .article-content p { margin-bottom: 1.5rem; }
+    .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    .article-content strong { color: white; font-weight: 600; }
+</style>
+{{ end }}
+
+{{ define "scripts" }}
+<!-- No specific scripts -->
+{{ end }}

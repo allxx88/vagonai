@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body class="selection:bg-[#0FA47A]/30">
+    <div id="app" class="relative w-full min-h-screen">
+        <!-- 3D Container (Global Background) -->
+        <div id="three-container" class="fixed inset-0 pointer-events-none"></div>
+
+        {{ partial "header.html" . }}
+
+        <!-- History Sidebar -->
+        <div
+            id="history-overlay"
+            class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none overlay-transition"
+        ></div>
+        <div
+            id="history-sidebar"
+            class="fixed right-0 top-0 bottom-0 w-80 z-[70] bg-zinc-900/90 backdrop-blur-3xl shadow-2xl p-8 border-l border-white/5 sidebar-transition hidden-sidebar"
+        >
+            <div class="flex items-center justify-between mb-10">
+                <h3 class="text-xl font-black flex items-center gap-3 text-white">
+                    <i data-lucide="history" class="w-5 h-5 text-[#0FA47A]"></i>
+                    История
+                </h3>
+                <button
+                    id="close-history"
+                    class="p-2 hover:bg-white/5 rounded-full transition-colors text-zinc-100"
+                >
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="history-list" class="space-y-4">
+                <div class="text-center py-12">
+                    <i data-lucide="clock" class="w-10 h-10 mx-auto text-zinc-700 mb-4"></i>
+                    <p class="text-zinc-100 text-sm font-medium">История пуста</p>
+                </div>
+            </div>
+        </div>
+
+        {{ block "main" . }}{{ end }}
+
+        {{ partial "footer.html" . }}
+    </div>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- Global Script -->
+    <script type="module">
+        import * as THREE from "three";
+
+        // --- UI Elements (Global) ---
+        const historyBtn = document.getElementById("history-btn");
+        const historySidebar = document.getElementById("history-sidebar");
+        const historyOverlay = document.getElementById("history-overlay");
+        const closeHistory = document.getElementById("close-history");
+        const threeContainer = document.getElementById("three-container");
+        const footerProducts = document.getElementById("footer-products");
+
+        // --- Data (Global) ---
+        const WAGON_TYPES = [
+            "Вагоны-хопперы", "Вагоны-Думпкары", "Платформы", "Полувагоны",
+            "Транспортеры", "Ходовые части", "Вагоны-цистерны", "Вагоны крытые",
+        ];
+
+        // --- UI Logic (Global) ---
+        function toggleHistory(show) {
+            if (show) {
+                renderHistoryList();
+                historySidebar.classList.remove("hidden-sidebar");
+                historySidebar.classList.add("visible-sidebar");
+                historyOverlay.classList.remove("opacity-0", "pointer-events-none");
+                historyOverlay.classList.add("opacity-100", "pointer-events-auto");
+            } else {
+                historySidebar.classList.add("hidden-sidebar");
+                historySidebar.classList.remove("visible-sidebar");
+                historyOverlay.classList.add("opacity-0", "pointer-events-none");
+                historyOverlay.classList.remove("opacity-100", "pointer-events-auto");
+            }
+        }
+
+        // History Logic
+        let chatHistory = JSON.parse(localStorage.getItem('vagonai_chat_history') || '[]');
+        
+        function renderHistoryList() {
+            const list = historySidebar.querySelector("#history-list");
+            if (!list) return;
+            list.innerHTML = "";
+            if (chatHistory.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12">
+                        <i data-lucide="clock" class="w-10 h-10 mx-auto text-zinc-700 mb-4"></i>
+                        <p class="text-zinc-100 text-sm font-medium">История пуста</p>
+                    </div>
+                `;
+            } else {
+                // Add "New Chat" button at the top of history
+                const newChatBtn = document.createElement("button");
+                newChatBtn.className = "w-full p-4 mb-4 bg-[#0FA47A]/10 hover:bg-[#0FA47A]/20 border border-[#0FA47A]/30 rounded-xl text-[#0FA47A] text-sm font-bold flex items-center justify-center gap-2 transition-all";
+                newChatBtn.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Новый чат`;
+                newChatBtn.onclick = () => {
+                    if (window.startNewChat) {
+                        window.startNewChat();
+                        toggleHistory(false);
+                    } else {
+                        window.location.href = '/';
+                    }
+                };
+                list.appendChild(newChatBtn);
+
+                chatHistory.forEach(session => {
+                    const btn = document.createElement("button");
+                    btn.className = "w-full p-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-left transition-all group relative";
+                    const date = new Date(session.timestamp).toLocaleDateString();
+                    btn.innerHTML = `
+                        <p class="text-zinc-100 text-sm font-medium truncate pr-6">${session.title}</p>
+                        <p class="text-zinc-500 text-[10px] mt-1">${date}</p>
+                        <div class="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+                        </div>
+                    `;
+                    btn.onclick = () => {
+                        if (window.loadSession) {
+                            window.loadSession(session.id);
+                            toggleHistory(false);
+                        } else {
+                            window.location.href = '/';
+                        }
+                    };
+                    list.appendChild(btn);
+                });
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // Event Listeners
+        if (historyBtn) historyBtn.onclick = () => toggleHistory(true);
+        if (closeHistory) closeHistory.onclick = () => toggleHistory(false);
+        if (historyOverlay) historyOverlay.onclick = () => toggleHistory(false);
+
+        // Footer Injection
+        if (footerProducts) {
+            WAGON_TYPES.forEach((type) => {
+                const li = document.createElement("li");
+                li.textContent = type.replace("Вагоны-", "").replace("Вагоны ", "");
+                footerProducts.appendChild(li);
+            });
+        }
+
+        // --- Three.js Scene (Simplified for Global) ---
+        // We keep the scene but maybe lighter?
+        // Let's copy the full scene logic for now, it's cool.
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050505);
+        scene.fog = new THREE.Fog(0x050505, 20, 120);
+
+        const aspect = window.innerWidth / window.innerHeight;
+        const d = 14;
+        const camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, 1, 1000);
+        camera.position.set(50, 50, 50);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        if (threeContainer) threeContainer.appendChild(renderer.domElement);
+
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000, 2.0);
+        scene.add(hemiLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 6.0);
+        dirLight.position.set(20, 40, 20);
+        dirLight.castShadow = true;
+        scene.add(dirLight);
+
+        const ground = new THREE.Mesh(
+            new THREE.PlaneGeometry(2000, 2000),
+            new THREE.MeshStandardMaterial({ color: 0x0a0a0a })
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // ... (Include the train creation functions here or import them) ...
+        // For brevity, I will assume the train logic is copied or I can put it in a separate file.
+        // Since I can't easily create multiple JS files and import them without a bundler in Hugo (unless I use Hugo Pipes which is complex to setup blindly),
+        // I will put the train logic in a partial or just inline it in the specific page if it's page-specific.
+        // But the user wants the site "Remade".
+        // I'll put the train logic in `layouts/partials/three-background.html` and include it here.
+        
+        // ... Train Logic ...
+        // I will use a placeholder for now and inject the real logic in the next step.
+
+        function animate() {
+            requestAnimationFrame(animate);
+            // Train animation logic
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.onresize = () => {
+            const aspect = window.innerWidth / window.innerHeight;
+            camera.left = -d * aspect;
+            camera.right = d * aspect;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+        
+        // --- Scroll Parallax ---
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            // Move the 3D container up as we scroll down
+            if (threeContainer) threeContainer.style.transform = `translateY(-${scrollY * 0.4}px)`;
+        });
+        
+        if (window.lucide) lucide.createIcons();
+    </script>
+    
+    <!-- Page Specific Scripts -->
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>
