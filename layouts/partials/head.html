@@ -16,22 +16,27 @@
 {{- end -}}
 {{- $desc = $desc | plainify | htmlUnescape | truncate 160 -}}
 <meta name="description" content="{{ $desc }}">
-{{- $ld := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "datePublished" (.Date.Format "2006-01-02") -}}
+{{- $published := (.Date.Format "2006-01-02T15:04:05Z07:00") -}}
+{{- $modified := $published -}}
 {{- if .Lastmod -}}
-{{- $ld = merge $ld (dict "dateModified" (.Lastmod.Format "2006-01-02")) -}}
+{{- $modified = (.Lastmod.Format "2006-01-02T15:04:05Z07:00") -}}
 {{- end -}}
+{{- $ld := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "datePublished" $published "dateModified" $modified "url" .Permalink "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink) -}}
 {{- if $desc -}}
 {{- $ld = merge $ld (dict "description" $desc) -}}
 {{- end -}}
 {{- if .Params.author -}}
 {{- $ld = merge $ld (dict "author" (dict "@type" "Person" "name" .Params.author)) -}}
 {{- else -}}
-{{- $ld = merge $ld (dict "author" (dict "@type" "Organization" "name" "VAGONAI")) -}}
+{{- $ld = merge $ld (dict "author" (dict "@type" "Organization" "name" "VAGONAI" "url" .Site.BaseURL)) -}}
 {{- end -}}
+{{- $ld = merge $ld (dict "publisher" (dict "@type" "Organization" "name" "VAGONAI" "url" .Site.BaseURL)) -}}
 {{- if .Params.image -}}
-{{- $ld = merge $ld (dict "image" (slice .Params.image)) -}}
+{{- $img := (.Params.image | absURL) -}}
+{{- $ld = merge $ld (dict "image" (slice $img)) -}}
 {{- else if .Params.images -}}
-{{- $ld = merge $ld (dict "image" .Params.images) -}}
+{{- $imgs := apply .Params.images "absURL" "." -}}
+{{- $ld = merge $ld (dict "image" $imgs) -}}
 {{- end -}}
 <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
 {{- end -}}
