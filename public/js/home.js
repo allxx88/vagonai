@@ -345,40 +345,39 @@ if (closeChatBtn) {
 }
 
 // Voice Input
-function setupVoiceInput(btnId, inputId) {
-  const btn = document.querySelector(btnId); // Use querySelector to handle complex selectors if needed
-  // Actually btnId passed as selector or ID?
-  // In index.html: class="p-3 text-zinc-400..." inside chat input container.
-  // It doesn't have an ID.
-  // I need to select it relative to input.
-}
-
-// Re-implementing Voice Input simply
-const micButtons = document.querySelectorAll(
-  'button:has(i[data-lucide="mic"])',
-);
-micButtons.forEach((btn) => {
-  btn.onclick = () => {
-    if ("webkitSpeechRecognition" in window) {
-      const recognition = new webkitSpeechRecognition();
+const chatMicBtn = document.getElementById("chat-mic-btn");
+const initialMicBtn = document.getElementById("initial-mic-btn");
+function bindVoice(btn) {
+  if (!btn) return;
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    btn.style.display = "none";
+    return;
+  }
+  btn.addEventListener("click", () => {
+    try {
+      const recognition = new SpeechRecognition();
       recognition.lang = "ru-RU";
       recognition.start();
       recognition.onresult = (event) => {
         const text = event.results[0][0].transcript;
         if (chatWindow.classList.contains("hidden")) {
-          initialInput.value = text;
+          if (initialInput) initialInput.value = text;
           toggleChat(true);
           processMessage(text);
         } else {
-          chatInput.value = text;
+          if (chatInput) chatInput.value = text;
           processMessage(text);
         }
       };
-    } else {
-      alert("Голосовой ввод не поддерживается вашим браузером");
+    } catch (e) {
+      console.error(e);
     }
-  };
-});
+  });
+}
+bindVoice(chatMicBtn);
+bindVoice(initialMicBtn);
 
 // Injection
 if (wagonTypesContainer) {
