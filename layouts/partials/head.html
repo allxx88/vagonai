@@ -9,6 +9,32 @@
     rel="stylesheet"
 />
 <script src="https://unpkg.com/lucide@latest"></script>
+{{- if and .IsPage (eq .Section "blog") -}}
+{{- $desc := .Description -}}
+{{- if not $desc -}}
+{{- $desc = .Summary -}}
+{{- end -}}
+{{- $desc = $desc | plainify | htmlUnescape | truncate 160 -}}
+<meta name="description" content="{{ $desc }}">
+{{- $ld := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "datePublished" (.Date.Format "2006-01-02") -}}
+{{- if .Lastmod -}}
+{{- $ld = merge $ld (dict "dateModified" (.Lastmod.Format "2006-01-02")) -}}
+{{- end -}}
+{{- if $desc -}}
+{{- $ld = merge $ld (dict "description" $desc) -}}
+{{- end -}}
+{{- if .Params.author -}}
+{{- $ld = merge $ld (dict "author" (dict "@type" "Person" "name" .Params.author)) -}}
+{{- else -}}
+{{- $ld = merge $ld (dict "author" (dict "@type" "Organization" "name" "VAGONAI")) -}}
+{{- end -}}
+{{- if .Params.image -}}
+{{- $ld = merge $ld (dict "image" (slice .Params.image)) -}}
+{{- else if .Params.images -}}
+{{- $ld = merge $ld (dict "image" .Params.images) -}}
+{{- end -}}
+<script type="application/ld+json">{{ $ld | jsonify }}</script>
+{{- end -}}
 <style>
     body {
         font-family: "Inter", sans-serif;
