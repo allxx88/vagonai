@@ -18,7 +18,25 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
     rel="stylesheet"
 />
-<script src="https://unpkg.com/lucide@latest"></script><style>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < e.scripts.length; j++) { if (e.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(106974235, 'init', {
+        ssr:true,
+        webvisor:true,
+        clickmap:true,
+        accurateTrackBounce:true,
+        trackLinks:true,
+        ecommerce:'dataLayer',
+        referrer: document.referrer,
+        url: location.href
+    });
+</script><style>
     body {
         font-family: "Inter", sans-serif;
         background-color: #09090b;
@@ -74,6 +92,7 @@
 
 </head>
 <body class="selection:bg-[#0FA47A]/30">
+    <noscript><div><img src="https://mc.yandex.ru/watch/106974235" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
     <div id="app" class="relative w-full min-h-screen">
         
         <div id="three-container" class="fixed inset-0 pointer-events-none"></div>
