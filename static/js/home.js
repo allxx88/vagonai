@@ -399,17 +399,17 @@ if (catalogGrid) {
   WAGON_CATALOG.forEach((item) => {
     const card = document.createElement("div");
     card.className =
-      "group bg-zinc-900/40 backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl hover:shadow-[#0FA47A]/10 transition-all flex flex-col hover:-translate-y-2";
+      "group bg-white rounded-3xl border border-black/10 overflow-hidden shadow-2xl hover:shadow-[#0FA47A]/10 transition-all flex flex-col hover:-translate-y-2";
     card.innerHTML = `
         <div class="relative h-48 overflow-hidden">
             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent"></div>
         </div>
         <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-lg font-bold mb-2 text-white">${item.title}</h3>
-            <p class="text-zinc-100 text-sm mb-4 line-clamp-3 drop-shadow-sm flex-grow">${item.description}</p>
-            <p class="text-[#0FA47A] text-sm font-bold mb-4">${item.price}</p>
-            <button class="w-full py-3 bg-white/5 hover:bg-[#0FA47A] text-zinc-100 hover:text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 border border-white/5 shadow-lg mt-auto">
+            <h3 class="text-lg font-bold mb-2 text-zinc-900">${item.title}</h3>
+            <p class="text-zinc-700 text-sm mb-4 line-clamp-3 drop-shadow-sm flex-grow">${item.description}</p>
+            <p class="text-zinc-900 text-sm font-bold mb-4">${item.price}</p>
+            <button class="w-full py-3 bg-black/5 hover:bg-[#0FA47A] text-zinc-900 hover:text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 border border-black/10 shadow-lg mt-auto">
                 <i data-lucide="info" class="w-4 h-4"></i> Подробнее
             </button>
         </div>
