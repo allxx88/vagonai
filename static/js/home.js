@@ -277,7 +277,7 @@ async function processMessage(text) {
       : [];
 
     const response = await fetch(
-      "https://shumorusilu.beget.app/webhook/chat_vagon",
+      "https://shumorusilu.beget.app/webhook-test/chat_vagon",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
