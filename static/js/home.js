@@ -351,11 +351,11 @@ function bindVoice(btn) {
   if (!btn) return;
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    btn.style.display = "none";
-    return;
-  }
   btn.addEventListener("click", () => {
+    if (!SpeechRecognition) {
+      alert("Голосовой ввод недоступен в этом браузере. Разрешите микрофон или используйте современную версию.");
+      return;
+    }
     try {
       const recognition = new SpeechRecognition();
       recognition.lang = "ru-RU";
