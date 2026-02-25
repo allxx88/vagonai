@@ -13,11 +13,11 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{slug}}"
-    extension: md
-    format: yaml # Ключ: YAML-frontmatter для Hugo
+    extension: "md" # .md файлы
+    # format: yaml     # УБРАТЬ ЭТУ СТРОКУ - по умолчанию YAML
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" } # markdown вместо rich-text для Hugo
+      - { label: "Body", name: "body", widget: "markdown" }
