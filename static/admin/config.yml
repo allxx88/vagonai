@@ -10,7 +10,7 @@ public_folder: /media
 collections:
   - name: posts
     label: Posts
-    folder: content/posts
+    folder: content/blog
     create: true
     fields:
       - { label: Title, name: title, widget: string }
