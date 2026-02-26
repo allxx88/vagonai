@@ -2,3 +2,13 @@ baseURL = 'https://example.org/'
 languageCode = 'ru-ru'
 title = 'VAGONAI'
 theme = ''
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      table = true
+      strikethrough = true
+      linkify = true
+      taskList = true
