@@ -103,4 +103,15 @@ $imgs) -}} {{- end -}}
     .overlay-transition {
         transition: opacity 0.3s ease-in-out;
     }
+    #chat-messages .chat-content h2 { font-size: 1rem; font-weight: 700; margin-top: 0.75rem; margin-bottom: 0.5rem; }
+    #chat-messages .chat-content p { margin-bottom: 0.75rem; }
+    #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    #chat-messages .chat-content thead th { background: rgba(15,164,122,0.12); font-weight: 700; border-bottom: 2px solid #0FA47A; }
+    #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
+    #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
+    #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
+    #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
+    #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
+    #chat-messages .chat-content tbody tr:hover { background: rgba(15,164,122,0.08); }
 </style>

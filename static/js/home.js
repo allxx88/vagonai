@@ -158,7 +158,7 @@ function addMessage(role, content, save = true) {
     <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm ${role === "ai" ? "bg-zinc-800 text-[#0FA47A] border border-white/5" : "bg-[#0FA47A] text-white"}">
         <i data-lucide="${role === "ai" ? "bot" : "user"}" class="w-4 h-4"></i>
     </div>
-    <div class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl ${role === "ai" ? "bg-zinc-800/50 border border-white/5 text-zinc-100" : "bg-zinc-100 text-zinc-900"}">
+    <div class="chat-content max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl ${role === "ai" ? "bg-zinc-800/50 border border-white/5 text-zinc-100" : "bg-zinc-100 text-zinc-900"}">
         ${content}
     </div>
     `;
