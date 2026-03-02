@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="ru">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+    Полувагоны | VAGONAI
+</title>
+<link rel="icon" href="/ico/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png" />
+<link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="/ico/android-chrome-192x192.png"
+/>
+<link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="/ico/android-chrome-512x512.png"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+    rel="stylesheet"
+/>
+<script src="https://unpkg.com/lucide@latest"></script><meta name="description" content="Полувагон — это самый массовый тип железнодорожного грузового вагона, предназначенный для перевозки навалочных и крупногабаритных грузов, не требующих защиты от …" /><script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","author":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:1313/"},"dateModified":"2026-02-18T03:48:00+03:00","datePublished":"2026-02-18T03:48:00+03:00","description":"Полувагон — это самый массовый тип железнодорожного грузового вагона, предназначенный для перевозки навалочных и крупногабаритных грузов, не требующих защиты от …","headline":"Полувагоны","mainEntityOfPage":{"@id":"http://localhost:1313/blog/%D0%BF%D0%BE%D0%BB%D1%83%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D1%8B/","@type":"WebPage"},"publisher":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:1313/"},"url":"http://localhost:1313/blog/%D0%BF%D0%BE%D0%BB%D1%83%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D1%8B/"}
+</script><style>
+    body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #0b0b0e;
+        margin: 0;
+        overflow-x: hidden;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #0fa47a;
+        border-radius: 10px;
+    }
+    #three-container canvas {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        transition:
+            filter 1s ease,
+            opacity 1s ease,
+            transform 1s ease;
+    }
+    .glass {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .chat-active-blur {
+        filter: blur(8px);
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+    .sidebar-transition {
+        transition: transform 0.3s ease-in-out;
+    }
+    .hidden-sidebar {
+        transform: translateX(100%);
+    }
+    .visible-sidebar {
+        transform: translateX(0);
+    }
+    .overlay-transition {
+        transition: opacity 0.3s ease-in-out;
+    }
+    #chat-messages .chat-content h2 { font-size: 1rem; font-weight: 700; margin-top: 0.75rem; margin-bottom: 0.5rem; }
+    #chat-messages .chat-content p { margin-bottom: 0.75rem; }
+    #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    #chat-messages .chat-content thead th { background: rgba(15,164,122,0.12); font-weight: 700; border-bottom: 2px solid #0FA47A; }
+    #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
+    #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
+    #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
+    #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
+    #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
+    #chat-messages .chat-content tbody tr:hover { background: rgba(15,164,122,0.08); }
+
+    #site-header {
+        transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+    }
+    #site-header.header-solid {
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+</style>
+
+    </head>
+    <body class="selection:bg-[#0FA47A]/30">
+
+        <div id="app" class="relative w-full min-h-screen">
+            
+            <div
+                id="three-container"
+                class="fixed inset-0 pointer-events-none"
+            ></div>
+            
+            <div
+                class="fixed inset-0 pointer-events-none"
+                style="background: #f4f4f5;"
+            ></div>
+            
+
+            <header
+    id="site-header"
+    class="fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row items-center justify-center px-8 py-10 pointer-events-none"
+>
+    <div class="flex flex-col items-center gap-2 pointer-events-auto">
+        <div class="flex items-center gap-4">
+            <a
+                href="/"
+                class="text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
+            >
+                VAGON<span class="text-[#0FA47A]">AI</span>
+            </a>
+        </div>
+        <p
+            class="text-[9px] uppercase tracking-[0.5em] font-bold text-zinc-600"
+        >
+            ИИ-агент по прямым продажам грузовых вагонов от завода
+        </p>
+    </div>
+
+    <div
+        class="flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
+    >
+        <button
+            id="history-btn"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow"
+        >
+            <i data-lucide="clock" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
+        </button>
+        <a
+            href="mailto:info@vagonai.ru"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow flex items-center justify-center"
+        >
+            <i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
+        </a>
+        <a
+            href="tel:+79094000027"
+            class="p-1.5 md:p-2 bg-[#0FA47A] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#0FA47A]/20 flex items-center justify-center"
+        >
+            <i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
+        </a>
+    </div>
+</header>
+
+
+            
+            <div
+                id="history-overlay"
+                class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none overlay-transition"
+            ></div>
+            <div
+                id="history-sidebar"
+                class="fixed right-0 top-0 bottom-0 w-80 z-[70] bg-zinc-900/90 backdrop-blur-3xl shadow-2xl p-8 border-l border-white/5 sidebar-transition hidden-sidebar"
+            >
+                <div class="flex items-center justify-between mb-10">
+                    <h3
+                        class="text-xl font-black flex items-center gap-3 text-white"
+                    >
+                        <i
+                            data-lucide="history"
+                            class="w-5 h-5 text-[#0FA47A]"
+                        ></i>
+                        История
+                    </h3>
+                    <button
+                        id="close-history"
+                        class="p-2 hover:bg-white/5 rounded-full transition-colors text-zinc-100"
+                    >
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div id="history-list" class="space-y-4">
+                    <div class="text-center py-12">
+                        <i
+                            data-lucide="clock"
+                            class="w-10 h-10 mx-auto text-zinc-700 mb-4"
+                        ></i>
+                        <p class="text-zinc-100 text-sm font-medium">
+                            История пуста
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            
+<div class="relative z-10 pt-32 pb-24 px-8 max-w-3xl mx-auto min-h-screen">
+    <a href="/blog" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-700 mb-8 transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Назад к списку
+    </a>
+    
+    <h1 class="text-4xl md:text-5xl font-black text-zinc-900 mb-6 leading-tight">Полувагоны</h1>
+    
+    <div class="text-zinc-600 text-sm mb-12 border-b border-black/10 pb-8">
+        <span>18.02.2026</span>
+    </div>
+
+    <div class="article-content text-zinc-700 leading-relaxed space-y-6">
+        <h2 id="полувагоны">Полувагоны</h2>
+<p><strong>Полувагон</strong> — это самый массовый тип железнодорожного грузового вагона, предназначенный для перевозки навалочных и крупногабаритных грузов, не требующих защиты от атмосферных осадков.</p>
+<p>Он используется для транспортировки:</p>
+<ul>
+<li>угля</li>
+<li>руды</li>
+<li>строительных материалов</li>
+<li>металлоконструкций</li>
+<li>оборудования</li>
+<li>контейнеров</li>
+<li>автомобилей и техники</li>
+</ul>
+<p>Главная особенность — открытый кузов без крыши с высокими бортами, что обеспечивает удобную погрузку и разгрузку.</p>
+<hr>
+<p><img src="/media/poluvagon.png" alt="Полувагоны"></p>
+<h2 id="основные-характеристики">Основные характеристики</h2>
+<ul>
+<li>Средняя длина: около <strong>13,6 м</strong></li>
+<li>Грузоподъёмность современных моделей: <strong>до 71 т</strong></li>
+<li>У инновационных моделей: <strong>до 77 т</strong></li>
+<li>Кузов:
+<ul>
+<li>без крыши</li>
+<li>с боковыми стенами</li>
+<li>иногда со съёмной крышей</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="типы-полувагонов">Типы полувагонов</h2>
+<h3 id="по-конструкции-кузова">По конструкции кузова</h3>
+<p><strong>1. Люковые</strong></p>
+<ul>
+<li>Имеют разгрузочные люки в полу</li>
+<li>Возможны торцевые двери</li>
+<li>Удобны для механизированной выгрузки сыпучих грузов</li>
+</ul>
+<p><strong>2. Глуходонные</strong></p>
+<ul>
+<li>Без люков и дверей</li>
+<li>Используются для:
+<ul>
+<li>сыпучих грузов</li>
+<li>контейнерных перевозок</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="по-числу-осей">По числу осей</h3>
+<ul>
+<li>четырёхосные (самые распространённые)</li>
+<li>шестиосные</li>
+<li>восьмиосные</li>
+</ul>
+<hr>
+<h2 id="конструктивные-особенности">Конструктивные особенности</h2>
+<p>Современный полувагон состоит из:</p>
+<ul>
+<li>прочной рамы</li>
+<li>открытого кузова</li>
+<li>антикоррозийной обшивки</li>
+</ul>
+<p>Материалы:</p>
+<ul>
+<li>высокопрочная сталь</li>
+<li>алюминиевые сплавы</li>
+<li>дюралюминий</li>
+</ul>
+<p>Дополнительные особенности:</p>
+<ul>
+<li>возможны разгрузочные люки</li>
+<li>скруглённые внутренние поверхности (для облегчения выгрузки)</li>
+<li>двухуровневый пол — снижает центр тяжести и повышает устойчивость</li>
+</ul>
+<hr>
+<h2 id="историческая-справка">Историческая справка</h2>
+<ul>
+<li>Первые полувагоны появились в России в <strong>1861 году</strong></li>
+<li>Использовались для перевозки угля</li>
+<li>В конце XIX века строились деревянные модели</li>
+<li>Позже появились цельнометаллические конструкции</li>
+<li>С 2014 года выпускаются инновационные вагоны повышенной грузоподъёмности</li>
+</ul>
+<p>К 2022 году их доля составила около <strong>34% парка полувагонов</strong>.</p>
+<hr>
+<h2 id="области-применения">Области применения</h2>
+<p>Полувагоны широко применяются для перевозки:</p>
+<ul>
+<li>руды и угля</li>
+<li>строительных материалов</li>
+<li>металла</li>
+<li>зерна (со спецоборудованием)</li>
+<li>химических грузов</li>
+<li>техники и автомобилей</li>
+</ul>
+<hr>
+
+    </div>
+</div>
+
+<style>
+    .article-content h2 { font-size: 1.5rem; font-weight: 700; color: #0b0b0e; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-content h3 { font-size: 1.25rem; font-weight: 600; color: #111827; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .article-content p { margin-bottom: 1.5rem; }
+    .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    .article-content strong { color: #0b0b0e; font-weight: 600; }
+    .article-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    .article-content thead th { background: rgba(15, 164, 122, 0.08); color: #0b0b0e; font-weight: 700; border-bottom: 2px solid #0FA47A; }
+    .article-content th, .article-content td { border: 1px solid rgba(0, 0, 0, 0.1); padding: 0.75rem 0.75rem; text-align: left; }
+    .article-content tbody tr:nth-child(odd) { background: rgba(0, 0, 0, 0.03); }
+    .article-content tbody tr:hover { background: rgba(15, 164, 122, 0.08); }
+</style>
+ <footer
+    class="bg-white text-zinc-900 py-16 px-8 border-t border-black/10 relative z-10"
+>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <h2 class="text-2xl font-black tracking-tighter mb-6">
+                VAGON<span class="text-[#0FA47A]">AI</span>
+            </h2>
+            <p class="text-zinc-600 max-w-md leading-relaxed">
+                Цифровая система продаж грузовых вагонов нового поколения.
+                Отраслевая экспертиза и современные ИИ-алгоритмы для точного
+                подбора и расчёта.
+            </p>
+        </div>
+        <div>
+            <h4 class="font-bold mb-6 text-zinc-900">Продукция</h4>
+            <ul
+                id="footer-products"
+                class="grid grid-cols-2 gap-x-4 gap-y-3 text-zinc-700 text-sm"
+            >
+                
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold mb-6 text-zinc-900">Контакты</h4>
+            <ul class="space-y-3 text-zinc-700 text-sm">
+                <li>
+                    <a
+                        href="tel:+79094000027"
+                        class="hover:text-[#0FA47A] transition-colors"
+                        >+7 (909)40000-27</a
+                    >
+                </li>
+                <li>info@vagonai.ru</li>
+                <li class="mt-4">
+                    <a
+                        href="/blog"
+                        class="text-[#0FA47A] font-bold hover:underline"
+                        >Блог</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div
+        class="max-w-7xl mx-auto mt-16 pt-8 border-t border-black/10 text-center text-zinc-500 text-xs"
+    >
+        © 2026 VAGONAI. Все права защищены.
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] =
+            m[i] ||
+            function () {
+                (m[i].a = m[i].a || []).push(arguments);
+            };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        ((k = e.createElement(t)),
+            (a = e.getElementsByTagName(t)[0]),
+            (k.async = 1),
+            (k.src = r),
+            a.parentNode.insertBefore(k, a));
+    })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=106974235",
+        "ym",
+    );
+
+    ym(106974235, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true,
+    });
+</script>
+<noscript
+    ><div>
+        <img
+            src="https://mc.yandex.ru/watch/106974235"
+            style="position: absolute; left: -9999px"
+            alt=""
+        /></div
+></noscript>
+
+
+        </div>
+
+        
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                }
+            }
+        </script>
+
+        
+        <script type="module">
+            import * as THREE from "three";
+            const IS_BLOG = true;
+
+            
+            const historyBtn = document.getElementById("history-btn");
+            const historySidebar = document.getElementById("history-sidebar");
+            const historyOverlay = document.getElementById("history-overlay");
+            const closeHistory = document.getElementById("close-history");
+            const threeContainer = document.getElementById("three-container");
+            const footerProducts = document.getElementById("footer-products");
+
+            
+            const WAGON_TYPES = [
+                "Вагоны-хопперы",
+                "Вагоны-Думпкары",
+                "Платформы",
+                "Полувагоны",
+                "Транспортеры",
+                "Ходовые части",
+                "Вагоны-цистерны",
+                "Вагоны крытые",
+            ];
+
+            
+            function toggleHistory(show) {
+                if (show) {
+                    renderHistoryList();
+                    historySidebar.classList.remove("hidden-sidebar");
+                    historySidebar.classList.add("visible-sidebar");
+                    historyOverlay.classList.remove(
+                        "opacity-0",
+                        "pointer-events-none",
+                    );
+                    historyOverlay.classList.add(
+                        "opacity-100",
+                        "pointer-events-auto",
+                    );
+                } else {
+                    historySidebar.classList.add("hidden-sidebar");
+                    historySidebar.classList.remove("visible-sidebar");
+                    historyOverlay.classList.add(
+                        "opacity-0",
+                        "pointer-events-none",
+                    );
+                    historyOverlay.classList.remove(
+                        "opacity-100",
+                        "pointer-events-auto",
+                    );
+                }
+            }
+
+            
+            let chatHistory = JSON.parse(
+                localStorage.getItem("vagonai_chat_history") || "[]",
+            );
+
+            function renderHistoryList() {
+                const list = historySidebar.querySelector("#history-list");
+                if (!list) return;
+                list.innerHTML = "";
+                if (chatHistory.length === 0) {
+                    list.innerHTML = `
+                    <div class="text-center py-12">
+                        <i data-lucide="clock" class="w-10 h-10 mx-auto text-zinc-700 mb-4"></i>
+                        <p class="text-zinc-100 text-sm font-medium">История пуста</p>
+                    </div>
+                `;
+                } else {
+                    
+                    const newChatBtn = document.createElement("button");
+                    newChatBtn.className =
+                        "w-full p-4 mb-4 bg-[#0FA47A]/10 hover:bg-[#0FA47A]/20 border border-[#0FA47A]/30 rounded-xl text-[#0FA47A] text-sm font-bold flex items-center justify-center gap-2 transition-all";
+                    newChatBtn.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Новый чат`;
+                    newChatBtn.onclick = () => {
+                        if (window.startNewChat) {
+                            window.startNewChat();
+                            toggleHistory(false);
+                        } else {
+                            window.location.href = "/";
+                        }
+                    };
+                    list.appendChild(newChatBtn);
+
+                    chatHistory.forEach((session) => {
+                        const btn = document.createElement("button");
+                        btn.className =
+                            "w-full p-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-left transition-all group relative";
+                        const date = new Date(
+                            session.timestamp,
+                        ).toLocaleDateString();
+                        btn.innerHTML = `
+                        <p class="text-zinc-100 text-sm font-medium truncate pr-6">${session.title}</p>
+                        <p class="text-zinc-500 text-[10px] mt-1">${date}</p>
+                        <div class="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+                        </div>
+                    `;
+                        btn.onclick = () => {
+                            if (window.loadSession) {
+                                window.loadSession(session.id);
+                                toggleHistory(false);
+                            } else {
+                                window.location.href = "/";
+                            }
+                        };
+                        list.appendChild(btn);
+                    });
+                }
+                if (window.lucide) lucide.createIcons();
+            }
+
+            
+            if (historyBtn) historyBtn.onclick = () => toggleHistory(true);
+            if (closeHistory) closeHistory.onclick = () => toggleHistory(false);
+            if (historyOverlay)
+                historyOverlay.onclick = () => toggleHistory(false);
+
+            const siteHeader = document.getElementById("site-header");
+            function applyHeaderSolid() {
+                if (!siteHeader) return;
+                const scrolled = window.scrollY > 8;
+                if (scrolled) siteHeader.classList.add("header-solid");
+                else siteHeader.classList.remove("header-solid");
+            }
+            applyHeaderSolid();
+            window.addEventListener("scroll", applyHeaderSolid, { passive: true });
+
+            
+            if (footerProducts) {
+                WAGON_TYPES.forEach((type) => {
+                    const li = document.createElement("li");
+                    li.textContent = type
+                        .replace("Вагоны-", "")
+                        .replace("Вагоны ", "");
+                    footerProducts.appendChild(li);
+                });
+            }
+
+            
+            
+            
+
+            if (!IS_BLOG) {
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf7fafc);
+            scene.fog = new THREE.Fog(0xf0f4f8, 20, 140);
+
+            const aspect = window.innerWidth / window.innerHeight;
+            const d = 14;
+            const camera = new THREE.OrthographicCamera(
+                -d * aspect,
+                d * aspect,
+                d,
+                -d,
+                1,
+                1000,
+            );
+            camera.position.set(50, 50, 50);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true,
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            if (threeContainer) threeContainer.appendChild(renderer.domElement);
+
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0xdddddd, 1.2);
+            scene.add(hemiLight);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
+            dirLight.position.set(20, 40, 20);
+            dirLight.castShadow = true;
+            scene.add(dirLight);
+
+            const ground = new THREE.Mesh(
+                new THREE.PlaneGeometry(2000, 2000),
+                new THREE.MeshStandardMaterial({ color: 0xe5e7eb }),
+            );
+            ground.rotation.x = -Math.PI / 2;
+            ground.receiveShadow = true;
+            scene.add(ground);
+
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.onresize = () => {
+                const aspect = window.innerWidth / window.innerHeight;
+                camera.left = -d * aspect;
+                camera.right = d * aspect;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+
+            
+            window.addEventListener("scroll", () => {
+                const scrollY = window.scrollY;
+                
+                if (threeContainer)
+                    threeContainer.style.transform = `translateY(-${scrollY * 0.4}px)`;
+            });
+            } 
+
+            if (window.lucide) lucide.createIcons();
+        </script>
+
+        
+        
+
+
+    </body>
+</html>

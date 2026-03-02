@@ -22,7 +22,7 @@
         class="relative z-10 text-center pointer-events-none px-6 mt-auto mb-8 translate-y-[40px] transition-all duration-500"
     >
         <h2
-            class="text-4xl md:text-5xl font-black tracking-tighter text-white mb-2 leading-[1.1]"
+            class="text-4xl md:text-5xl font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
         >
             Грузовые вагоны <br />
             <span class="text-[#0FA47A]"
@@ -30,7 +30,7 @@
             >
         </h2>
         <p
-            class="text-xs md:text-sm text-zinc-100 max-w-2xl mx-auto font-medium tracking-tight drop-shadow-md"
+            class="text-xs md:text-sm text-zinc-600 max-w-2xl mx-auto font-medium tracking-tight"
         >
             ИИ-агент подбирает модель вагона, рассчитывает стоимость и сроки поставки в режиме диалога.
         </p>
@@ -44,10 +44,10 @@
         <!-- Active Chat Window -->
         <div
             id="chat-window"
-            class="hidden glass rounded-[32px] shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col h-[80vh]"
+            class="hidden glass rounded-[32px] shadow-[0_16px_64px_-16px_rgba(0,0,0,0.25)] overflow-hidden flex flex-col h-[80vh]"
         >
             <div
-                class="p-4 border-b border-white/5 flex items-center justify-between bg-white/5"
+                class="p-4 border-b border-black/10 flex items-center justify-between bg-white/70"
             >
                 <div class="flex items-center gap-3">
                     <div
@@ -56,7 +56,7 @@
                         <i data-lucide="bot" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-black text-white">
+                        <p class="text-sm font-black text-zinc-900">
                             ИИ менеджер
                         </p>
                         <p
@@ -68,7 +68,7 @@
                 </div>
                 <button
                     id="close-chat"
-                    class="p-2 hover:bg-white/5 rounded-xl transition-all text-zinc-100 border border-transparent hover:border-white/5"
+                    class="p-2 hover:bg-black/5 rounded-xl transition-all text-zinc-700 border border-transparent hover:border-black/10"
                 >
                     <i data-lucide="x" class="w-4.5 h-4.5"></i>
                 </button>
@@ -80,12 +80,12 @@
             >
                 <div class="flex gap-4">
                     <div
-                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-800 text-[#0FA47A] border border-white/5"
+                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10"
                     >
                         <i data-lucide="bot" class="w-4 h-4"></i>
                     </div>
                     <div
-                        class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-zinc-800/50 border border-white/5 text-zinc-100"
+                        class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-white border border-black/10 text-zinc-900"
                     >
                         Я ИИ-менеджер Здравствуйте!
                         Подберу грузовые вагоны под вашу задачу
@@ -95,20 +95,20 @@
                 </div>
             </div>
 
-            <div class="p-4 bg-black/40 border-t border-white/5">
+            <div class="p-4 bg-white/70 border-t border-black/10">
                 <div class="relative max-w-xl mx-auto">
                     <input
                         id="chat-input"
                         type="text"
                         placeholder="Задайте вопрос..."
-                        class="w-full pl-6 pr-28 py-4 bg-zinc-900/50 backdrop-blur-md border border-white/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#0FA47A]/10 focus:border-[#0FA47A]/50 transition-all text-white placeholder:text-zinc-500 text-sm font-medium"
+                        class="w-full pl-6 pr-28 py-4 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#0FA47A]/20 focus:border-[#0FA47A]/40 transition-all text-zinc-900 placeholder:text-zinc-400 text-sm font-medium"
                     />
                     <div
                         class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
                     >
                         <button
                             id="chat-mic-btn"
-                            class="p-3 text-zinc-400 hover:text-[#0FA47A] transition-colors"
+                            class="p-3 text-zinc-600 hover:text-[#0FA47A] transition-colors"
                         >
                             <i
                                 data-lucide="mic"
@@ -117,7 +117,7 @@
                         </button>
                         <button
                             id="send-btn"
-                            class="p-3 bg-[#0FA47A] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-2xl shadow-[#0FA47A]/30 hover:scale-105 active:scale-95"
+                            class="p-3 bg-[#0FA47A] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-lg shadow-[#0FA47A]/30 hover:scale-105 active:scale-95"
                         >
                             <i
                                 data-lucide="send"
@@ -141,23 +141,21 @@
                     id="initial-input"
                     type="text"
                     placeholder="Задайте вопрос ИИ менеджеру..."
-                    class="w-full pl-6 pr-28 py-4 bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] focus:outline-none transition-all text-white placeholder:text-zinc-500 text-sm font-medium"
+            class="w-full pl-6 pr-28 py-4 bg-white/70 backdrop-blur-3xl border border-black/10 rounded-[24px] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.25)] focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-400 text-sm font-medium"
                 />
                 <div
                     class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
                 >
                     <button
                         id="initial-mic-btn"
-                        class="p-2.5 text-zinc-500 hover:text-[#0FA47A] transition-colors"
+                        class="p-2.5 text-zinc-600 hover:text-[#0FA47A] transition-colors"
                     >
                         <i
                             data-lucide="mic"
                             class="w-4.5 h-4.5"
                         ></i>
                     </button>
-                    <div
-                        class="p-2.5 bg-white/5 rounded-xl text-zinc-500"
-                    >
+                    <div class="p-2.5 bg-white rounded-xl text-zinc-700 border border-black/10">
                         <i
                             data-lucide="send"
                             class="w-4.5 h-4.5"
@@ -177,16 +175,16 @@
 </section>
 
 <!-- Catalog Section -->
-<div class="bg-zinc-950 relative z-10 mt-24">
+<div class="bg-white relative z-10 mt-24">
     <section class="py-24 px-8 max-w-7xl mx-auto">
         <div
             class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
         >
             <div>
-                <h2 class="text-4xl font-black mb-4 text-white">
+                <h2 class="text-4xl font-black mb-4 text-zinc-900">
                     Каталог грузовых вагонов
                 </h2>
-                <p class="text-zinc-500 max-w-xl">
+                <p class="text-zinc-600 max-w-xl">
                     Широкий спектр грузовых вагонов напрямую с
                     завода производителя, спроектированных для
                     максимальной эффективности вашей логистики.
@@ -204,10 +202,10 @@
 </div>
 
 <!-- FAQ Section -->
-<section class="py-24 px-8 bg-zinc-900 relative z-10">
+<section class="py-24 px-8 bg-zinc-50 relative z-10">
     <div class="max-w-3xl mx-auto px-8">
         <h2
-            class="text-4xl font-black text-center mb-16 text-white"
+            class="text-4xl font-black text-center mb-16 text-zinc-900"
         >
             Часто задаваемые вопросы
         </h2>

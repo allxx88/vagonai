@@ -5,8 +5,8 @@ const threeContainer = document.getElementById("three-container");
 if (threeContainer) {
     // --- Three.js Scene ---
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050505);
-    scene.fog = new THREE.Fog(0x050505, 20, 120);
+    scene.background = new THREE.Color(0xf7fafc);
+    scene.fog = new THREE.Fog(0xf0f4f8, 20, 140);
 
     const aspect = window.innerWidth / window.innerHeight;
     const d = 14;
@@ -31,20 +31,16 @@ if (threeContainer) {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     threeContainer.appendChild(renderer.domElement);
 
-    const hemiLight = new THREE.HemisphereLight(
-        0xffffff,
-        0x000000,
-        2.0,
-    );
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xdddddd, 1.2);
     scene.add(hemiLight);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 6.0);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
     dirLight.position.set(20, 40, 20);
     dirLight.castShadow = true;
     scene.add(dirLight);
 
     const ground = new THREE.Mesh(
         new THREE.PlaneGeometry(2000, 2000),
-        new THREE.MeshStandardMaterial({ color: 0x0a0a0a }),
+        new THREE.MeshStandardMaterial({ color: 0xe5e7eb }),
     );
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
@@ -178,6 +174,12 @@ if (threeContainer) {
         const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.3 * scale, 0.3 * scale, 4 * scale), chassisMat);
         chassis.position.y = 0.4 * scale;
         group.add(chassis);
+        const sill = new THREE.Mesh(new THREE.BoxGeometry(0.1 * scale, 0.2 * scale, 4.2 * scale), chassisMat);
+        sill.position.set(0.8 * scale, 0.55 * scale, 0);
+        group.add(sill);
+        const sill2 = sill.clone();
+        sill2.position.x = -0.8 * scale;
+        group.add(sill2);
 
         const bodyMat = new THREE.MeshStandardMaterial({ color, roughness: 0.4, metalness: 0.2 });
 
@@ -186,21 +188,56 @@ if (threeContainer) {
             tank.rotation.x = Math.PI / 2;
             tank.position.y = 1.15 * scale;
             group.add(tank);
-            // Detail: Dome and ladder
             const dome = new THREE.Mesh(new THREE.CylinderGeometry(0.4 * scale, 0.4 * scale, 0.2 * scale, 16), bodyMat);
             dome.position.y = 1.95 * scale;
             group.add(dome);
             const ladder = new THREE.Mesh(new THREE.BoxGeometry(0.1 * scale, 1.2 * scale, 0.4 * scale), chassisMat);
             ladder.position.set(0.7 * scale, 1.2 * scale, 0);
             group.add(ladder);
+            for (let z = -1.6 * scale; z <= 1.6 * scale; z += 0.8 * scale) {
+                const band = new THREE.Mesh(new THREE.TorusGeometry(0.75 * scale, 0.04 * scale, 6, 24), new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.6, roughness: 0.4 }));
+                band.position.z = z;
+                group.add(band);
+            }
+            const endCap1 = new THREE.Mesh(new THREE.SphereGeometry(0.75 * scale, 16, 12), bodyMat);
+            endCap1.position.z = 1.8 * scale;
+            group.add(endCap1);
+            const endCap2 = endCap1.clone();
+            endCap2.position.z = -1.8 * scale;
+            group.add(endCap2);
+            const walkway = new THREE.Mesh(new THREE.BoxGeometry(0.3 * scale, 0.05 * scale, 3.6 * scale), new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.4, roughness: 0.6 }));
+            walkway.position.y = 1.6 * scale;
+            group.add(walkway);
         } else if (type === "boxcar") {
             const box = new THREE.Mesh(new THREE.BoxGeometry(1.6 * scale, 1.5 * scale, 3.8 * scale), bodyMat);
             box.position.y = 1.3 * scale;
             group.add(box);
-            // Detail: Door ribs
             const door = new THREE.Mesh(new THREE.BoxGeometry(0.1 * scale, 1.3 * scale, 1.2 * scale), new THREE.MeshStandardMaterial({ color: 0x334155 }));
             door.position.set(0.8 * scale, 1.3 * scale, 0);
             group.add(door);
+            for (let z = -1.6 * scale; z <= 1.6 * scale; z += 0.4 * scale) {
+                const ribL = new THREE.Mesh(new THREE.BoxGeometry(0.05 * scale, 1.4 * scale, 0.05 * scale), new THREE.MeshStandardMaterial({ color: 0x111827 }));
+                ribL.position.set(0.82 * scale, 1.3 * scale, z);
+                group.add(ribL);
+                const ribR = ribL.clone();
+                ribR.position.x = -0.82 * scale;
+                group.add(ribR);
+            }
+            const roofMat = new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.6, metalness: 0.2 });
+            const roof = new THREE.Mesh(new THREE.BoxGeometry(1.66 * scale, 0.18 * scale, 3.86 * scale), roofMat);
+            roof.position.y = 2.12 * scale;
+            group.add(roof);
+            const eaveL = new THREE.Mesh(new THREE.BoxGeometry(0.06 * scale, 0.12 * scale, 3.86 * scale), roofMat);
+            eaveL.position.set(0.86 * scale, 2.12 * scale, 0);
+            group.add(eaveL);
+            const eaveR = eaveL.clone();
+            eaveR.position.x = -0.86 * scale;
+            group.add(eaveR);
+            for (let z = -1.6 * scale; z <= 1.6 * scale; z += 0.6 * scale) {
+                const seam = new THREE.Mesh(new THREE.BoxGeometry(1.7 * scale, 0.02 * scale, 0.04 * scale), new THREE.MeshStandardMaterial({ color: 0x94a3b8 }));
+                seam.position.set(0, 2.2 * scale, z);
+                group.add(seam);
+            }
         } else if (type === "platform") {
             const car1 = createCar(0xef4444);
             car1.position.set(0, 0.55 * scale, 0.8 * scale);
@@ -213,11 +250,18 @@ if (threeContainer) {
             dump.position.y = 0.95 * scale;
             dump.rotation.z = 0.1;
             group.add(dump);
+            const cylMat = new THREE.MeshStandardMaterial({ color: 0x6b7280, metalness: 0.7, roughness: 0.3 });
+            const piston1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06 * scale, 0.06 * scale, 1.0 * scale, 10), cylMat);
+            piston1.rotation.z = -0.6;
+            piston1.position.set(0.3 * scale, 0.7 * scale, 1.4 * scale);
+            group.add(piston1);
+            const piston2 = piston1.clone();
+            piston2.position.z = -1.4 * scale;
+            group.add(piston2);
         } else {
             const hopper = new THREE.Mesh(new THREE.BoxGeometry(1.6 * scale, 1.2 * scale, 3.8 * scale), bodyMat);
             hopper.position.y = 1.15 * scale;
             group.add(hopper);
-            // Detail: Ribs
             for (let i = -1.5; i <= 1.5; i += 0.5) {
                 const rib = new THREE.Mesh(new THREE.BoxGeometry(0.1 * scale, 1.2 * scale, 0.1 * scale), new THREE.MeshStandardMaterial({ color: 0x1e293b }));
                 rib.position.set(0.8 * scale, 1.15 * scale, i * scale);
@@ -226,9 +270,20 @@ if (threeContainer) {
                 rib2.position.set(-0.8 * scale, 1.15 * scale, i * scale);
                 group.add(rib2);
             }
+            for (let z = -1.2 * scale; z <= 1.2 * scale; z += 1.2 * scale) {
+                const chute = new THREE.Mesh(new THREE.ConeGeometry(0.35 * scale, 0.6 * scale, 12), new THREE.MeshStandardMaterial({ color: 0x334155 }));
+                chute.position.set(0, 0.6 * scale, z);
+                chute.rotation.x = Math.PI;
+                group.add(chute);
+            }
+            const hatchMat = new THREE.MeshStandardMaterial({ color: 0x9ca3af });
+            for (let z = -1.2 * scale; z <= 1.2 * scale; z += 0.6 * scale) {
+                const hatch = new THREE.Mesh(new THREE.BoxGeometry(0.5 * scale, 0.04 * scale, 0.3 * scale), hatchMat);
+                hatch.position.set(0, 1.8 * scale, z);
+                group.add(hatch);
+            }
         }
 
-        // Coupler (Detail)
         const couplerGeo = new THREE.BoxGeometry(0.3 * scale, 0.3 * scale, 0.5 * scale);
         const coupler = new THREE.Mesh(couplerGeo, chassisMat);
         coupler.position.set(0, 0.4 * scale, 2.2 * scale);
@@ -236,6 +291,21 @@ if (threeContainer) {
         const coupler2 = coupler.clone();
         coupler2.position.z = -2.2 * scale;
         group.add(coupler2);
+        const bufferMat = new THREE.MeshStandardMaterial({ color: 0x111827, metalness: 0.7, roughness: 0.3 });
+        const bufferGeo = new THREE.CylinderGeometry(0.12 * scale, 0.12 * scale, 0.2 * scale, 12);
+        const bf1 = new THREE.Mesh(bufferGeo, bufferMat);
+        bf1.rotation.x = Math.PI / 2;
+        bf1.position.set(0.5 * scale, 0.5 * scale, 2.3 * scale);
+        group.add(bf1);
+        const bf2 = bf1.clone();
+        bf2.position.x = -0.5 * scale;
+        group.add(bf2);
+        const bf3 = bf1.clone();
+        bf3.position.z = -2.3 * scale;
+        group.add(bf3);
+        const bf4 = bf2.clone();
+        bf4.position.z = -2.3 * scale;
+        group.add(bf4);
 
         const wheelGeo = new THREE.CylinderGeometry(0.35 * scale, 0.35 * scale, 0.2 * scale, 16);
         const wheelMat = new THREE.MeshStandardMaterial({ color: 0x0f172a });
@@ -244,6 +314,19 @@ if (threeContainer) {
             w.rotation.z = Math.PI / 2;
             w.position.set(p[0] * scale, p[1] * scale, p[2] * scale);
             group.add(w);
+        });
+        const axleMat = new THREE.MeshStandardMaterial({ color: 0x4b5563, metalness: 0.8, roughness: 0.2 });
+        [1.4 * scale, -1.4 * scale].forEach((zv) => {
+            const axle = new THREE.Mesh(new THREE.CylinderGeometry(0.06 * scale, 0.06 * scale, 1.6 * scale, 10), axleMat);
+            axle.rotation.z = Math.PI / 2;
+            axle.position.set(0, 0.45 * scale, zv);
+            group.add(axle);
+            const springL = new THREE.Mesh(new THREE.TorusGeometry(0.12 * scale, 0.03 * scale, 6, 12), axleMat);
+            springL.position.set(0.4 * scale, 0.6 * scale, zv);
+            group.add(springL);
+            const springR = springL.clone();
+            springR.position.x = -0.4 * scale;
+            group.add(springR);
         });
         return group;
     }

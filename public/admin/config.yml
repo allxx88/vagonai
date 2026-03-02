@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: vagonairu/vagonai
+  branch: main
+
+media_folder: static/media
+public_folder: /media
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md" # .md файлы
+    # format: yaml     # УБРАТЬ ЭТУ СТРОКУ - по умолчанию YAML
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss+03:00", picker_utc: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }

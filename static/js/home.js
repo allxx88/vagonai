@@ -155,10 +155,10 @@ function addMessage(role, content, save = true) {
   const div = document.createElement("div");
   div.className = `flex gap-4 ${role === "user" ? "flex-row-reverse" : ""}`;
   div.innerHTML = `
-    <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm ${role === "ai" ? "bg-zinc-800 text-[#0FA47A] border border-white/5" : "bg-[#0FA47A] text-white"}">
+    <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm ${role === "ai" ? "bg-zinc-100 text-[#0FA47A] border border-black/10" : "bg-[#0FA47A] text-white"}">
         <i data-lucide="${role === "ai" ? "bot" : "user"}" class="w-4 h-4"></i>
     </div>
-    <div class="chat-content max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl ${role === "ai" ? "bg-zinc-800/50 border border-white/5 text-zinc-100" : "bg-zinc-100 text-zinc-900"}">
+    <div class="chat-content max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl ${role === "ai" ? "bg-white border border-black/10 text-zinc-900" : "bg-zinc-100 text-zinc-900"}">
         ${content}
     </div>
     `;
@@ -175,10 +175,10 @@ function startNewChat() {
   currentSessionId = null;
   chatMessages.innerHTML = `
         <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-800 text-[#0FA47A] border border-white/5">
+            <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10">
                 <i data-lucide="bot" class="w-4 h-4"></i>
             </div>
-            <div class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-zinc-800/50 border border-white/5 text-zinc-100">
+            <div class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-white border border-black/10 text-zinc-900">
                 Здравствуйте! Я ИИ-менеджер по продаже грузовых вагонов. Какие вагоны Вас интересуют?
             </div>
         </div>
@@ -253,10 +253,10 @@ async function processMessage(text) {
   typingDiv.className = "flex gap-4";
   typingDiv.id = "typing-indicator";
   typingDiv.innerHTML = `
-        <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-800 text-[#0FA47A] border border-white/5">
+        <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10">
             <i data-lucide="bot" class="w-4 h-4"></i>
         </div>
-        <div class="p-4 rounded-[24px] bg-zinc-800/50 border border-white/5 text-zinc-400 text-xs italic">
+        <div class="p-4 rounded-[24px] bg-white border border-black/10 text-zinc-500 text-xs italic">
             Печатает...
         </div>
     `;
@@ -344,6 +344,15 @@ if (closeChatBtn) {
   closeChatBtn.addEventListener("click", () => toggleChat(false));
 }
 
+document.addEventListener("mousedown", (e) => {
+  if (!chatWindow) return;
+  const isHidden = chatWindow.classList.contains("hidden");
+  if (isHidden) return;
+  if (!chatWindow.contains(e.target)) {
+    toggleChat(false);
+  }
+});
+
 // Voice Input
 const chatMicBtn = document.getElementById("chat-mic-btn");
 const initialMicBtn = document.getElementById("initial-mic-btn");
@@ -384,7 +393,7 @@ if (wagonTypesContainer) {
   WAGON_TYPES.forEach((type) => {
     const btn = document.createElement("button");
     btn.className =
-      "text-[9px] font-medium uppercase tracking-widest text-zinc-100 hover:text-[#0FA47A] transition-colors drop-shadow-md";
+      "text-[9px] font-medium uppercase tracking-widest text-zinc-700 hover:text-[#0FA47A] transition-colors";
     btn.textContent = type;
     btn.onclick = () => {
       const text = `Расскажи про ${type}`;
@@ -430,14 +439,14 @@ if (faqList) {
   FAQ_ITEMS.forEach((item) => {
     const div = document.createElement("div");
     div.className =
-      "bg-zinc-900/40 backdrop-blur-2xl rounded-2xl border border-white/10 overflow-hidden shadow-xl";
+      "bg-white rounded-2xl border border-black/10 overflow-hidden shadow-lg";
     div.innerHTML = `
-        <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors text-zinc-100">
+        <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#0FA47A]/5 transition-colors text-zinc-900">
             <span class="font-bold">${item.question}</span>
             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
         </button>
         <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-            <div class="px-6 pb-5 text-zinc-100 text-sm border-t border-white/5 pt-4">${item.answer}</div>
+            <div class="px-6 pb-5 text-zinc-700 text-sm border-t border-black/10 pt-4">${item.answer}</div>
         </div>
         `;
     const btn = div.querySelector("button");
