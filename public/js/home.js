@@ -395,7 +395,7 @@ if (wagonTypesContainer) {
   WAGON_TYPES.forEach((type) => {
     const btn = document.createElement("button");
     btn.className =
-      "text-[9px] font-medium uppercase tracking-widest text-zinc-700 hover:text-[#318b5d] transition-colors";
+      "text-[11px] font-medium uppercase tracking-widest text-zinc-700 hover:text-[#318b5d] transition-colors";
     btn.textContent = type;
     btn.onclick = () => {
       const text = `Расскажи про ${type}`;
