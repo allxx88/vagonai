@@ -4,9 +4,9 @@
     
     <div class="space-y-12">
         {{ range .Paginator.Pages }}
-        <article class="bg-white border border-black/10 rounded-3xl p-8 hover:border-[#0FA47A]/30 transition-colors shadow-sm">
+        <article class="bg-white border border-black/10 rounded-3xl p-8 hover:border-[#318b5d]/30 transition-colors shadow-sm">
             <h2 class="text-2xl font-bold text-zinc-900 mb-4">
-                <a href="{{ .RelPermalink }}" class="hover:text-[#0FA47A] transition-colors">{{ .Title }}</a>
+                <a href="{{ .RelPermalink }}" class="hover:text-[#318b5d] transition-colors">{{ .Title }}</a>
             </h2>
             <div class="text-zinc-600 text-sm mb-6 flex items-center gap-4">
                 <span>{{ .Date.Format "02.01.2006" }}</span>
@@ -14,7 +14,7 @@
             <p class="text-zinc-700 mb-6 leading-relaxed">
                 {{ .Description }}
             </p>
-            <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-2 text-[#0FA47A] font-bold text-sm hover:underline">
+            <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-2 text-[#318b5d] font-bold text-sm hover:underline">
                 Читать далее <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </article>
@@ -23,7 +23,7 @@
 
     <div class="flex justify-center gap-4 mt-12">
         {{ if .Paginator.HasPrev }}
-        <a href="{{ .Paginator.Prev.URL }}" class="px-6 py-3 bg-white hover:bg-[#0FA47A]/10 rounded-xl text-zinc-900 text-sm font-bold transition-all border border-black/10">
+        <a href="{{ .Paginator.Prev.URL }}" class="px-6 py-3 bg-white hover:bg-[#318b5d]/10 rounded-xl text-zinc-900 text-sm font-bold transition-all border border-black/10">
             &larr; Назад
         </a>
         {{ end }}

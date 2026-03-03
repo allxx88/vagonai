@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script>
         <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>
@@ -44,7 +44,7 @@
         background: rgba(255, 255, 255, 0.05);
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #0fa47a;
+        background: #318b5d;
         border-radius: 10px;
     }
     #three-container canvas {
@@ -85,17 +85,28 @@
     #chat-messages .chat-content p { margin-bottom: 0.75rem; }
     #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
     #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    #chat-messages .chat-content thead th { background: rgba(15,164,122,0.12); font-weight: 700; border-bottom: 2px solid #0FA47A; }
+    #chat-messages .chat-content thead th { background: rgba(49,139,93,0.12); font-weight: 700; border-bottom: 2px solid #318b5d; }
     #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
     #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
     #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
     #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
     #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
-    #chat-messages .chat-content tbody tr:hover { background: rgba(15,164,122,0.08); }
+    #chat-messages .chat-content tbody tr:hover { background: rgba(49,139,93,0.08); }
+
+    #site-header {
+        transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+    }
+    #site-header.header-solid {
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
 </style>
 
     </head>
-    <body class="selection:bg-[#0FA47A]/30">
+    <body class="selection:bg-[#318b5d]/30">
 
         <div id="app" class="relative w-full min-h-screen">
             
@@ -106,10 +117,12 @@
             
             <div
                 class="fixed inset-0 pointer-events-none z-10"
-                style="background: linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 35%, rgba(15,164,122,0.28) 100%);"
+                style="background: linear-gradient(to bottom, rgba(255,255,255,1.00) 0%, rgba(255,255,255,0.98) 10%, rgba(255,255,255,0.30) 50%, rgba(49,139,93,0.42) 90%, rgba(49,139,93,0.62) 100%);"
             ></div>
+            
 
             <header
+    id="site-header"
     class="fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row items-center justify-center px-8 py-10 pointer-events-none"
 >
     <div class="flex flex-col items-center gap-2 pointer-events-auto">
@@ -118,7 +131,7 @@
                 href="/"
                 class="text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
             >
-                VAGON<span class="text-[#0FA47A]">AI</span>
+                VAGON<span class="text-[#318b5d]">AI</span>
             </a>
         </div>
         <p
@@ -133,19 +146,19 @@
     >
         <button
             id="history-btn"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow"
         >
             <i data-lucide="clock" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </button>
         <a
             href="mailto:info@vagonai.ru"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow flex items-center justify-center"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow flex items-center justify-center"
         >
             <i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </a>
         <a
             href="tel:+79094000027"
-            class="p-1.5 md:p-2 bg-[#0FA47A] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#0FA47A]/20 flex items-center justify-center"
+            class="p-1.5 md:p-2 bg-[#318b5d] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#318b5d]/20 flex items-center justify-center"
         >
             <i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </a>
@@ -168,7 +181,7 @@
                     >
                         <i
                             data-lucide="history"
-                            class="w-5 h-5 text-[#0FA47A]"
+                            class="w-5 h-5 text-[#318b5d]"
                         ></i>
                         История
                     </h3>
@@ -194,7 +207,7 @@
 
             
 <div class="relative z-10 pt-32 pb-24 px-8 max-w-4xl mx-auto min-h-screen">
-    <h1 class="text-4xl font-black text-white mb-12">Блог</h1>
+    <h1 class="text-4xl font-black text-zinc-900 mb-12">Блог</h1>
     
     <div class="space-y-12">
         
@@ -211,7 +224,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-2">
             <h2 class="text-2xl font-black tracking-tighter mb-6">
-                VAGON<span class="text-[#0FA47A]">AI</span>
+                VAGON<span class="text-[#318b5d]">AI</span>
             </h2>
             <p class="text-zinc-600 max-w-md leading-relaxed">
                 Цифровая система продаж грузовых вагонов нового поколения.
@@ -234,7 +247,7 @@
                 <li>
                     <a
                         href="tel:+79094000027"
-                        class="hover:text-[#0FA47A] transition-colors"
+                        class="hover:text-[#318b5d] transition-colors"
                         >+7 (909)40000-27</a
                     >
                 </li>
@@ -242,7 +255,7 @@
                 <li class="mt-4">
                     <a
                         href="/blog"
-                        class="text-[#0FA47A] font-bold hover:underline"
+                        class="text-[#318b5d] font-bold hover:underline"
                         >Блог</a
                     >
                 </li>
@@ -319,6 +332,7 @@
         
         <script type="module">
             import * as THREE from "three";
+            const IS_BLOG = false;
 
             
             const historyBtn = document.getElementById("history-btn");
@@ -388,7 +402,7 @@
                     
                     const newChatBtn = document.createElement("button");
                     newChatBtn.className =
-                        "w-full p-4 mb-4 bg-[#0FA47A]/10 hover:bg-[#0FA47A]/20 border border-[#0FA47A]/30 rounded-xl text-[#0FA47A] text-sm font-bold flex items-center justify-center gap-2 transition-all";
+                        "w-full p-4 mb-4 bg-[#318b5d]/10 hover:bg-[#318b5d]/20 border border-[#318b5d]/30 rounded-xl text-[#318b5d] text-sm font-bold flex items-center justify-center gap-2 transition-all";
                     newChatBtn.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Новый чат`;
                     newChatBtn.onclick = () => {
                         if (window.startNewChat) {
@@ -434,6 +448,16 @@
             if (historyOverlay)
                 historyOverlay.onclick = () => toggleHistory(false);
 
+            const siteHeader = document.getElementById("site-header");
+            function applyHeaderSolid() {
+                if (!siteHeader) return;
+                const scrolled = window.scrollY > 8;
+                if (scrolled) siteHeader.classList.add("header-solid");
+                else siteHeader.classList.remove("header-solid");
+            }
+            applyHeaderSolid();
+            window.addEventListener("scroll", applyHeaderSolid, { passive: true });
+
             
             if (footerProducts) {
                 WAGON_TYPES.forEach((type) => {
@@ -449,6 +473,7 @@
             
             
 
+            if (!IS_BLOG) {
             const scene = new THREE.Scene();
             scene.background = new THREE.Color(0xf7fafc);
             scene.fog = new THREE.Fog(0xf0f4f8, 20, 140);
@@ -523,6 +548,7 @@
                 if (threeContainer)
                     threeContainer.style.transform = `translateY(-${scrollY * 0.4}px)`;
             });
+            } 
 
             if (window.lucide) lucide.createIcons();
         </script>

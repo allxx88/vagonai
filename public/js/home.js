@@ -155,7 +155,7 @@ function addMessage(role, content, save = true) {
   const div = document.createElement("div");
   div.className = `flex gap-4 ${role === "user" ? "flex-row-reverse" : ""}`;
   div.innerHTML = `
-    <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm ${role === "ai" ? "bg-zinc-100 text-[#0FA47A] border border-black/10" : "bg-[#0FA47A] text-white"}">
+    <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm ${role === "ai" ? "bg-zinc-100 text-[#318b5d] border border-black/10" : "bg-[#318b5d] text-white"}">
         <i data-lucide="${role === "ai" ? "bot" : "user"}" class="w-4 h-4"></i>
     </div>
     <div class="chat-content max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl ${role === "ai" ? "bg-white border border-black/10 text-zinc-900" : "bg-zinc-100 text-zinc-900"}">
@@ -175,7 +175,7 @@ function startNewChat() {
   currentSessionId = null;
   chatMessages.innerHTML = `
         <div class="flex gap-4">
-            <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10">
+            <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#318b5d] border border-black/10">
                 <i data-lucide="bot" class="w-4 h-4"></i>
             </div>
             <div class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-white border border-black/10 text-zinc-900">
@@ -253,7 +253,7 @@ async function processMessage(text) {
   typingDiv.className = "flex gap-4";
   typingDiv.id = "typing-indicator";
   typingDiv.innerHTML = `
-        <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10">
+        <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#318b5d] border border-black/10">
             <i data-lucide="bot" class="w-4 h-4"></i>
         </div>
         <div class="p-4 rounded-[24px] bg-white border border-black/10 text-zinc-500 text-xs italic">
@@ -269,12 +269,14 @@ async function processMessage(text) {
       localStorage.getItem("vagonai_chat_history") || "[]",
     );
     const session = history.find((s) => s.id === currentSessionId);
-    const historyPayload = session
-      ? session.messages.map((m) => ({
-          role: m.role === "user" ? "user" : "assistant",
-          content: m.content,
-        }))
-      : [];
+    const lastFive = session ? session.messages.slice(-20) : [];
+    const historyPayload =
+      lastFive.length > 0
+        ? lastFive.map((m) => ({
+            role: m.role === "user" ? "user" : "assistant",
+            content: m.content,
+          }))
+        : [{ role: "user", content: text }];
 
     const response = await fetch(
       "https://shumorusilu.beget.app/webhook/chat_vagon",
@@ -393,7 +395,7 @@ if (wagonTypesContainer) {
   WAGON_TYPES.forEach((type) => {
     const btn = document.createElement("button");
     btn.className =
-      "text-[9px] font-medium uppercase tracking-widest text-zinc-700 hover:text-[#0FA47A] transition-colors";
+      "text-[9px] font-medium uppercase tracking-widest text-zinc-700 hover:text-[#318b5d] transition-colors";
     btn.textContent = type;
     btn.onclick = () => {
       const text = `Расскажи про ${type}`;
@@ -408,7 +410,7 @@ if (catalogGrid) {
   WAGON_CATALOG.forEach((item) => {
     const card = document.createElement("div");
     card.className =
-      "group bg-white rounded-3xl border border-black/10 overflow-hidden shadow-2xl hover:shadow-[#0FA47A]/10 transition-all flex flex-col hover:-translate-y-2";
+      "group bg-white rounded-3xl border border-black/10 overflow-hidden shadow-2xl hover:shadow-[#318b5d]/10 transition-all flex flex-col hover:-translate-y-2";
     card.innerHTML = `
         <div class="relative h-48 overflow-hidden">
             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
@@ -418,7 +420,7 @@ if (catalogGrid) {
             <h3 class="text-lg font-bold mb-2 text-zinc-900">${item.title}</h3>
             <p class="text-zinc-700 text-sm mb-4 line-clamp-3 drop-shadow-sm flex-grow">${item.description}</p>
             <p class="text-zinc-900 text-sm font-bold mb-4">${item.price}</p>
-            <button class="w-full py-3 bg-black/5 hover:bg-[#0FA47A] text-zinc-900 hover:text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 border border-black/10 shadow-lg mt-auto">
+            <button class="w-full py-3 bg-black/5 hover:bg-[#318b5d] text-zinc-900 hover:text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 border border-black/10 shadow-lg mt-auto">
                 <i data-lucide="info" class="w-4 h-4"></i> Подробнее
             </button>
         </div>
@@ -441,7 +443,7 @@ if (faqList) {
     div.className =
       "bg-white rounded-2xl border border-black/10 overflow-hidden shadow-lg";
     div.innerHTML = `
-        <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#0FA47A]/5 transition-colors text-zinc-900">
+        <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#318b5d]/5 transition-colors text-zinc-900">
             <span class="font-bold">${item.question}</span>
             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
         </button>

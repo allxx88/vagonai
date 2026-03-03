@@ -39,6 +39,26 @@
         margin: 0;
         overflow-x: hidden;
     }
+    .input-3d {
+        background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 24px;
+        box-shadow:
+            0 12px 28px rgba(0,0,0,0.10),
+            0 2px 6px rgba(0,0,0,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.90),
+            inset 0 -3px 8px rgba(0,0,0,0.06);
+        transition: box-shadow .25s ease, transform .1s ease, border-color .25s ease;
+    }
+    .input-3d:focus {
+        box-shadow:
+            0 18px 36px rgba(49,139,93,0.25),
+            0 6px 14px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.95),
+            inset 0 -3px 10px rgba(49,139,93,0.12);
+        border-color: rgba(49,139,93,0.45);
+        outline: none;
+    }
     .custom-scrollbar::-webkit-scrollbar {
         width: 4px;
     }
@@ -46,7 +66,7 @@
         background: rgba(255, 255, 255, 0.05);
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #0fa47a;
+        background: #318b5d;
         border-radius: 10px;
     }
     #three-container canvas {
@@ -87,13 +107,13 @@
     #chat-messages .chat-content p { margin-bottom: 0.75rem; }
     #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
     #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    #chat-messages .chat-content thead th { background: rgba(15,164,122,0.12); font-weight: 700; border-bottom: 2px solid #0FA47A; }
+    #chat-messages .chat-content thead th { background: rgba(49,139,93,0.12); font-weight: 700; border-bottom: 2px solid #318b5d; }
     #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
     #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
     #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
     #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
     #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
-    #chat-messages .chat-content tbody tr:hover { background: rgba(15,164,122,0.08); }
+    #chat-messages .chat-content tbody tr:hover { background: rgba(49,139,93,0.08); }
 
     #site-header {
         transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
@@ -104,11 +124,16 @@
         -webkit-backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0,0,0,0.08);
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    #site-header.header-solid .header-actions {
+        top: 0.75rem;
     }
 </style>
 
     </head>
-    <body class="selection:bg-[#0FA47A]/30">
+    <body class="selection:bg-[#318b5d]/30">
 
         <div id="app" class="relative w-full min-h-screen">
             
@@ -119,7 +144,7 @@
             
             <div
                 class="fixed inset-0 pointer-events-none z-10"
-                style="background: linear-gradient(to bottom, rgba(255,255,255,1.00) 0%, rgba(255,255,255,0.98) 10%, rgba(255,255,255,0.30) 50%, rgba(15,164,122,0.42) 90%, rgba(15,164,122,0.62) 100%);"
+                style="background: linear-gradient(to bottom, rgba(255,255,255,1.00) 0%, rgba(255,255,255,0.98) 12%, rgba(255,255,255,0.30) 60%, rgba(49,139,93,0.42) 90%, rgba(49,139,93,0.62) 100%);"
             ></div>
             
 
@@ -133,7 +158,7 @@
                 href="/"
                 class="text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
             >
-                VAGON<span class="text-[#0FA47A]">AI</span>
+                VAGON<span class="text-[#318b5d]">AI</span>
             </a>
         </div>
         <p
@@ -144,23 +169,23 @@
     </div>
 
     <div
-        class="flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
+        class="header-actions flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
     >
         <button
             id="history-btn"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow"
         >
             <i data-lucide="clock" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </button>
         <a
             href="mailto:info@vagonai.ru"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#0FA47A] border border-black/10 shadow flex items-center justify-center"
+            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow flex items-center justify-center"
         >
             <i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </a>
         <a
             href="tel:+79094000027"
-            class="p-1.5 md:p-2 bg-[#0FA47A] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#0FA47A]/20 flex items-center justify-center"
+            class="p-1.5 md:p-2 bg-[#318b5d] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#318b5d]/20 flex items-center justify-center"
         >
             <i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
         </a>
@@ -183,7 +208,7 @@
                     >
                         <i
                             data-lucide="history"
-                            class="w-5 h-5 text-[#0FA47A]"
+                            class="w-5 h-5 text-[#318b5d]"
                         ></i>
                         История
                     </h3>
@@ -228,13 +253,13 @@
 
     <div
         id="hero-text"
-        class="relative z-10 text-center pointer-events-none px-6 mt-auto mb-8 translate-y-[40px] transition-all duration-500"
+        class="relative z-10 text-center pointer-events-none px-6 mb-6 transition-all duration-500"
     >
         <h2
-            class="text-4xl md:text-5xl font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
+            class="text-[44px] md:text-[58px] font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
         >
             Грузовые вагоны <br />
-            <span class="text-[#0FA47A]"
+            <span class="text-[#318b5d] text-[0.8em]"
                 >напрямую с завода без посредников</span
             >
         </h2>
@@ -260,7 +285,7 @@
             >
                 <div class="flex items-center gap-3">
                     <div
-                        class="w-10 h-10 bg-[#0FA47A] rounded-xl flex items-center justify-center text-white shadow-2xl shadow-[#0FA47A]/20"
+                        class="w-10 h-10 bg-[#318b5d] rounded-xl flex items-center justify-center text-white shadow-2xl shadow-[#318b5d]/20"
                     >
                         <i data-lucide="bot" class="w-5 h-5"></i>
                     </div>
@@ -269,7 +294,7 @@
                             ИИ менеджер
                         </p>
                         <p
-                            class="text-[9px] text-[#0FA47A] font-bold uppercase tracking-widest"
+                            class="text-[9px] text-[#318b5d] font-bold uppercase tracking-widest"
                         >
                             Завод производитель
                         </p>
@@ -289,7 +314,7 @@
             >
                 <div class="flex gap-4">
                     <div
-                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#0FA47A] border border-black/10"
+                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#318b5d] border border-black/10"
                     >
                         <i data-lucide="bot" class="w-4 h-4"></i>
                     </div>
@@ -305,19 +330,19 @@
             </div>
 
             <div class="p-4 bg-white/70 border-t border-black/10">
-                <div class="relative max-w-xl mx-auto">
+                <div class="relative max-w-2xl mx-auto">
                     <input
                         id="chat-input"
                         type="text"
                         placeholder="Задайте вопрос..."
-                        class="w-full pl-6 pr-28 py-4 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#0FA47A]/20 focus:border-[#0FA47A]/40 transition-all text-zinc-900 placeholder:text-zinc-400 text-sm font-medium"
+                        class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#318b5d]/20 focus:border-[#318b5d]/40 transition-all text-zinc-900 placeholder:text-zinc-400 text-base md:text-lg font-medium input-3d"
                     />
                     <div
                         class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
                     >
                         <button
                             id="chat-mic-btn"
-                            class="p-3 text-zinc-600 hover:text-[#0FA47A] transition-colors"
+                            class="p-3 text-zinc-600 hover:text-[#318b5d] transition-colors"
                         >
                             <i
                                 data-lucide="mic"
@@ -326,7 +351,7 @@
                         </button>
                         <button
                             id="send-btn"
-                            class="p-3 bg-[#0FA47A] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-lg shadow-[#0FA47A]/30 hover:scale-105 active:scale-95"
+                            class="p-3 bg-[#318b5d] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-lg shadow-[#318b5d]/30 hover:scale-105 active:scale-95"
                         >
                             <i
                                 data-lucide="send"
@@ -345,19 +370,19 @@
         >
             
 
-            <div class="relative w-full max-w-xl">
+            <div class="relative w-full max-w-2xl">
                 <input
                     id="initial-input"
                     type="text"
                     placeholder="Задайте вопрос ИИ менеджеру..."
-            class="w-full pl-6 pr-28 py-4 bg-white/70 backdrop-blur-3xl border border-black/10 rounded-[24px] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.25)] focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-400 text-sm font-medium"
+            class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-3xl border border-black/10 rounded-[24px] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.25)] focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-400 text-base md:text-lg font-medium input-3d"
                 />
                 <div
                     class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
                 >
                     <button
                         id="initial-mic-btn"
-                        class="p-2.5 text-zinc-600 hover:text-[#0FA47A] transition-colors"
+                        class="p-2.5 text-zinc-600 hover:text-[#318b5d] transition-colors"
                     >
                         <i
                             data-lucide="mic"
@@ -430,7 +455,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-2">
             <h2 class="text-2xl font-black tracking-tighter mb-6">
-                VAGON<span class="text-[#0FA47A]">AI</span>
+                VAGON<span class="text-[#318b5d]">AI</span>
             </h2>
             <p class="text-zinc-600 max-w-md leading-relaxed">
                 Цифровая система продаж грузовых вагонов нового поколения.
@@ -453,7 +478,7 @@
                 <li>
                     <a
                         href="tel:+79094000027"
-                        class="hover:text-[#0FA47A] transition-colors"
+                        class="hover:text-[#318b5d] transition-colors"
                         >+7 (909)40000-27</a
                     >
                 </li>
@@ -461,7 +486,7 @@
                 <li class="mt-4">
                     <a
                         href="/blog"
-                        class="text-[#0FA47A] font-bold hover:underline"
+                        class="text-[#318b5d] font-bold hover:underline"
                         >Блог</a
                     >
                 </li>
@@ -608,7 +633,7 @@
                     
                     const newChatBtn = document.createElement("button");
                     newChatBtn.className =
-                        "w-full p-4 mb-4 bg-[#0FA47A]/10 hover:bg-[#0FA47A]/20 border border-[#0FA47A]/30 rounded-xl text-[#0FA47A] text-sm font-bold flex items-center justify-center gap-2 transition-all";
+                        "w-full p-4 mb-4 bg-[#318b5d]/10 hover:bg-[#318b5d]/20 border border-[#318b5d]/30 rounded-xl text-[#318b5d] text-sm font-bold flex items-center justify-center gap-2 transition-all";
                     newChatBtn.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Новый чат`;
                     newChatBtn.onclick = () => {
                         if (window.startNewChat) {
