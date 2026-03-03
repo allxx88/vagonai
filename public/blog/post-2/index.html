@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51234&amp;path=livereload" data-no-instant defer></script>
         <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>
@@ -30,7 +30,7 @@
     rel="stylesheet"
 />
 <script src="https://unpkg.com/lucide@latest"></script><meta name="description" content="Обзор новых технологий и материалов в производстве грузовых вагонов." /><script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","author":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:1314/"},"dateModified":"2026-02-21T10:00:00+03:00","datePublished":"2026-02-21T10:00:00+03:00","description":"Обзор новых технологий и материалов в производстве грузовых вагонов.","headline":"Инновации в вагоностроении: что ждет отрасль в 2026 году","mainEntityOfPage":{"@id":"http://localhost:1314/blog/post-2/","@type":"WebPage"},"publisher":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:1314/"},"url":"http://localhost:1314/blog/post-2/"}
+    {"@context":"https://schema.org","@type":"Article","author":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:51234/"},"dateModified":"2026-02-21T10:00:00+03:00","datePublished":"2026-02-21T10:00:00+03:00","description":"Обзор новых технологий и материалов в производстве грузовых вагонов.","headline":"Инновации в вагоностроении: что ждет отрасль в 2026 году","mainEntityOfPage":{"@id":"http://localhost:51234/blog/post-2/","@type":"WebPage"},"publisher":{"@type":"Organization","name":"VAGONAI","url":"http://localhost:51234/"},"url":"http://localhost:51234/blog/post-2/"}
 </script><style>
     body {
         font-family: "Inter", sans-serif;
@@ -38,6 +38,26 @@
         color: #0b0b0e;
         margin: 0;
         overflow-x: hidden;
+    }
+    .input-3d {
+        background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 24px;
+        box-shadow:
+            0 12px 28px rgba(0,0,0,0.10),
+            0 2px 6px rgba(0,0,0,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.90),
+            inset 0 -3px 8px rgba(0,0,0,0.06);
+        transition: box-shadow .25s ease, transform .1s ease, border-color .25s ease;
+    }
+    .input-3d:focus {
+        box-shadow:
+            0 18px 36px rgba(49,139,93,0.25),
+            0 6px 14px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.95),
+            inset 0 -3px 10px rgba(49,139,93,0.12);
+        border-color: rgba(49,139,93,0.45);
+        outline: none;
     }
     .custom-scrollbar::-webkit-scrollbar {
         width: 4px;
@@ -104,6 +124,11 @@
         -webkit-backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0,0,0,0.08);
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    #site-header.header-solid .header-actions {
+        top: 0.75rem;
     }
 </style>
 
@@ -144,7 +169,7 @@
     </div>
 
     <div
-        class="flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
+        class="header-actions flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
     >
         <button
             id="history-btn"

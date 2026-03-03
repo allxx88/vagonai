@@ -364,7 +364,7 @@ if (threeContainer) {
         trainData.push({ mesh: trainGroup, speed, direction });
 
         // Rails
-        const railMat = new THREE.MeshStandardMaterial({ color: 0x64748b });
+        const railMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.5, roughness: 0.4 });
         const r1 = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, trackLength), railMat);
         r1.position.set(x - 0.8, 0.05, 0);
         scene.add(r1);
@@ -374,7 +374,7 @@ if (threeContainer) {
 
         // Sleepers
         const sleeperGeo = new THREE.BoxGeometry(2.2, 0.08, 0.4);
-        const sleeperMat = new THREE.MeshStandardMaterial({ color: 0x27272a });
+        const sleeperMat = new THREE.MeshStandardMaterial({ color: 0x6b7280 });
         for (let z = -trackLength / 2; z < trackLength / 2; z += 1.25) {
             const sleeper = new THREE.Mesh(sleeperGeo, sleeperMat);
             sleeper.position.set(x, 0.04, z);
