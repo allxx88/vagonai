@@ -375,7 +375,7 @@ if (threeContainer) {
         // Sleepers
         const sleeperGeo = new THREE.BoxGeometry(2.2, 0.08, 0.4);
         const sleeperMat = new THREE.MeshStandardMaterial({ color: 0x27272a });
-        for (let z = -trackLength / 2; z < trackLength / 2; z += 2.5) {
+        for (let z = -trackLength / 2; z < trackLength / 2; z += 1.25) {
             const sleeper = new THREE.Mesh(sleeperGeo, sleeperMat);
             sleeper.position.set(x, 0.04, z);
             scene.add(sleeper);
