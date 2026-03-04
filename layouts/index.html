@@ -2,44 +2,12 @@
 <!-- Hero & Chat Section -->
 <section
     id="hero-section"
-    class="relative h-screen w-full flex flex-col items-center justify-center pt-20 overflow-hidden"
+    class="relative h-screen w-full flex flex-col items-center justify-end pt-20 pb-12 md:pb-20 overflow-hidden"
 >
-    <!-- Subtle Grid Overlay -->
-    <div
-        class="absolute inset-0 z-0 opacity-10 pointer-events-none"
-        style="
-            background-image: radial-gradient(
-                circle,
-                #3b82f6 1px,
-                transparent 1px
-            );
-            background-size: 40px 40px;
-        "
-    ></div>
-
-    <div
-        id="hero-text"
-        class="relative z-10 text-center pointer-events-none px-6 mb-6 transition-all duration-500"
-    >
-        <h2
-            class="text-[44px] md:text-[58px] font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
-        >
-            Грузовые вагоны <br />
-            <span class="text-[#318b5d] text-[0.8em]"
-                >напрямую с завода без посредников</span
-            >
-        </h2>
-        <p
-            class="text-xs md:text-sm text-zinc-600 max-w-2xl mx-auto font-medium tracking-tight"
-        >
-            ИИ-агент подбирает модель вагона, рассчитывает стоимость и сроки поставки в режиме диалога.
-        </p>
-    </div>
-
-    <!-- Chat Container -->
+    <!-- Chat Container (for active chat) -->
     <div
         id="chat-container"
-        class="relative z-20 w-full max-w-7xl px-6 transition-all duration-700 ease-in-out mt-4 mb-8 md:mb-12"
+        class="relative z-20 w-full max-w-7xl px-6 transition-all duration-700 ease-in-out"
     >
         <!-- Active Chat Window -->
         <div
@@ -128,20 +96,36 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Initial UI -->
-        <div
-            id="initial-ui"
-            class="flex flex-col items-center w-full"
-        >
-            
+    <!-- Glass UI Container for Initial State -->
+    <div id="initial-ui" class="relative z-10 w-full max-w-7xl mx-auto px-6 mb-8 md:mb-12">
+        <div class="bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-8">
+            <div
+                id="hero-text"
+                class="text-center mb-6"
+            >
+                <h2
+                    class="text-[44px] md:text-[58px] font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
+                >
+                    Грузовые вагоны <br />
+                    <span class="text-[#318b5d] text-[0.8em]"
+                        >напрямую с завода без посредников</span
+                    >
+                </h2>
+                <p
+                    class="text-xs md:text-sm text-zinc-700 max-w-2xl mx-auto font-medium tracking-tight"
+                >
+                    ИИ-агент подбирает модель вагона, рассчитывает стоимость и сроки поставки в режиме диалога.
+                </p>
+            </div>
 
-            <div class="relative w-full max-w-2xl">
+            <div class="relative w-full max-w-2xl mx-auto">
                 <input
                     id="initial-input"
                     type="text"
                     placeholder="Задайте вопрос ИИ менеджеру..."
-            class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-3xl border border-black/10 rounded-[24px] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.25)] focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-400 text-base md:text-lg font-medium input-3d"
+                    class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] shadow-lg focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-500 text-base md:text-lg font-medium input-3d"
                 />
                 <div
                     class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"

@@ -115,25 +115,11 @@
     #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
     #chat-messages .chat-content tbody tr:hover { background: rgba(49,139,93,0.08); }
 
-    #site-header {
-        transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
-    }
-    #site-header.header-solid {
-        background: rgba(255,255,255,0.98);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-    }
-    #site-header.header-solid .header-actions {
-        top: 0.75rem;
-    }
+
 </style>
 
     </head>
-    <body class="selection:bg-[#318b5d]/30">
+    <body class="selection:bg-[#318b5d]/30" style="background: linear-gradient(to bottom, #ffffff 50%, #318b5d 100%);">
 
         <div id="app" class="relative w-full min-h-screen">
             
@@ -150,45 +136,47 @@
 
             <header
     id="site-header"
-    class="fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row items-center justify-center px-8 py-10 pointer-events-none"
+    class="fixed top-0 left-0 right-0 z-50 w-full px-4 pt-4 md:pt-6"
 >
-    <div class="flex flex-col items-center gap-2 pointer-events-auto">
-        <div class="flex items-center gap-4">
+    <div
+        class="relative flex flex-col md:flex-row items-center justify-center md:justify-end gap-3 md:gap-8 bg-white/50 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-lg border border-white/20 p-3 md:px-6 w-full max-w-7xl mx-auto"
+    >
+        
+        <div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col items-center">
             <a
                 href="/"
-                class="text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
+                class="text-3xl md:text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
             >
                 VAGON<span class="text-[#318b5d]">AI</span>
             </a>
+            <p
+                class="hidden md:block text-[8px] uppercase tracking-[0.3em] font-bold text-zinc-600 mt-1"
+            >
+                ИИ-агент по прямым продажам грузовых вагонов от завода
+            </p>
         </div>
-        <p
-            class="text-[9px] uppercase tracking-[0.5em] font-bold text-zinc-600"
-        >
-            ИИ-агент по прямым продажам грузовых вагонов от завода
-        </p>
-    </div>
 
-    <div
-        class="header-actions flex items-center gap-2 md:gap-3 pointer-events-auto relative -top-[10px] mt-2 self-end md:self-auto md:absolute md:top-10 md:right-8"
-    >
-        <button
-            id="history-btn"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow"
-        >
-            <i data-lucide="clock" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
-        </button>
-        <a
-            href="mailto:info@vagonai.ru"
-            class="p-1.5 md:p-2 bg-white/80 backdrop-blur-xl hover:bg-white rounded-lg md:rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 shadow flex items-center justify-center"
-        >
-            <i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
-        </a>
-        <a
-            href="tel:+79094000027"
-            class="p-1.5 md:p-2 bg-[#318b5d] text-white rounded-lg md:rounded-xl hover:bg-[#3b82f6] transition-all shadow shadow-[#318b5d]/20 flex items-center justify-center"
-        >
-            <i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
-        </a>
+        
+        <div class="header-actions flex items-center gap-2 md:gap-3">
+            <button
+                id="history-btn"
+                class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10"
+            >
+                <i data-lucide="clock" class="w-4 h-4"></i>
+            </button>
+            <a
+                href="mailto:info@vagonai.ru"
+                class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 flex items-center justify-center"
+            >
+                <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+            <a
+                href="tel:+79094000027"
+                class="p-2 bg-[#318b5d] text-white rounded-xl hover:bg-[#3b82f6] transition-all shadow-sm shadow-[#318b5d]/20 flex items-center justify-center"
+            >
+                <i data-lucide="phone" class="w-4 h-4"></i>
+            </a>
+        </div>
     </div>
 </header>
 
@@ -498,15 +486,7 @@
             if (historyOverlay)
                 historyOverlay.onclick = () => toggleHistory(false);
 
-            const siteHeader = document.getElementById("site-header");
-            function applyHeaderSolid() {
-                if (!siteHeader) return;
-                const scrolled = window.scrollY > 8;
-                if (scrolled) siteHeader.classList.add("header-solid");
-                else siteHeader.classList.remove("header-solid");
-            }
-            applyHeaderSolid();
-            window.addEventListener("scroll", applyHeaderSolid, { passive: true });
+
 
             
             if (footerProducts) {

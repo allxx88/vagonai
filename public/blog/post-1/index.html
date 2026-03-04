@@ -118,14 +118,18 @@
     #site-header {
         transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
     }
-    #site-header.header-solid {
-        background: rgba(255,255,255,0.98);
+    #site-header .header-bg {
+        background: rgba(255,255,255,0.0);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
+    }
+    #site-header.header-solid .header-bg {
+        background: rgba(255,255,255,0.85);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0,0,0,0.08);
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
     }
     #site-header.header-solid .header-actions {
         top: 0.75rem;
@@ -133,7 +137,7 @@
 </style>
 
     </head>
-    <body class="selection:bg-[#318b5d]/30">
+    <body class="selection:bg-[#318b5d]/30" style="background: linear-gradient(to bottom, #ffffff 50%, #318b5d 100%);">
 
         <div id="app" class="relative w-full min-h-screen">
             
@@ -150,9 +154,10 @@
 
             <header
     id="site-header"
-    class="fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row items-center justify-center px-8 py-10 pointer-events-none"
+    class="fixed top-0 left-0 right-0 z-50 flex flex-col md:flex-row items-center justify-center px-8 py-4 pointer-events-none"
 >
-    <div class="flex flex-col items-center gap-2 pointer-events-auto">
+    <div class="header-bg absolute top-0 left-0 right-0 h-full"></div>
+    <div class="relative flex flex-col items-center gap-2 pointer-events-auto">
         <div class="flex items-center gap-4">
             <a
                 href="/"

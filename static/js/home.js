@@ -133,7 +133,7 @@ function toggleChat(active) {
     initialUI.classList.add("hidden");
     heroText.classList.add("opacity-0");
     chatContainer.classList.remove("mb-8", "md:mb-12");
-    chatContainer.classList.add("-mt-[100px]");
+    chatContainer.classList.add("-mt-[150px]");
     const canvas = threeContainer.querySelector("canvas");
     if (canvas) canvas.classList.add("chat-active-blur");
 
