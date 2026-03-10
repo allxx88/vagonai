@@ -4,22 +4,8 @@
     {{ if .IsHome }}VAGONAI - ИИ-агент по прямым продажам грузовых вагонов от
     завода{{ else }}{{ .Title }} | VAGONAI{{ end }}
 </title>
-<link rel="icon" href="/ico/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png" />
-<link
-    rel="icon"
-    type="image/png"
-    sizes="192x192"
-    href="/ico/android-chrome-192x192.png"
-/>
-<link
-    rel="icon"
-    type="image/png"
-    sizes="512x512"
-    href="/ico/android-chrome-512x512.png"
-/>
+<link rel="icon" href="/ico/favicon.ico" />
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,22 +47,25 @@ $imgs) -}} {{- end -}}
     }
     .input-3d {
         background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-        border: 1px solid rgba(0,0,0,0.08);
+        border: 1px solid rgba(0, 0, 0, 0.08);
         border-radius: 24px;
         box-shadow:
-            0 12px 28px rgba(0,0,0,0.10),
-            0 2px 6px rgba(0,0,0,0.06),
-            inset 0 1px 0 rgba(255,255,255,0.90),
-            inset 0 -3px 8px rgba(0,0,0,0.06);
-        transition: box-shadow .25s ease, transform .1s ease, border-color .25s ease;
+            0 12px 28px rgba(0, 0, 0, 0.1),
+            0 2px 6px rgba(0, 0, 0, 0.06),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9),
+            inset 0 -3px 8px rgba(0, 0, 0, 0.06);
+        transition:
+            box-shadow 0.25s ease,
+            transform 0.1s ease,
+            border-color 0.25s ease;
     }
     .input-3d:focus {
         box-shadow:
-            0 18px 36px rgba(49,139,93,0.25),
-            0 6px 14px rgba(0,0,0,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.95),
-            inset 0 -3px 10px rgba(49,139,93,0.12);
-        border-color: rgba(49,139,93,0.45);
+            0 18px 36px rgba(49, 139, 93, 0.25),
+            0 6px 14px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.95),
+            inset 0 -3px 10px rgba(49, 139, 93, 0.12);
+        border-color: rgba(49, 139, 93, 0.45);
         outline: none;
     }
     .custom-scrollbar::-webkit-scrollbar {
@@ -123,27 +112,67 @@ $imgs) -}} {{- end -}}
     .overlay-transition {
         transition: opacity 0.3s ease-in-out;
     }
-    #chat-messages .chat-content h2 { font-size: 1rem; font-weight: 700; margin-top: 0.75rem; margin-bottom: 0.5rem; }
-    #chat-messages .chat-content p { margin-bottom: 0.75rem; }
-    #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-    #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    #chat-messages .chat-content thead th { background: rgba(49,139,93,0.12); font-weight: 700; border-bottom: 2px solid #318b5d; }
-    #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
-    #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
-    #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
-    #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
-    #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
-    #chat-messages .chat-content tbody tr:hover { background: rgba(49,139,93,0.08); }
+    #chat-messages .chat-content h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    #chat-messages .chat-content p {
+        margin-bottom: 0.75rem;
+    }
+    #chat-messages .chat-content img {
+        border-radius: 0.5rem;
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+    #chat-messages .chat-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    #chat-messages .chat-content thead th {
+        background: rgba(49, 139, 93, 0.12);
+        font-weight: 700;
+        border-bottom: 2px solid #318b5d;
+    }
+    #chat-messages .chat-content th,
+    #chat-messages .chat-content td {
+        padding: 0.6rem 0.75rem;
+        text-align: left;
+    }
+    #chat-messages .chat-content[class*="bg-zinc-800"] th,
+    #chat-messages .chat-content[class*="bg-zinc-800"] td {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    #chat-messages .chat-content[class*="bg-zinc-100"] th,
+    #chat-messages .chat-content[class*="bg-zinc-100"] td {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) {
+        background: rgba(255, 255, 255, 0.03);
+    }
+    #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) {
+        background: rgba(0, 0, 0, 0.03);
+    }
+    #chat-messages .chat-content tbody tr:hover {
+        background: rgba(49, 139, 93, 0.08);
+    }
 
     #site-header {
-        transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+        transition:
+            background-color 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease,
+            backdrop-filter 0.25s ease;
     }
     #site-header.header-solid {
-        background: rgba(255,255,255,0.98);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
     }
