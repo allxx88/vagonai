@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>
     {{ if .IsHome }}VAGONAI - ИИ-агент по прямым продажам грузовых вагонов от
-    завода{{ else }}{{ .Title }} | VAGONAI{{ end }}
+    завода{{ else if eq .Section "blog" }}{{ .Title }} | Блог ПРОВАГОН{{ else }}{{ .Title }} | VAGONAI{{ end }}
 </title>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png" />
@@ -29,8 +29,8 @@ $published "dateModified" $modified "url" .Permalink "mainEntityOfPage" (dict
 (dict "description" $desc) -}} {{- end -}} {{- if .Params.author -}} {{- $ld =
 merge $ld (dict "author" (dict "@type" "Person" "name" .Params.author)) -}} {{-
 else -}} {{- $ld = merge $ld (dict "author" (dict "@type" "Organization" "name"
-"VAGONAI" "url" .Site.BaseURL)) -}} {{- end -}} {{- $ld = merge $ld (dict
-"publisher" (dict "@type" "Organization" "name" "VAGONAI" "url" .Site.BaseURL))
+"ПРОВАГОН" "url" .Site.BaseURL)) -}} {{- end -}} {{- $ld = merge $ld (dict
+"publisher" (dict "@type" "Organization" "name" "ПРОВАГОН" "url" .Site.BaseURL))
 -}} {{- if .Params.image -}} {{- $img := (.Params.image | absURL) -}} {{- $ld =
 merge $ld (dict "image" (slice $img)) -}} {{- else if .Params.images -}} {{-
 $imgs := apply .Params.images "absURL" "." -}} {{- $ld = merge $ld (dict "image"
