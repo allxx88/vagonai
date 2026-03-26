@@ -1,11 +1,61 @@
+{{ $isBlog := eq .Section "blog" }}
 <header
     id="site-header"
     class="fixed top-0 left-0 right-0 z-50 w-full px-4 pt-4 md:pt-6"
 >
+    {{ if $isBlog }}
+    <div
+        class="w-full max-w-7xl mx-auto rounded-[28px] border border-white/10 bg-[#0d1018]/85 backdrop-blur-2xl shadow-[0_18px_50px_rgba(0,0,0,0.28)] px-4 py-3 md:px-6"
+    >
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex min-w-0 items-center gap-3 md:gap-5">
+                <a
+                    href="/"
+                    class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[#9aaabb] hover:text-[#5eead4] transition-colors"
+                >
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    На главную
+                </a>
+                <span class="hidden md:inline-block h-5 w-px bg-white/10"></span>
+                <span class="hidden md:inline text-[10px] uppercase tracking-[0.24em] text-[#6b7a90]">
+                    Аналитика и статьи о рынке вагонов
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center">
+                <a
+                    href="/blog/"
+                    class="blog-display text-xl md:text-2xl font-bold uppercase tracking-[0.28em] text-[#f0f2f5] hover:text-white transition-colors"
+                >
+                    <span class="text-[#5eead4]">ПРО</span>ВАГОН
+                </a>
+                <span class="text-[9px] uppercase tracking-[0.28em] text-[#6b7a90]">
+                    Blog / Knowledge Base
+                </span>
+            </div>
+
+            <div class="header-actions flex items-center gap-2 md:gap-3">
+                <a
+                    href="mailto:info@vagonai.ru"
+                    class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-[#9aaabb] hover:text-[#5eead4] hover:border-[#5eead4]/30 transition-all flex items-center justify-center"
+                    aria-label="Написать на почту"
+                >
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+                <a
+                    href="tel:+79094000027"
+                    class="inline-flex items-center gap-2 rounded-xl bg-[#5eead4] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0a0c12] hover:bg-[#7af3df] transition-all"
+                >
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span class="hidden md:inline">+7 (909) 400-00-27</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {{ else }}
     <div
         class="relative flex flex-col md:flex-row items-center justify-center md:justify-end gap-3 md:gap-8 bg-white/50 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-lg border border-white/20 p-3 md:px-6 w-full max-w-7xl mx-auto"
     >
-        <!-- Logo and Subtitle (Centered) -->
         <div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col items-center">
             <a
                 href="/"
@@ -20,7 +70,6 @@
             </p>
         </div>
 
-        <!-- Actions -->
         <div class="header-actions flex items-center gap-2 md:gap-3">
             <button
                 id="history-btn"
@@ -42,4 +91,5 @@
             </a>
         </div>
     </div>
+    {{ end }}
 </header>

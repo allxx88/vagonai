@@ -1,570 +1,1683 @@
-<<<<<<< HEAD
-<!doctype html><html lang=ru><head><meta name=generator content="Hugo 0.155.2"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>VAGONAI - ИИ-агент по прямым продажам грузовых вагонов от
-завода</title><link rel=icon href=/favicon.ico sizes=any><link rel=icon type=image/png sizes=32x32 href=/ico/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/ico/favicon-16x16.png><script src=https://cdn.tailwindcss.com></script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel=stylesheet><script src=https://unpkg.com/lucide@latest></script><style>body{font-family:inter,sans-serif;background-color:#f8fafc;color:#0b0b0e;margin:0;overflow-x:hidden}.input-3d{background:linear-gradient(180deg,#ffffff 0%,#f7f9fc 100%);border:1px solid rgba(0,0,0,8%);border-radius:24px;box-shadow:0 12px 28px rgba(0,0,0,.1),0 2px 6px rgba(0,0,0,6%),inset 0 1px rgba(255,255,255,.9),inset 0 -3px 8px rgba(0,0,0,6%);transition:box-shadow .25s ease,transform .1s ease,border-color .25s ease}.input-3d:focus{box-shadow:0 18px 36px rgba(49,139,93,.25),0 6px 14px rgba(0,0,0,8%),inset 0 1px rgba(255,255,255,.95),inset 0 -3px 10px rgba(49,139,93,.12);border-color:rgba(49,139,93,.45);outline:none}.custom-scrollbar::-webkit-scrollbar{width:4px}.custom-scrollbar::-webkit-scrollbar-track{background:rgba(255,255,255,5%)}.custom-scrollbar::-webkit-scrollbar-thumb{background:#318b5d;border-radius:10px}#three-container canvas{display:block;position:fixed;top:0;left:0;z-index:0;transition:filter 1s ease,opacity 1s ease,transform 1s ease}.glass{background:rgba(255,255,255,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(0,0,0,8%)}.chat-active-blur{filter:blur(8px);opacity:.8;transform:scale(1.05)}.sidebar-transition{transition:transform .3s ease-in-out}.hidden-sidebar{transform:translateX(100%)}.visible-sidebar{transform:translateX(0)}.overlay-transition{transition:opacity .3s ease-in-out}#chat-messages .chat-content h2{font-size:1rem;font-weight:700;margin-top:.75rem;margin-bottom:.5rem}#chat-messages .chat-content p{margin-bottom:.75rem}#chat-messages .chat-content img{border-radius:.5rem;max-width:100%;height:auto;box-shadow:0 10px 30px rgba(0,0,0,.35)}#chat-messages .chat-content table{width:100%;border-collapse:collapse;margin:1rem 0}#chat-messages .chat-content thead th{background:rgba(49,139,93,.12);font-weight:700;border-bottom:2px solid #318b5d}#chat-messages .chat-content th,#chat-messages .chat-content td{padding:.6rem .75rem;text-align:left}#chat-messages .chat-content[class*=bg-zinc-800] th,#chat-messages .chat-content[class*=bg-zinc-800] td{border:1px solid rgba(255,255,255,.12)}#chat-messages .chat-content[class*=bg-zinc-100] th,#chat-messages .chat-content[class*=bg-zinc-100] td{border:1px solid rgba(0,0,0,.1)}#chat-messages .chat-content[class*=bg-zinc-800] tbody tr:nth-child(odd){background:rgba(255,255,255,3%)}#chat-messages .chat-content[class*=bg-zinc-100] tbody tr:nth-child(odd){background:rgba(0,0,0,3%)}#chat-messages .chat-content tbody tr:hover{background:rgba(49,139,93,8%)}<<<<<<< head #site-header{transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease,backdrop-filter .25s ease}#site-header.header-solid{background:rgba(255,255,255,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,8%);box-shadow:0 4px 20px rgba(0,0,0,6%);padding-top:.75rem;padding-bottom:.75rem}#site-header.header-solid .header-actions{top:.75rem}=======>>>>>>>8f0f31420e9a3facd57d6b0d1e362d859f5a3830</style></head><body class=selection:bg-[#318b5d]/30 style="background:linear-gradient(to bottom,#ffffff 50%,#318b5d 100%)"><div id=app class="relative w-full min-h-screen"><div id=three-container class="fixed inset-0 pointer-events-none"></div><header id=site-header class="fixed top-0 left-0 right-0 z-50 w-full px-4 pt-4 md:pt-6"><div class="relative flex flex-col md:flex-row items-center justify-center md:justify-end gap-3 md:gap-8 bg-white/50 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-lg border border-white/20 p-3 md:px-6 w-full max-w-7xl mx-auto"><div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col items-center"><a href=/ class="text-3xl md:text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity">VAGON<span class=text-[#318b5d]>AI</span></a><p class="hidden md:block text-[8px] uppercase tracking-[0.3em] font-bold text-zinc-600 mt-1">ИИ-агент по прямым продажам грузовых вагонов от завода</p></div><div class="header-actions flex items-center gap-2 md:gap-3"><button id=history-btn class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10">
-<i data-lucide=clock class="w-4 h-4"></i>
-</button>
-<a href=mailto:info@vagonai.ru class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 flex items-center justify-center"><i data-lucide=mail class="w-4 h-4"></i>
-</a><a href=tel:+79094000027 class="p-2 bg-[#318b5d] text-white rounded-xl hover:bg-[#3b82f6] transition-all shadow-sm shadow-[#318b5d]/20 flex items-center justify-center"><i data-lucide=phone class="w-4 h-4"></i></a></div></div></header><div id=history-overlay class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none overlay-transition"></div><div id=history-sidebar class="fixed right-0 top-0 bottom-0 w-80 z-[70] bg-zinc-900/90 backdrop-blur-3xl shadow-2xl p-8 border-l border-white/5 sidebar-transition hidden-sidebar"><div class="flex items-center justify-between mb-10"><h3 class="text-xl font-black flex items-center gap-3 text-white"><i data-lucide=history class="w-5 h-5 text-[#318b5d]"></i>
-История</h3><button id=close-history class="p-2 hover:bg-white/5 rounded-full transition-colors text-zinc-100">
-<i data-lucide=x class="w-5 h-5"></i></button></div><div id=history-list class=space-y-4><div class="text-center py-12"><i data-lucide=clock class="w-10 h-10 mx-auto text-zinc-700 mb-4"></i><p class="text-zinc-100 text-sm font-medium">История пуста</p></div></div></div><section id=hero-section class="relative h-screen w-full flex flex-col items-center justify-end pt-20 pb-12 md:pb-20 overflow-hidden"><div id=chat-container class="relative z-20 w-full max-w-7xl px-6 transition-all duration-700 ease-in-out"><div id=chat-window class="hidden glass rounded-[32px] shadow-[0_16px_64px_-16px_rgba(0,0,0,0.25)] overflow-hidden flex flex-col h-[80vh]"><div class="p-4 border-b border-black/10 flex items-center justify-between bg-white/70"><div class="flex items-center gap-3"><div class="w-10 h-10 bg-[#318b5d] rounded-xl flex items-center justify-center text-white shadow-2xl shadow-[#318b5d]/20"><i data-lucide=bot class="w-5 h-5"></i></div><div><p class="text-sm font-black text-zinc-900">ИИ менеджер</p><p class="text-[9px] text-[#318b5d] font-bold uppercase tracking-widest">Завод производитель</p></div></div><button id=close-chat class="p-2 hover:bg-black/5 rounded-xl transition-all text-zinc-700 border border-transparent hover:border-black/10">
-<i data-lucide=x class="w-4.5 h-4.5"></i></button></div><div id=chat-messages class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar"><div class="flex gap-4"><div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#318b5d] border border-black/10"><i data-lucide=bot class="w-4 h-4"></i></div><div class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-white border border-black/10 text-zinc-900">Я ИИ-менеджер Здравствуйте!
-Подберу грузовые вагоны под вашу задачу
-и рассчитаю стоимость напрямую с завода.
-Сообщите тип вагона или требуемые характеристики.</div></div></div><div class="p-4 bg-white/70 border-t border-black/10"><div class="relative max-w-2xl mx-auto"><input id=chat-input type=text placeholder="Задайте вопрос..." class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#318b5d]/20 focus:border-[#318b5d]/40 transition-all text-zinc-900 placeholder:text-zinc-400 text-base md:text-lg font-medium input-3d"><div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"><button id=chat-mic-btn class="p-3 text-zinc-600 hover:text-[#318b5d] transition-colors">
-<i data-lucide=mic class="w-4.5 h-4.5"></i>
-</button>
-<button id=send-btn class="p-3 bg-[#318b5d] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-lg shadow-[#318b5d]/30 hover:scale-105 active:scale-95">
-<i data-lucide=send class="w-4.5 h-4.5"></i></button></div></div></div></div></div><div id=initial-ui class="relative z-10 w-full max-w-7xl mx-auto px-6 mb-8 md:mb-12"><div class="bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-8"><div id=hero-text class="text-center mb-6"><h2 class="text-[44px] md:text-[58px] font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]">Грузовые вагоны<br><span class="text-[#318b5d] text-[0.8em]">напрямую с завода без посредников</span></h2><p class="text-xs md:text-sm text-zinc-700 max-w-2xl mx-auto font-medium tracking-tight">ИИ-агент подбирает модель вагона, рассчитывает стоимость и сроки поставки в режиме диалога.</p></div><div class="relative w-full max-w-2xl mx-auto"><input id=initial-input type=text placeholder="Задайте вопрос ИИ менеджеру..." class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] shadow-lg focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-500 text-base md:text-lg font-medium input-3d"><div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"><button id=initial-mic-btn class="p-2.5 text-zinc-600 hover:text-[#318b5d] transition-colors">
-<i data-lucide=mic class="w-4.5 h-4.5"></i></button><div class="p-2.5 bg-white rounded-xl text-zinc-700 border border-black/10"><i data-lucide=send class="w-4.5 h-4.5"></i></div></div></div><div id=wagon-types class="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center"></div></div></div></section><div class="bg-white relative z-10 mt-24"><section class="py-24 px-8 max-w-7xl mx-auto"><div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"><div><h2 class="text-4xl font-black mb-4 text-zinc-900">Каталог грузовых вагонов</h2><p class="text-zinc-600 max-w-xl">Широкий спектр грузовых вагонов напрямую с
-завода производителя, спроектированных для
-максимальной эффективности вашей логистики.</p></div></div><div id=catalog-grid class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div></section></div><section class="py-24 px-8 bg-zinc-50 relative z-10"><div class="max-w-3xl mx-auto px-8"><h2 class="text-4xl font-black text-center mb-16 text-zinc-900">Часто задаваемые вопросы</h2><div id=faq-list class=space-y-4></div></div></section></div><footer class="bg-white text-zinc-900 py-16 px-8 border-t border-black/10 relative z-10"><div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12"><div class="col-span-1 md:col-span-2"><h2 class="text-2xl font-black tracking-tighter mb-6">VAGON<span class=text-[#318b5d]>AI</span></h2><p class="text-zinc-600 max-w-md leading-relaxed">Цифровая система продаж грузовых вагонов нового поколения.
-Отраслевая экспертиза и современные ИИ-алгоритмы для точного
-подбора и расчёта.</p></div><div><h4 class="font-bold mb-6 text-zinc-900">Продукция</h4><ul id=footer-products class="grid grid-cols-2 gap-x-4 gap-y-3 text-zinc-700 text-sm"></ul></div><div><h4 class="font-bold mb-6 text-zinc-900">Контакты</h4><ul class="space-y-3 text-zinc-700 text-sm"><li><a href=tel:+79094000027 class="hover:text-[#318b5d] transition-colors">+7 (909)40000-27</a></li><li>info@vagonai.ru</li><li class=mt-4><a href=/blog class="text-[#318b5d] font-bold hover:underline">Блог</a></li></ul></div></div><div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-black/10 text-center text-zinc-500 text-xs">© 2026 VAGONAI. Все права защищены.</div></footer><script type=text/javascript>(function(e,t,n,s,o,i,a){e[o]=e[o]||function(){(e[o].a=e[o].a||[]).push(arguments)},e[o].l=1*new Date;for(var r=0;r<document.scripts.length;r++)if(document.scripts[r].src===s)return;i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=106974235","ym"),ym(106974235,"init",{ssr:!0,webvisor:!0,clickmap:!0,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:!0,trackLinks:!0})</script><noscript><div><img src=https://mc.yandex.ru/watch/106974235 style=position:absolute;left:-9999px alt></div></noscript></div><script type=importmap>
-=======
+
 <!doctype html>
 <html lang="ru">
     <head>
-	<meta name="generator" content="Hugo 0.155.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55123&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.155.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>
-    VAGONAI - ИИ-агент по прямым продажам грузовых вагонов от
-    завода
-</title>
-<link rel="icon" href="/ico/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png" />
-<link
-    rel="icon"
-    type="image/png"
-    sizes="192x192"
-    href="/ico/android-chrome-192x192.png"
-/>
-<link
-    rel="icon"
-    type="image/png"
-    sizes="512x512"
-    href="/ico/android-chrome-512x512.png"
-/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
-    rel="stylesheet"
-/>
-<script src="https://unpkg.com/lucide@latest"></script><style>
-    body {
-        font-family: "Inter", sans-serif;
-        background-color: #f8fafc;
-        color: #0b0b0e;
-        margin: 0;
-        overflow-x: hidden;
-    }
-    .input-3d {
-        background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 24px;
-        box-shadow:
-            0 12px 28px rgba(0,0,0,0.10),
-            0 2px 6px rgba(0,0,0,0.06),
-            inset 0 1px 0 rgba(255,255,255,0.90),
-            inset 0 -3px 8px rgba(0,0,0,0.06);
-        transition: box-shadow .25s ease, transform .1s ease, border-color .25s ease;
-    }
-    .input-3d:focus {
-        box-shadow:
-            0 18px 36px rgba(49,139,93,0.25),
-            0 6px 14px rgba(0,0,0,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.95),
-            inset 0 -3px 10px rgba(49,139,93,0.12);
-        border-color: rgba(49,139,93,0.45);
-        outline: none;
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #318b5d;
-        border-radius: 10px;
-    }
-    #three-container canvas {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        transition:
-            filter 1s ease,
-            opacity 1s ease,
-            transform 1s ease;
-    }
-    .glass {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-    }
-    .chat-active-blur {
-        filter: blur(8px);
-        opacity: 0.8;
-        transform: scale(1.05);
-    }
-    .sidebar-transition {
-        transition: transform 0.3s ease-in-out;
-    }
-    .hidden-sidebar {
-        transform: translateX(100%);
-    }
-    .visible-sidebar {
-        transform: translateX(0);
-    }
-    .overlay-transition {
-        transition: opacity 0.3s ease-in-out;
-    }
-    #chat-messages .chat-content h2 { font-size: 1rem; font-weight: 700; margin-top: 0.75rem; margin-bottom: 0.5rem; }
-    #chat-messages .chat-content p { margin-bottom: 0.75rem; }
-    #chat-messages .chat-content img { border-radius: 0.5rem; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-    #chat-messages .chat-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    #chat-messages .chat-content thead th { background: rgba(49,139,93,0.12); font-weight: 700; border-bottom: 2px solid #318b5d; }
-    #chat-messages .chat-content th, #chat-messages .chat-content td { padding: 0.6rem 0.75rem; text-align: left; }
-    #chat-messages .chat-content[class*="bg-zinc-800"] th, #chat-messages .chat-content[class*="bg-zinc-800"] td { border: 1px solid rgba(255,255,255,0.12); }
-    #chat-messages .chat-content[class*="bg-zinc-100"] th, #chat-messages .chat-content[class*="bg-zinc-100"] td { border: 1px solid rgba(0,0,0,0.1); }
-    #chat-messages .chat-content[class*="bg-zinc-800"] tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
-    #chat-messages .chat-content[class*="bg-zinc-100"] tbody tr:nth-child(odd) { background: rgba(0,0,0,0.03); }
-    #chat-messages .chat-content tbody tr:hover { background: rgba(49,139,93,0.08); }
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PROVAGON — Платформа продажи грузовых вагонов</title>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/ico/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/ico/favicon-16x16.png"
+        />
 
-
-</style>
-
-    </head>
-    <body class="selection:bg-[#318b5d]/30" style="background: linear-gradient(to bottom, #ffffff 50%, #318b5d 100%);">
-
-        <div id="app" class="relative w-full min-h-screen">
-            
-            <div
-                id="three-container"
-                class="fixed inset-0 pointer-events-none"
-            ></div>
-            
-
-            
-
-            <header
-    id="site-header"
-    class="fixed top-0 left-0 right-0 z-50 w-full px-4 pt-4 md:pt-6"
->
-    <div
-        class="relative flex flex-col md:flex-row items-center justify-center md:justify-end gap-3 md:gap-8 bg-white/50 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-lg border border-white/20 p-3 md:px-6 w-full max-w-7xl mx-auto"
-    >
-        
-        <div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col items-center">
-            <a
-                href="/"
-                class="text-3xl md:text-4xl font-black tracking-tighter text-zinc-900 hover:opacity-90 transition-opacity"
-            >
-                VAGON<span class="text-[#318b5d]">AI</span>
-            </a>
-            <p
-                class="hidden md:block text-[8px] uppercase tracking-[0.3em] font-bold text-zinc-600 mt-1"
-            >
-                ИИ-агент по прямым продажам грузовых вагонов от завода
-            </p>
-        </div>
-
-        
-        <div class="header-actions flex items-center gap-2 md:gap-3">
-            <button
-                id="history-btn"
-                class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10"
-            >
-                <i data-lucide="clock" class="w-4 h-4"></i>
-            </button>
-            <a
-                href="mailto:info@vagonai.ru"
-                class="p-2 bg-white/50 hover:bg-white rounded-xl transition-all text-zinc-700 hover:text-[#318b5d] border border-black/10 flex items-center justify-center"
-            >
-                <i data-lucide="mail" class="w-4 h-4"></i>
-            </a>
-            <a
-                href="tel:+79094000027"
-                class="p-2 bg-[#318b5d] text-white rounded-xl hover:bg-[#3b82f6] transition-all shadow-sm shadow-[#318b5d]/20 flex items-center justify-center"
-            >
-                <i data-lucide="phone" class="w-4 h-4"></i>
-            </a>
-        </div>
-    </div>
-</header>
-
-
-            
-            <div
-                id="history-overlay"
-                class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none overlay-transition"
-            ></div>
-            <div
-                id="history-sidebar"
-                class="fixed right-0 top-0 bottom-0 w-80 z-[70] bg-zinc-900/90 backdrop-blur-3xl shadow-2xl p-8 border-l border-white/5 sidebar-transition hidden-sidebar"
-            >
-                <div class="flex items-center justify-between mb-10">
-                    <h3
-                        class="text-xl font-black flex items-center gap-3 text-white"
-                    >
-                        <i
-                            data-lucide="history"
-                            class="w-5 h-5 text-[#318b5d]"
-                        ></i>
-                        История
-                    </h3>
-                    <button
-                        id="close-history"
-                        class="p-2 hover:bg-white/5 rounded-full transition-colors text-zinc-100"
-                    >
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-                <div id="history-list" class="space-y-4">
-                    <div class="text-center py-12">
-                        <i
-                            data-lucide="clock"
-                            class="w-10 h-10 mx-auto text-zinc-700 mb-4"
-                        ></i>
-                        <p class="text-zinc-100 text-sm font-medium">
-                            История пуста
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            
-
-<section
-    id="hero-section"
-    class="relative h-screen w-full flex flex-col items-center justify-end pt-20 pb-12 md:pb-20 overflow-hidden"
->
-    
-    <div
-        id="chat-container"
-        class="relative z-20 w-full max-w-7xl px-6 transition-all duration-700 ease-in-out"
-    >
-        
-        <div
-            id="chat-window"
-            class="hidden glass rounded-[32px] shadow-[0_16px_64px_-16px_rgba(0,0,0,0.25)] overflow-hidden flex flex-col h-[80vh]"
-        >
-            <div
-                class="p-4 border-b border-black/10 flex items-center justify-between bg-white/70"
-            >
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-[#318b5d] rounded-xl flex items-center justify-center text-white shadow-2xl shadow-[#318b5d]/20"
-                    >
-                        <i data-lucide="bot" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-black text-zinc-900">
-                            ИИ менеджер
-                        </p>
-                        <p
-                            class="text-[9px] text-[#318b5d] font-bold uppercase tracking-widest"
-                        >
-                            Завод производитель
-                        </p>
-                    </div>
-                </div>
-                <button
-                    id="close-chat"
-                    class="p-2 hover:bg-black/5 rounded-xl transition-all text-zinc-700 border border-transparent hover:border-black/10"
-                >
-                    <i data-lucide="x" class="w-4.5 h-4.5"></i>
-                </button>
-            </div>
-
-            <div
-                id="chat-messages"
-                class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar"
-            >
-                <div class="flex gap-4">
-                    <div
-                        class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm bg-zinc-100 text-[#318b5d] border border-black/10"
-                    >
-                        <i data-lucide="bot" class="w-4 h-4"></i>
-                    </div>
-                    <div
-                        class="max-w-[80%] p-4 rounded-[24px] text-xs md:text-sm leading-relaxed shadow-2xl bg-white border border-black/10 text-zinc-900"
-                    >
-                        Я ИИ-менеджер Здравствуйте!
-                        Подберу грузовые вагоны под вашу задачу
-                        и рассчитаю стоимость напрямую с завода.
-                        Сообщите тип вагона или требуемые характеристики.
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-4 bg-white/70 border-t border-black/10">
-                <div class="relative max-w-2xl mx-auto">
-                    <input
-                        id="chat-input"
-                        type="text"
-                        placeholder="Задайте вопрос..."
-                        class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] focus:outline-none focus:ring-4 focus:ring-[#318b5d]/20 focus:border-[#318b5d]/40 transition-all text-zinc-900 placeholder:text-zinc-400 text-base md:text-lg font-medium input-3d"
-                    />
-                    <div
-                        class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
-                    >
-                        <button
-                            id="chat-mic-btn"
-                            class="p-3 text-zinc-600 hover:text-[#318b5d] transition-colors"
-                        >
-                            <i
-                                data-lucide="mic"
-                                class="w-4.5 h-4.5"
-                            ></i>
-                        </button>
-                        <button
-                            id="send-btn"
-                            class="p-3 bg-[#318b5d] text-white rounded-[18px] hover:bg-[#3b82f6] transition-all shadow-lg shadow-[#318b5d]/30 hover:scale-105 active:scale-95"
-                        >
-                            <i
-                                data-lucide="send"
-                                class="w-4.5 h-4.5"
-                            ></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    <div id="initial-ui" class="relative z-10 w-full max-w-7xl mx-auto px-6 mb-8 md:mb-12">
-        <div class="bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-8">
-            <div
-                id="hero-text"
-                class="text-center mb-6"
-            >
-                <h2
-                    class="text-[44px] md:text-[58px] font-black tracking-tighter text-zinc-900 mb-2 leading-[1.1]"
-                >
-                    Грузовые вагоны <br />
-                    <span class="text-[#318b5d] text-[0.8em]"
-                        >напрямую с завода без посредников</span
-                    >
-                </h2>
-                <p
-                    class="text-xs md:text-sm text-zinc-700 max-w-2xl mx-auto font-medium tracking-tight"
-                >
-                    ИИ-агент подбирает модель вагона, рассчитывает стоимость и сроки поставки в режиме диалога.
-                </p>
-            </div>
-
-            <div class="relative w-full max-w-2xl mx-auto">
-                <input
-                    id="initial-input"
-                    type="text"
-                    placeholder="Задайте вопрос ИИ менеджеру..."
-                    class="w-full pl-6 pr-32 py-5 bg-white/70 backdrop-blur-md border border-black/10 rounded-[24px] shadow-lg focus:outline-none transition-all text-zinc-900 placeholder:text-zinc-500 text-base md:text-lg font-medium input-3d"
-                />
-                <div
-                    class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1"
-                >
-                    <button
-                        id="initial-mic-btn"
-                        class="p-2.5 text-zinc-600 hover:text-[#318b5d] transition-colors"
-                    >
-                        <i
-                            data-lucide="mic"
-                            class="w-4.5 h-4.5"
-                        ></i>
-                    </button>
-                    <div class="p-2.5 bg-white rounded-xl text-zinc-700 border border-black/10">
-                        <i
-                            data-lucide="send"
-                            class="w-4.5 h-4.5"
-                        ></i>
-                    </div>
-                </div>
-            </div>
-
-            <div
-                id="wagon-types"
-                class="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-center"
-            >
-                
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<div class="bg-white relative z-10 mt-24">
-    <section class="py-24 px-8 max-w-7xl mx-auto">
-        <div
-            class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
-        >
-            <div>
-                <h2 class="text-4xl font-black mb-4 text-zinc-900">
-                    Каталог грузовых вагонов
-                </h2>
-                <p class="text-zinc-600 max-w-xl">
-                    Широкий спектр грузовых вагонов напрямую с
-                    завода производителя, спроектированных для
-                    максимальной эффективности вашей логистики.
-                </p>
-            </div>
-        </div>
-
-        <div
-            id="catalog-grid"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-            
-        </div>
-    </section>
-</div>
-
-
-<section class="py-24 px-8 bg-zinc-50 relative z-10">
-    <div class="max-w-3xl mx-auto px-8">
-        <h2
-            class="text-4xl font-black text-center mb-16 text-zinc-900"
-        >
-            Часто задаваемые вопросы
-        </h2>
-        <div id="faq-list" class="space-y-4">
-            
-        </div>
-    </div>
-</section>
-</div>
- <footer
-    class="bg-white text-zinc-900 py-16 px-8 border-t border-black/10 relative z-10"
->
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div class="col-span-1 md:col-span-2">
-            <h2 class="text-2xl font-black tracking-tighter mb-6">
-                VAGON<span class="text-[#318b5d]">AI</span>
-            </h2>
-            <p class="text-zinc-600 max-w-md leading-relaxed">
-                Цифровая система продаж грузовых вагонов нового поколения.
-                Отраслевая экспертиза и современные ИИ-алгоритмы для точного
-                подбора и расчёта.
-            </p>
-        </div>
-        <div>
-            <h4 class="font-bold mb-6 text-zinc-900">Продукция</h4>
-            <ul
-                id="footer-products"
-                class="grid grid-cols-2 gap-x-4 gap-y-3 text-zinc-700 text-sm"
-            >
-                
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-bold mb-6 text-zinc-900">Контакты</h4>
-            <ul class="space-y-3 text-zinc-700 text-sm">
-                <li>
-                    <a
-                        href="tel:+79094000027"
-                        class="hover:text-[#318b5d] transition-colors"
-                        >+7 (909)40000-27</a
-                    >
-                </li>
-                <li>info@vagonai.ru</li>
-                <li class="mt-4">
-                    <a
-                        href="/blog"
-                        class="text-[#318b5d] font-bold hover:underline"
-                        >Блог</a
-                    >
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div
-        class="max-w-7xl mx-auto mt-16 pt-8 border-t border-black/10 text-center text-zinc-500 text-xs"
-    >
-        © 2026 VAGONAI. Все права защищены.
-    </div>
-</footer>
-
-
-<script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-        m[i] =
-            m[i] ||
-            function () {
-                (m[i].a = m[i].a || []).push(arguments);
-            };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-            if (document.scripts[j].src === r) {
-                return;
+        <meta
+            name="description"
+            content="AI-first B2B платформа для подбора и покупки грузовых вагонов."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ─── Reset & Base ────────────────────────────────────────────────── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
             }
-        }
-        ((k = e.createElement(t)),
-            (a = e.getElementsByTagName(t)[0]),
-            (k.async = 1),
-            (k.src = r),
-            a.parentNode.insertBefore(k, a));
-    })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js?id=106974235",
-        "ym",
-    );
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
 
-    ym(106974235, "init", {
-        ssr: true,
-        webvisor: true,
-        clickmap: true,
-        ecommerce: "dataLayer",
-        referrer: document.referrer,
-        url: location.href,
-        accurateTrackBounce: true,
-        trackLinks: true,
-    });
-</script>
-<noscript
-    ><div>
-        <img
-            src="https://mc.yandex.ru/watch/106974235"
-            style="position: absolute; left: -9999px"
-            alt=""
-        /></div
-></noscript>
+            /* ─── Design Tokens ───────────────────────────────────────────────── */
+            :root {
+                /* Slightly lighter background (~20%). */
+                --bg: #0c0f16;
+                --surface: #0d1018;
+                --surface-el: #111520;
+                --card: #131720;
+                --border: rgba(255, 255, 255, 0.09);
+                --border-hover: rgba(94, 234, 212, 0.22);
+                --fg: #f0f2f5;
+                --fg-dim: #6b7a90;
+                --fg-mid: #9aaabb;
+                --steel: #4a5568;
+                --cyan: #5eead4;
+                --cyan-dim: #2dd4bf55;
+                --font-sans: "Inter", system-ui, sans-serif;
+                --font-display: "Space Grotesk", "Inter", sans-serif;
+            }
 
+            body {
+                background: var(--bg);
+                color: var(--fg);
+                font-family: var(--font-sans);
+                -webkit-font-smoothing: antialiased;
+                user-select: none;
+            }
 
-        </div>
+            /* ─── Scrollbar ───────────────────────────────────────────────────── */
+            ::-webkit-scrollbar {
+                width: 3px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--steel);
+                border-radius: 2px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--cyan);
+            }
 
-        
-        <script type="importmap">
->>>>>>> 0177001003448295eff1f2a04ac28c9b4903a11e
-            {
-                "imports": {
-                    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            /* ─── Utility ─────────────────────────────────────────────────────── */
+            .hide-scroll::-webkit-scrollbar {
+                display: none;
+            }
+            .hide-scroll {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            /* ─── Animations ──────────────────────────────────────────────────── */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
                 }
             }
-        </script><script type=module>
-            import * as THREE from "three";
-            const IS_BLOG = false;
+            @keyframes fadeSlideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(12px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes bounce {
+                0%,
+                80%,
+                100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-5px);
+                }
+            }
+            @keyframes pulse-dot {
+                0%,
+                100% {
+                    opacity: 0.4;
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
 
-            
-            const historyBtn = document.getElementById("history-btn");
-            const historySidebar = document.getElementById("history-sidebar");
-            const historyOverlay = document.getElementById("history-overlay");
-            const closeHistory = document.getElementById("close-history");
-            const threeContainer = document.getElementById("three-container");
-            const footerProducts = document.getElementById("footer-products");
+            .anim-fade {
+                animation: fadeIn 0.4s ease both;
+            }
+            .anim-up {
+                animation: fadeSlideUp 0.45s ease both;
+            }
 
-            
-            const WAGON_TYPES = [
+            /* ─── App Shell ───────────────────────────────────────────────────── */
+            #app {
+                position: fixed;
+                inset: 0;
+                overflow: hidden;
+                /* Uniform UI scaling (all UI elements inside #app). */
+                zoom: 1.2;
+            }
+
+            /* ─── Header ──────────────────────────────────────────────────────── */
+            #header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 56px;
+                z-index: 50;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 24px;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(10, 12, 18, 0.97) 0%,
+                    transparent 100%
+                );
+            }
+            #header.header-solid {
+                background: rgba(10, 12, 18, 1);
+            }
+            .header-left,
+            .header-right {
+                width: 200px;
+                display: flex;
+                align-items: center;
+            }
+            .header-right {
+                justify-content: flex-end;
+                gap: 16px;
+                width: 260px;
+            }
+            .header-center {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+            .logo {
+                font-family: var(--font-display);
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: var(--fg);
+            }
+            .logo-accent {
+                color: #5eead4;
+            }
+            .header-tag {
+                font-size: 10px;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: var(--fg-dim);
+                font-family: monospace;
+            }
+            .header-btn {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--fg-mid);
+                transition: color 0.2s;
+                font-family: var(--font-sans);
+            }
+            .header-btn:hover {
+                color: var(--cyan);
+            }
+            .header-phone {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                text-decoration: none;
+                font-size: 11px;
+                font-family: monospace;
+                letter-spacing: 0.04em;
+                color: var(--fg-mid);
+                white-space: nowrap;
+                flex-shrink: 0;
+                transition: color 0.2s;
+            }
+            .header-phone:hover {
+                color: var(--cyan);
+            }
+            .header-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0;
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                border-radius: 8px;
+                background: var(--cyan);
+                color: #0a0c12;
+                text-decoration: none;
+                font-size: 0;
+                font-weight: 600;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                font-family: var(--font-sans);
+                white-space: nowrap;
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s,
+                    opacity 0.2s;
+                box-shadow: 0 10px 24px rgba(94, 234, 212, 0.22);
+            }
+            .header-cta:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 14px 28px rgba(94, 234, 212, 0.3);
+                opacity: 0.96;
+            }
+            .header-cta-email {
+                background: #93c5fd;
+                box-shadow: 0 10px 24px rgba(147, 197, 253, 0.24);
+            }
+            .header-cta-email:hover {
+                box-shadow: 0 14px 28px rgba(147, 197, 253, 0.32);
+            }
+            .header-cta-blog {
+                background: #a78bfa;
+                box-shadow: 0 10px 24px rgba(167, 139, 250, 0.24);
+            }
+            .header-cta-blog:hover {
+                box-shadow: 0 14px 28px rgba(167, 139, 250, 0.32);
+            }
+            .header-cta svg {
+                width: 12px;
+                height: 12px;
+            }
+            .header-link {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                text-decoration: none;
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--fg-mid);
+                transition: color 0.2s;
+                font-family: var(--font-sans);
+                white-space: nowrap;
+            }
+            .header-link:hover {
+                color: var(--cyan);
+            }
+            .btn-back {
+                display: none;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--fg-mid);
+                transition: color 0.2s;
+                font-family: var(--font-sans);
+            }
+            .btn-back:hover {
+                color: var(--fg);
+            }
+
+            /* ─── Catalog Layer ───────────────────────────────────────────────── */
+            #catalog-layer {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Hero BG */
+            #hero-bg {
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+                filter: none;
+                transform: scale(1.02);
+            }
+            #hero-bg-vignette {
+                position: absolute;
+                inset: 0;
+                background: transparent;
+            }
+
+            /* Scenes track */
+            #scenes-track {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .scene {
+                min-width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                flex-shrink: 0;
+                transition: opacity 0.12s linear;
+            }
+            .scene-img {
+                position: absolute;
+                inset: 0;
+                /* Make wagon image sit on the right and fit by height. */
+                background-size: auto 100%;
+                background-position: right center;
+                background-repeat: no-repeat;
+                background-color: var(--bg);
+                /* No darkening filters: images are already dark. */
+                filter: none;
+                transition: transform 0.15s linear;
+            }
+            .scene-img::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                /* Right side: solid dark with smooth transition. */
+                background: linear-gradient(
+                    90deg,
+                    rgba(10, 12, 18, 0) 0%,
+                    rgba(10, 12, 18, 0) 55%,
+                    rgba(10, 12, 18, 0.85) 78%,
+                    rgba(10, 12, 18, 1) 100%
+                );
+                pointer-events: none;
+            }
+            .scene-grad-h {
+                position: absolute;
+                inset: 0;
+                /* Disable global dark overlay on the scene. */
+                background: transparent;
+            }
+            .scene-grad-v {
+                position: absolute;
+                inset: 0;
+                /* Disable global bottom dark overlay on the scene. */
+                background: transparent;
+            }
+            .scene-accent-line {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 2px;
+                height: 100%;
+            }
+            .scene-content {
+                position: relative;
+                z-index: 10;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 96px;
+                padding-right: 32px;
+            }
+            .scene-tag {
+                font-size: 10px;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                font-family: monospace;
+                opacity: 0.8;
+                margin-bottom: 16px;
+            }
+            .scene-title {
+                font-family: var(--font-display);
+                font-size: clamp(48px, 7vw, 80px);
+                font-weight: 700;
+                line-height: 1;
+                letter-spacing: -0.02em;
+                color: var(--fg);
+                margin-bottom: 10px;
+            }
+            .scene-subtitle {
+                font-size: clamp(14px, 1.4vw, 18px);
+                color: var(--fg-mid);
+                font-weight: 300;
+                letter-spacing: 0.04em;
+                margin-bottom: 20px;
+            }
+            .scene-intro {
+                font-size: 13px;
+                color: var(--fg-dim);
+                max-width: 400px;
+                line-height: 1.65;
+                margin-bottom: 28px;
+            }
+            .scene-stats {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                margin-bottom: 28px;
+            }
+            .stat-val {
+                font-size: 26px;
+                font-weight: 700;
+                font-family: monospace;
+            }
+            .stat-lbl {
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--fg-dim);
+                margin-top: 2px;
+            }
+            .stat-div {
+                width: 1px;
+                height: 32px;
+                background: var(--border);
+            }
+            .scene-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                padding: 10px 21px;
+                border-radius: 9px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.25s;
+                font-family: var(--font-sans);
+                width: fit-content;
+                align-self: flex-start;
+            }
+            .scene-cta svg {
+                width: 16px;
+                height: 16px;
+            }
+            .scene-cta:hover {
+                filter: brightness(1.1);
+                box-shadow: 0 0 18px rgba(94, 234, 212, 0.3);
+            }
+            .scene-scroll-hint {
+                position: absolute;
+                bottom: 90px;
+                right: 32px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                opacity: 0.4;
+            }
+            .scene-scroll-line {
+                width: 1px;
+                height: 48px;
+                background: var(--border);
+            }
+            .scene-scroll-text {
+                font-size: 9px;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                font-family: monospace;
+                color: var(--fg-dim);
+                writing-mode: vertical-rl;
+            }
+
+            /* Nav dots */
+            #nav-dots {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 20;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .nav-dot {
+                border-radius: 3px;
+                background: var(--steel);
+                opacity: 0.4;
+                cursor: pointer;
+                border: none;
+                padding: 0;
+                transition: all 0.3s;
+                width: 4px;
+                height: 4px;
+            }
+            .nav-dot.active {
+                opacity: 1;
+                height: 20px;
+                width: 6px;
+            }
+
+            /* Bottom fade */
+            #catalog-bottom-fade {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 160px;
+                z-index: 10;
+                pointer-events: none;
+                background: linear-gradient(
+                    to top,
+                    rgba(10, 12, 18, 1) 0%,
+                    transparent 100%
+                );
+            }
+
+            /* ─── Detail Layer ────────────────────────────────────────────────── */
+            #detail-layer {
+                position: absolute;
+                inset: 0;
+                z-index: 30;
+                background: var(--bg);
+                overflow-y: auto;
+                /* Reserve space for the fixed detail-topbar */
+                padding-top: 110px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+            }
+            #detail-layer.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .detail-topbar {
+                /* Fixed to prevent it from overlaying scrollable text */
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 56px;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 14px 24px;
+                /* Make menu fully opaque */
+                background: rgba(10, 12, 18, 1);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border-bottom: 1px solid var(--border);
+                box-sizing: border-box;
+            }
+            .detail-back-btn {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--fg-mid);
+                transition: color 0.2s;
+                font-family: var(--font-sans);
+            }
+            .detail-back-btn:hover {
+                color: var(--cyan);
+            }
+            .detail-divider {
+                width: 1px;
+                height: 16px;
+                background: var(--border);
+            }
+            .detail-accent-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .detail-cat-name {
+                font-size: 15px;
+                font-weight: 700;
+                font-family: var(--font-display);
+                letter-spacing: 0.04em;
+            }
+            .detail-cat-sub {
+                font-size: 12px;
+                color: var(--fg-dim);
+            }
+            .detail-count {
+                font-size: 12px;
+                font-family: monospace;
+                color: var(--fg-dim);
+                margin-left: auto;
+            }
+            .detail-intro {
+                padding: 20px 24px;
+                border-bottom: 1px solid var(--border);
+                margin-top: 0;
+            }
+            .detail-intro p {
+                font-size: 13px;
+                color: var(--fg-mid);
+                line-height: 1.7;
+                max-width: 640px;
+            }
+            .detail-cards {
+                padding: 20px 32px 120px 96px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            /* Wagon Card */
+            .wagon-card {
+                border-radius: 12px;
+                overflow: hidden;
+                border: 1px solid var(--border);
+                background: var(--card);
+                transition:
+                    border-color 0.25s,
+                    box-shadow 0.25s;
+                animation: fadeSlideUp 0.4s ease both;
+            }
+            .wagon-card:hover {
+                border-color: rgba(94, 234, 212, 0.18);
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            }
+            .wagon-card-top {
+                display: flex;
+            }
+            .wagon-card-img {
+                width: 360px;
+                flex-shrink: 0;
+                position: relative;
+                overflow: hidden;
+                /* Maintain 3:2 aspect ratio (1536x1024) */
+                aspect-ratio: 3 / 2;
+            }
+            .wagon-card-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                filter: brightness(0.7);
+                display: block;
+            }
+            .wagon-card-body {
+                flex: 1;
+                padding: 16px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .wagon-card-head {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 8px;
+            }
+            .wagon-model {
+                font-size: 16px;
+                font-weight: 700;
+                font-family: var(--font-display);
+            }
+            .wagon-price {
+                font-size: 13px;
+                font-family: monospace;
+                white-space: nowrap;
+            }
+            .wagon-desc {
+                font-size: 12px;
+                color: var(--fg-dim);
+                line-height: 1.55;
+            }
+            .wagon-purpose {
+                font-size: 11px;
+                color: var(--fg-dim);
+            }
+            .wagon-purpose span {
+                color: var(--fg-mid);
+            }
+            .status-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 11px;
+                padding: 3px 8px;
+                border-radius: 5px;
+                font-weight: 500;
+            }
+            .status-dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .wagon-card-bottom {
+                border-top: 1px solid var(--border);
+                padding: 10px 20px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .specs-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 6px;
+                margin-top: 4px;
+            }
+            .spec-item {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+            }
+            .spec-lbl {
+                font-size: 10px;
+                color: var(--fg-dim);
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+            }
+            .spec-val {
+                font-size: 12px;
+                font-weight: 600;
+                font-family: monospace;
+            }
+            .action-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 11px;
+                padding: 5px 10px;
+                border-radius: 6px;
+                border: 1px solid var(--border);
+                background: transparent;
+                color: var(--fg-mid);
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: var(--font-sans);
+            }
+            .action-btn:hover {
+                color: var(--fg);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            .action-btn.ai {
+                color: var(--cyan);
+                border-color: rgba(94, 234, 212, 0.3);
+            }
+            .action-btn.ai:hover {
+                background: rgba(94, 234, 212, 0.08);
+            }
+
+            /* ─── AI Chat Layer ───────────────────────────────────────────────── */
+            #chat-layer {
+                position: absolute;
+                inset: 0;
+                z-index: 40;
+                background: var(--bg);
+                display: flex;
+                flex-direction: column;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            #chat-layer.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            #chat-messages {
+                flex: 1;
+                overflow-y: auto;
+                /* Full-width chat with scene-content-like side paddings */
+                padding: 72px 32px 35px 96px;
+                width: 100%;
+                margin: 0;
+            }
+            .chat-empty {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                gap: 16px;
+                text-align: center;
+                padding: 60px 0;
+                animation: fadeIn 0.4s ease;
+            }
+            .chat-empty-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(94, 234, 212, 0.1);
+                border: 1px solid rgba(94, 234, 212, 0.25);
+            }
+            .chat-empty-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+            .chat-empty h3 {
+                font-size: 17px;
+                font-weight: 600;
+            }
+            .chat-empty p {
+                font-size: 13px;
+                color: var(--fg-dim);
+                line-height: 1.65;
+                max-width: 320px;
+            }
+
+            .msg-row {
+                display: flex;
+                gap: 12px;
+                margin-bottom: 20px;
+                animation: fadeSlideUp 0.4s ease;
+            }
+            .msg-row.user {
+                flex-direction: row-reverse;
+            }
+            .msg-avatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 4px;
+            }
+            .msg-avatar.ai {
+                background: rgba(94, 234, 212, 0.1);
+                border: 1px solid rgba(94, 234, 212, 0.25);
+            }
+            .msg-avatar.user-av {
+                background: var(--surface-el);
+                border: 1px solid var(--border);
+            }
+            .msg-avatar svg {
+                width: 14px;
+                height: 14px;
+            }
+            .msg-body {
+                max-width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .msg-row.user .msg-body {
+                align-items: flex-end;
+            }
+            .msg-bubble {
+                padding: 0;
+                border-radius: 0;
+                font-size: 13px;
+                line-height: 1.65;
+                white-space: normal;
+            }
+            .msg-bubble.ai {
+                background: none;
+                border: none;
+            }
+            .msg-bubble.user {
+                background: none;
+                border: none;
+            }
+            .msg-time {
+                font-size: 11px;
+                color: var(--fg-dim);
+                padding: 0 4px;
+            }
+            .msg-wagons {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+            }
+            .msg-wagon-mini {
+                display: flex;
+                gap: 10px;
+                border-radius: 0;
+                overflow: visible;
+                border: none;
+                background: none;
+            }
+            .msg-wagon-img {
+                width: 90px;
+                flex-shrink: 0;
+            }
+            .msg-wagon-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.7);
+                display: block;
+            }
+            .msg-wagon-info {
+                flex: 1;
+                padding: 10px 12px 10px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .msg-wagon-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .msg-wagon-model {
+                font-size: 12px;
+                font-weight: 700;
+            }
+            .msg-wagon-price {
+                font-size: 11px;
+                font-family: monospace;
+            }
+            .msg-wagon-desc {
+                font-size: 11px;
+                color: var(--fg-dim);
+                line-height: 1.45;
+            }
+            .msg-wagon-actions {
+                display: flex;
+                gap: 5px;
+                margin-top: 2px;
+            }
+
+            .typing-indicator {
+                display: flex;
+                gap: 4px;
+                align-items: center;
+                padding: 4px 2px;
+            }
+            .typing-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--cyan);
+            }
+            .typing-dot:nth-child(1) {
+                animation: bounce 1.2s 0s infinite;
+            }
+            .typing-dot:nth-child(2) {
+                animation: bounce 1.2s 0.2s infinite;
+            }
+            .typing-dot:nth-child(3) {
+                animation: bounce 1.2s 0.4s infinite;
+            }
+
+            /* ─── AI Input Bar ────────────────────────────────────────────────── */
+            #ai-input-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                padding: 8px 16px 20px;
+                background: linear-gradient(
+                    to top,
+                    rgba(10, 12, 18, 0.98) 60%,
+                    transparent 100%
+                );
+            }
+            .suggestion-chips {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 10px;
+                overflow-x: auto;
+                padding-bottom: 2px;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 0 8px 10px;
+            }
+            .suggestion-chips::-webkit-scrollbar {
+                display: none;
+            }
+            .chip {
+                flex-shrink: 0;
+                font-size: 9.6px;
+                padding: 4px 8px;
+                border-radius: 99px;
+                border: 1px solid var(--border);
+                background: rgba(255, 255, 255, 0.03);
+                color: var(--fg-mid);
+                cursor: pointer;
+                transition: all 0.2s;
+                white-space: nowrap;
+                font-family: var(--font-sans);
+                line-height: 1.2;
+            }
+            .chip:hover {
+                border-color: var(--cyan);
+                color: var(--cyan);
+            }
+            .input-row {
+                display: flex;
+                align-items: center;
+                max-width: 720px;
+                margin: 0 auto;
+                border-radius: 12px;
+                background: rgba(20, 24, 34, 0.9);
+                border: 1px solid rgba(100, 120, 140, 0.22);
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+                transition:
+                    border-color 0.2s,
+                    box-shadow 0.2s;
+            }
+            .input-row:focus-within {
+                border-color: rgba(94, 234, 212, 0.45);
+                box-shadow:
+                    0 0 0 3px rgba(94, 234, 212, 0.08),
+                    0 8px 32px rgba(0, 0, 0, 0.4);
+            }
+            .input-icon {
+                padding: 0 14px;
+                color: rgba(94, 234, 212, 0.55);
+                flex-shrink: 0;
+                display: flex;
+            }
+            .input-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+            #ai-query {
+                flex: 1;
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 14px 10px;
+                font-size: 13px;
+                color: var(--fg);
+                font-family: var(--font-sans);
+            }
+            #ai-query::placeholder {
+                color: var(--fg-dim);
+            }
+            .input-actions {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                padding-right: 8px;
+            }
+            .icon-btn {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                color: var(--fg-dim);
+                transition: color 0.2s;
+            }
+            .icon-btn:hover {
+                color: var(--cyan);
+            }
+            .icon-btn.is-listening {
+                color: #0a0c12;
+                background: var(--cyan);
+                box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.14);
+            }
+            .icon-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            #send-btn {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.2s;
+                background: transparent;
+                color: var(--fg-dim);
+            }
+            #send-btn.active {
+                background: var(--cyan);
+                color: #0a0c12;
+            }
+            #send-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            /* ─── History Panel ───────────────────────────────────────────────── */
+            #history-backdrop {
+                position: fixed;
+                inset: 0;
+                z-index: 60;
+                background: rgba(0, 0, 0, 0.45);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+            #history-backdrop.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            #history-panel {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100%;
+                z-index: 70;
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+                background: rgba(13, 16, 24, 0.94);
+                backdrop-filter: blur(28px) saturate(1.5);
+                border-left: 1px solid rgba(94, 210, 230, 0.1);
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: none;
+            }
+            #history-panel.open {
+                transform: translateX(0);
+                box-shadow: -8px 0 48px rgba(0, 0, 0, 0.5);
+            }
+            .history-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 18px;
+                border-bottom: 1px solid var(--border);
+            }
+            .history-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+            }
+            .history-title svg {
+                width: 15px;
+                height: 15px;
+                color: var(--cyan);
+            }
+            .history-header-actions {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .history-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 10px 12px;
+            }
+            .history-empty {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 160px;
+                gap: 10px;
+                text-align: center;
+            }
+            .history-empty svg {
+                width: 32px;
+                height: 32px;
+                color: var(--border);
+            }
+            .history-empty p {
+                font-size: 11px;
+                color: var(--fg-dim);
+                line-height: 1.6;
+            }
+            .history-items {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .history-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                width: 100%;
+                text-align: left;
+                padding: 10px 12px;
+                border-radius: 8px;
+                border: 1px solid transparent;
+                background: rgba(255, 255, 255, 0.02);
+                cursor: pointer;
+                transition:
+                    background 0.2s,
+                    border-color 0.2s;
+                font-family: var(--font-sans);
+            }
+            .history-item:hover {
+                background: rgba(94, 234, 212, 0.05);
+                border-color: rgba(94, 234, 212, 0.14);
+            }
+            .history-item svg {
+                width: 13px;
+                height: 13px;
+                flex-shrink: 0;
+                color: var(--fg-dim);
+                margin-top: 2px;
+            }
+            .history-item:hover svg {
+                color: var(--cyan);
+            }
+            .history-item-text {
+                flex: 1;
+                min-width: 0;
+            }
+            .history-item-query {
+                font-size: 13px;
+                color: var(--fg);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .history-item-date {
+                font-size: 10px;
+                color: var(--fg-dim);
+                margin-top: 2px;
+            }
+            .history-footer {
+                padding: 10px 18px;
+                border-top: 1px solid var(--border);
+                text-align: center;
+            }
+            .history-footer p {
+                font-size: 11px;
+                color: var(--fg-dim);
+            }
+
+            /* ─── Responsive ──────────────────────────────────────────────────── */
+            @media (max-width: 640px) {
+                .scene-content {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+                .scene-intro {
+                    display: none;
+                }
+                .wagon-card-img {
+                    width: 240px;
+                    aspect-ratio: 3 / 2;
+                }
+                .header-phone {
+                    display: none !important;
+                }
+                #history-panel {
+                    width: 100%;
+                }
+            }
+
+            /* SVG icon helper class */
+            .icon {
+                display: inline-block;
+            }
+        </style>
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (m, e, t, r, i, k, a) {
+                m[i] =
+                    m[i] ||
+                    function () {
+                        (m[i].a = m[i].a || []).push(arguments);
+                    };
+                m[i].l = 1 * new Date();
+                for (var j = 0; j < document.scripts.length; j++) {
+                    if (document.scripts[j].src === r) {
+                        return;
+                    }
+                }
+                ((k = e.createElement(t)),
+                    (a = e.getElementsByTagName(t)[0]),
+                    (k.async = 1),
+                    (k.src = r),
+                    a.parentNode.insertBefore(k, a));
+            })(
+                window,
+                document,
+                "script",
+                "https://mc.yandex.ru/metrika/tag.js?id=108243695",
+                "ym",
+            );
+
+            ym(108243695, "init", {
+                ssr: true,
+                webvisor: true,
+                clickmap: true,
+                ecommerce: "dataLayer",
+                referrer: document.referrer,
+                url: location.href,
+                accurateTrackBounce: true,
+                trackLinks: true,
+            });
+        </script>
+        <noscript
+            ><div>
+                <img
+                    src="https://mc.yandex.ru/watch/108243695"
+                    style="position: absolute; left: -9999px"
+                    alt=""
+                /></div
+        ></noscript>
+        <!-- /Yandex.Metrika counter -->
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- ══════════════ HEADER ══════════════════════════════════════════════ -->
+            <header id="header">
+                <div class="header-left">
+                    <!-- back button (hidden by default) -->
+                    <button
+                        class="btn-back"
+                        id="btn-back-header"
+                        onclick="handleBack()"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                        <span>Назад</span>
+                    </button>
+                    <span class="header-tag" id="header-tag"
+                        >Вагоны с завода</span
+                    >
+                </div>
+                <div class="header-center">
+                    <span class="logo"
+                        ><span class="logo-accent">ПРО</span>ВАГОН</span
+                    >
+                </div>
+                <div class="header-right">
+                    <a href="tel:+79094000027" class="header-cta" aria-label="Телефон">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                            />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@provagon.ru" class="header-cta header-cta-email" aria-label="Email">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </a>
+                    <a href="/blog/" class="header-cta header-cta-blog" aria-label="Блог">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+                        </svg>
+                    </a>
+                    <button class="header-btn" onclick="openHistory()" aria-label="История">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </a>
+                </div>
+            </header>
+
+            <!-- ══════════════ CATALOG LAYER ══════════════════════════════════════ -->
+            <div id="catalog-layer">
+                <div id="hero-bg"></div>
+                <div id="hero-bg-vignette"></div>
+
+                <!-- Scenes track -->
+                <div id="scenes-track"></div>
+
+                <!-- Nav dots -->
+                <div id="nav-dots"></div>
+
+                <!-- Bottom fade -->
+                <div id="catalog-bottom-fade"></div>
+            </div>
+
+            <!-- ══════════════ DETAIL LAYER ════════════════════════════════════════ -->
+            <div id="detail-layer">
+                <div class="detail-topbar">
+                    <button class="detail-back-btn" onclick="closeDetail()">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                        Все категории
+                    </button>
+                    <div class="detail-divider"></div>
+                    <span class="detail-accent-dot" id="detail-dot"></span>
+                    <span class="detail-cat-name" id="detail-name"></span>
+                    <span class="detail-cat-sub" id="detail-sub"></span>
+                    <span class="detail-count" id="detail-count"></span>
+                </div>
+                <div class="detail-intro"><p id="detail-intro-text"></p></div>
+                <div class="detail-cards" id="detail-cards"></div>
+            </div>
+
+            <!-- ══════════════ CHAT LAYER ══════════════════════════════════════════ -->
+            <div id="chat-layer">
+                <div id="chat-messages">
+                    <div class="chat-empty" id="chat-empty">
+                        <div class="chat-empty-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#5eead4"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                                />
+                                <path d="M5 3v4" />
+                                <path d="M19 17v4" />
+                                <path d="M3 5h4" />
+                                <path d="M17 19h4" />
+                            </svg>
+                        </div>
+                        <h3>Задайте вопрос о вагонах</h3>
+                        <p>
+                            Я помогу подобрать нужный тип вагона, сравнить
+                            модели, уточнить характеристики и сформировать
+                            коммерческое предложение.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════ AI INPUT BAR ════════════════════════════════════════ -->
+            <div id="ai-input-bar">
+                <div class="suggestion-chips" id="suggestion-chips"></div>
+                <div class="input-row">
+                    <span class="input-icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                            />
+                        </svg>
+                    </span>
+                    <input
+                        id="ai-query"
+                        type="text"
+                        placeholder="Напишите, какой вагон вам нужен…"
+                        autocomplete="off"
+                    />
+                    <div class="input-actions">
+                        <button
+                            class="icon-btn"
+                            id="ai-mic-btn"
+                            title="Голосовой ввод"
+                            aria-label="Голосовой ввод"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"
+                                />
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                <line x1="12" x2="12" y1="19" y2="22" />
+                            </svg>
+                        </button>
+                        <button id="send-btn" onclick="handleSend()">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="m22 2-7 20-4-9-9-4Z" />
+                                <path d="M22 2 11 13" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════ HISTORY PANEL ═══════════════════════════════════════ -->
+            <div id="history-backdrop" onclick="closeHistory()"></div>
+            <div id="history-panel">
+                <div class="history-header">
+                    <div class="history-title">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        История запросов
+                    </div>
+                    <div class="history-header-actions">
+                        <button
+                            class="icon-btn"
+                            id="history-clear-btn"
+                            onclick="clearHistory()"
+                            title="Очистить историю"
+                            style="display: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M3 6h18" />
+                                <path
+                                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                                />
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                            </svg>
+                        </button>
+                        <button class="icon-btn" onclick="closeHistory()">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M18 6 6 18" />
+                                <path d="m6 6 12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="history-body" id="history-body"></div>
+                <div class="history-footer">
+                    <p id="history-footer-text">Нет запросов</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="catalog-data.js"></script>
+        <script>
+            // ═══════════════════════════════════════════════════════════════════════════
+            // DATA (loaded from public/catalog-data.js)
+            // ═══════════════════════════════════════════════════════════════════════════
+            const STATUS_LABELS = window.PROVAGON_STATUS_LABELS;
+            const STATUS_COLORS = window.PROVAGON_STATUS_COLORS;
+            const CATALOG = window.PROVAGON_CATALOG;
+            const AI_SUGGESTIONS = [
                 "Вагоны-хопперы",
                 "Вагоны-Думпкары",
                 "Платформы",
@@ -575,193 +1688,1017 @@
                 "Вагоны крытые",
             ];
 
-            
-            function toggleHistory(show) {
-                if (show) {
-                    renderHistoryList();
-                    historySidebar.classList.remove("hidden-sidebar");
-                    historySidebar.classList.add("visible-sidebar");
-                    historyOverlay.classList.remove(
-                        "opacity-0",
-                        "pointer-events-none",
+            // ═══════════════════════════════════════════════════════════════════════════
+            // STATE
+            // ═══════════════════════════════════════════════════════════════════════════
+            let mode = "catalog"; // 'catalog' | 'detail' | 'chat'
+            let activeIndex = 0;
+            let scrollAccum = 0;
+            let isTransitioning = false;
+            const CHAT_STORAGE_KEY = "vagonai_chat_history";
+            const CHAT_WEBHOOK_URL =
+                "https://shumorusilu.beget.app/webhook/chat_vagon";
+
+            let currentSessionId = null;
+            let chatHistory = []; // [{id, title, messages, timestamp}]
+            let chatMessages = []; // active session messages
+            let speechRecognition = null;
+            let speechRecognitionActive = false;
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // INIT
+            // ═══════════════════════════════════════════════════════════════════════════
+            function init() {
+                hydrateChatState();
+                document.getElementById("hero-bg").style.backgroundImage =
+                    "url('images/wagons/hero-bg.jpg')";
+                buildScenes();
+                buildNavDots();
+                buildSuggestionChips();
+                updateScenesPosition(false);
+                updateNavDots();
+                bindInput();
+                renderHistoryPanel();
+            }
+
+            function hydrateChatState() {
+                chatHistory = readChatHistory();
+                chatMessages = [];
+                currentSessionId = null;
+            }
+
+            function readChatHistory() {
+                try {
+                    const raw = JSON.parse(
+                        localStorage.getItem(CHAT_STORAGE_KEY) || "[]",
                     );
-                    historyOverlay.classList.add(
-                        "opacity-100",
-                        "pointer-events-auto",
-                    );
-                } else {
-                    historySidebar.classList.add("hidden-sidebar");
-                    historySidebar.classList.remove("visible-sidebar");
-                    historyOverlay.classList.add(
-                        "opacity-0",
-                        "pointer-events-none",
-                    );
-                    historyOverlay.classList.remove(
-                        "opacity-100",
-                        "pointer-events-auto",
-                    );
+                    if (!Array.isArray(raw)) return [];
+                    return raw.map((session) => ({
+                        ...session,
+                        timestamp: Number(session.timestamp) || Date.now(),
+                        messages: Array.isArray(session.messages)
+                            ? session.messages.map((msg) => ({
+                                  ...msg,
+                                  timestamp:
+                                      Number(msg.timestamp) || Date.now(),
+                                  wagons: Array.isArray(msg.wagons)
+                                      ? msg.wagons
+                                      : [],
+                              }))
+                            : [],
+                    }));
+                } catch (error) {
+                    console.error("Failed to parse chat history", error);
+                    return [];
                 }
             }
 
-            
-            let chatHistory = JSON.parse(
-                localStorage.getItem("vagonai_chat_history") || "[]",
-            );
+            function persistChatHistory() {
+                localStorage.setItem(
+                    CHAT_STORAGE_KEY,
+                    JSON.stringify(chatHistory),
+                );
+            }
 
-            function renderHistoryList() {
-                const list = historySidebar.querySelector("#history-list");
-                if (!list) return;
-                list.innerHTML = "";
-                if (chatHistory.length === 0) {
-                    list.innerHTML = `
-                    <div class="text-center py-12">
-                        <i data-lucide="clock" class="w-10 h-10 mx-auto text-zinc-700 mb-4"></i>
-                        <p class="text-zinc-100 text-sm font-medium">История пуста</p>
-                    </div>
-                `;
-                } else {
-                    
-                    const newChatBtn = document.createElement("button");
-                    newChatBtn.className =
-                        "w-full p-4 mb-4 bg-[#318b5d]/10 hover:bg-[#318b5d]/20 border border-[#318b5d]/30 rounded-xl text-[#318b5d] text-sm font-bold flex items-center justify-center gap-2 transition-all";
-                    newChatBtn.innerHTML = `<i data-lucide="plus" class="w-4 h-4"></i> Новый чат`;
-                    newChatBtn.onclick = () => {
-                        if (window.startNewChat) {
-                            window.startNewChat();
-                            toggleHistory(false);
-                        } else {
-                            window.location.href = "/";
-                        }
-                    };
-                    list.appendChild(newChatBtn);
+            function clearPersistedChatHistory() {
+                localStorage.removeItem(CHAT_STORAGE_KEY);
+            }
 
-                    chatHistory.forEach((session) => {
-                        const btn = document.createElement("button");
-                        btn.className =
-                            "w-full p-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-left transition-all group relative";
-                        const date = new Date(
-                            session.timestamp,
-                        ).toLocaleDateString();
-                        btn.innerHTML = `
-                        <p class="text-zinc-100 text-sm font-medium truncate pr-6">${session.title}</p>
-                        <p class="text-zinc-500 text-[10px] mt-1">${date}</p>
-                        <div class="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-                        </div>
-                    `;
-                        btn.onclick = () => {
-                            if (window.loadSession) {
-                                window.loadSession(session.id);
-                                toggleHistory(false);
-                            } else {
-                                window.location.href = "/";
-                            }
-                        };
-                        list.appendChild(btn);
+            function getCurrentSession() {
+                return chatHistory.find(
+                    (session) => session.id === currentSessionId,
+                );
+            }
+
+            function createChatSession(initialQuery) {
+                const title =
+                    initialQuery.substring(0, 30) +
+                    (initialQuery.length > 30 ? "..." : "");
+                const session = {
+                    id: Date.now().toString(),
+                    title,
+                    messages: [],
+                    timestamp: Date.now(),
+                };
+                chatHistory.unshift(session);
+                currentSessionId = session.id;
+                chatMessages = session.messages;
+                persistChatHistory();
+                return session;
+            }
+
+            function ensureChatSession(initialQuery) {
+                return getCurrentSession() || createChatSession(initialQuery);
+            }
+
+            function syncActiveMessages() {
+                const session = getCurrentSession();
+                chatMessages = session ? session.messages : [];
+            }
+
+            function saveChatMessage(role, content, wagons) {
+                const session = getCurrentSession();
+                if (!session) return null;
+
+                const storedRole = role === "assistant" ? "assistant" : "user";
+                const message = {
+                    id:
+                        (storedRole === "assistant" ? "a-" : "u-") +
+                        Date.now() +
+                        "-" +
+                        Math.random().toString(36).slice(2, 8),
+                    role: storedRole,
+                    content,
+                    wagons: Array.isArray(wagons) ? wagons : [],
+                    timestamp: Date.now(),
+                };
+
+                session.messages.push(message);
+                session.timestamp = Date.now();
+
+                if (
+                    storedRole === "user" &&
+                    session.messages.filter((msg) => msg.role === "user")
+                        .length === 1
+                ) {
+                    session.title =
+                        content.substring(0, 30) +
+                        (content.length > 30 ? "..." : "");
+                }
+
+                persistChatHistory();
+                syncActiveMessages();
+                renderHistoryPanel();
+
+                return message;
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // BUILD SCENES
+            // ═══════════════════════════════════════════════════════════════════════════
+            function buildScenes() {
+                const track = document.getElementById("scenes-track");
+                track.innerHTML = "";
+                CATALOG.forEach((cat, idx) => {
+                    const scene = document.createElement("div");
+                    scene.className = "scene";
+                    scene.id = `scene-${idx}`;
+                    scene.innerHTML = `
+      <div class="scene-img" id="scene-img-${idx}" style="background-image:url('${cat.image}')"></div>
+      <div class="scene-grad-h"></div>
+      <div class="scene-grad-v"></div>
+      <div class="scene-accent-line" style="background:linear-gradient(to bottom,transparent,${cat.accentColor}60,transparent)"></div>
+      <div class="scene-content">
+        <span class="scene-tag" style="color:${cat.accentColor}">0${idx + 1} / Каталог</span>
+        <h2 class="scene-title" style="text-shadow:0 0 60px ${cat.accentColor}30">${cat.title}</h2>
+        <p class="scene-subtitle">${cat.subtitle}</p>
+        <p class="scene-intro">${cat.intro}</p>
+        <div class="scene-stats">
+          <div>
+            <div class="stat-val" style="color:${cat.accentColor}">${cat.wagons.length}</div>
+            <div class="stat-lbl">Моделей</div>
+          </div>
+          <div class="stat-div"></div>
+          <div>
+            <div class="stat-val">${cat.wagons.filter((w) => w.status === "in_stock" || w.status === "new").length}</div>
+            <div class="stat-lbl">В наличии</div>
+          </div>
+        </div>
+        <button class="scene-cta" style="background:${cat.accentColor};color:#0a0c12" onclick="openDetail(${idx})">
+          Смотреть вагоны
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="scene-scroll-hint">
+        <div class="scene-scroll-line"></div>
+        <div class="scene-scroll-text">ПРОКРУТИ</div>
+      </div>
+    `;
+                    // Click whole scene = open detail
+                    scene.addEventListener("click", (e) => {
+                        if (e.target.closest(".scene-cta")) return;
+                        if (mode === "catalog") openDetail(idx);
                     });
-                }
-                if (window.lucide) lucide.createIcons();
-            }
-
-            
-            if (historyBtn) historyBtn.onclick = () => toggleHistory(true);
-            if (closeHistory) closeHistory.onclick = () => toggleHistory(false);
-            if (historyOverlay)
-                historyOverlay.onclick = () => toggleHistory(false);
-
-
-
-            
-            if (footerProducts) {
-                WAGON_TYPES.forEach((type) => {
-                    const li = document.createElement("li");
-                    li.textContent = type
-                        .replace("Вагоны-", "")
-                        .replace("Вагоны ", "");
-                    footerProducts.appendChild(li);
+                    track.appendChild(scene);
                 });
             }
 
-            
-            
-            
-
-            if (!IS_BLOG) {
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xf7fafc);
-            scene.fog = new THREE.Fog(0xf0f4f8, 20, 140);
-
-            const aspect = window.innerWidth / window.innerHeight;
-            const d = 14;
-            const camera = new THREE.OrthographicCamera(
-                -d * aspect,
-                d * aspect,
-                d,
-                -d,
-                1,
-                1000,
-            );
-            camera.position.set(50, 50, 50);
-            camera.lookAt(0, 0, 0);
-
-            const renderer = new THREE.WebGLRenderer({
-                antialias: true,
-                alpha: true,
-            });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-            if (threeContainer) threeContainer.appendChild(renderer.domElement);
-
-            const hemiLight = new THREE.HemisphereLight(0xffffff, 0xdddddd, 1.2);
-            scene.add(hemiLight);
-            const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
-            dirLight.position.set(20, 40, 20);
-            dirLight.castShadow = true;
-            scene.add(dirLight);
-
-            const ground = new THREE.Mesh(
-                new THREE.PlaneGeometry(2000, 2000),
-                new THREE.MeshStandardMaterial({ color: 0xe5e7eb }),
-            );
-            ground.rotation.x = -Math.PI / 2;
-            ground.receiveShadow = true;
-            scene.add(ground);
-
-            
-            
-            
-            
-            
-            
-
-            
-            
-
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                renderer.render(scene, camera);
+            // ═══════════════════════════════════════════════════════════════════════════
+            // BUILD NAV DOTS
+            // ═══════════════════════════════════════════════════════════════════════════
+            function buildNavDots() {
+                const container = document.getElementById("nav-dots");
+                container.innerHTML = "";
+                CATALOG.forEach((cat, idx) => {
+                    const dot = document.createElement("button");
+                    dot.className = "nav-dot";
+                    dot.id = `dot-${idx}`;
+                    dot.title = cat.title;
+                    dot.addEventListener("click", () => goToIndex(idx));
+                    container.appendChild(dot);
+                });
             }
-            animate();
 
-            window.onresize = () => {
-                const aspect = window.innerWidth / window.innerHeight;
-                camera.left = -d * aspect;
-                camera.right = d * aspect;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            };
+            function updateNavDots() {
+                CATALOG.forEach((cat, idx) => {
+                    const dot = document.getElementById(`dot-${idx}`);
+                    if (!dot) return;
+                    if (idx === activeIndex) {
+                        dot.classList.add("active");
+                        dot.style.background = cat.accentColor;
+                    } else {
+                        dot.classList.remove("active");
+                        dot.style.background = "var(--steel)";
+                    }
+                });
+            }
 
-            
-            window.addEventListener("scroll", () => {
-                const scrollY = window.scrollY;
-                
-                if (threeContainer)
-                    threeContainer.style.transform = `translateY(-${scrollY * 0.4}px)`;
+            // ═══════════════════════════════════════════════════════════════════════════
+            // SCROLL ENGINE
+            // ═══════════════════════════════════════════════════════════════════════════
+            const THRESHOLD = 120;
+
+            document.getElementById("app").addEventListener(
+                "wheel",
+                (e) => {
+                    if (mode !== "catalog") return;
+                    e.preventDefault();
+                    scrollAccum += e.deltaY;
+
+                    if (isTransitioning) return;
+
+                    if (scrollAccum >= THRESHOLD) {
+                        if (activeIndex < CATALOG.length - 1) {
+                            goToIndex(activeIndex + 1);
+                        } else {
+                            scrollAccum = THRESHOLD;
+                        }
+                    } else if (scrollAccum <= -THRESHOLD) {
+                        if (activeIndex > 0) {
+                            goToIndex(activeIndex - 1);
+                        } else {
+                            scrollAccum = 0;
+                        }
+                    }
+                },
+                { passive: false },
+            );
+
+            // Touch support
+            let touchStartY = 0;
+            document.getElementById("app").addEventListener(
+                "touchstart",
+                (e) => {
+                    touchStartY = e.touches[0].clientY;
+                },
+                { passive: true },
+            );
+            document.getElementById("app").addEventListener(
+                "touchend",
+                (e) => {
+                    if (mode !== "catalog") return;
+                    const dy = touchStartY - e.changedTouches[0].clientY;
+                    if (Math.abs(dy) < 40) return;
+                    if (dy > 0 && activeIndex < CATALOG.length - 1)
+                        goToIndex(activeIndex + 1);
+                    if (dy < 0 && activeIndex > 0) goToIndex(activeIndex - 1);
+                },
+                { passive: true },
+            );
+
+            function goToIndex(idx) {
+                if (idx === activeIndex) return;
+                isTransitioning = true;
+                activeIndex = idx;
+                scrollAccum = 0;
+                updateScenesPosition(true);
+                updateNavDots();
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600);
+            }
+
+            function updateScenesPosition(animated) {
+                const track = document.getElementById("scenes-track");
+                track.style.transition = animated
+                    ? "transform .55s cubic-bezier(.4,0,.2,1)"
+                    : "none";
+                track.style.transform = `translateX(-${activeIndex * 100}%)`;
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // DETAIL
+            // ═══════════════════════════════════════════════════════════════════════════
+            function openDetail(idx) {
+                if (idx !== undefined) activeIndex = idx;
+                const cat = CATALOG[activeIndex];
+                mode = "detail";
+
+                // Populate
+                const dot = document.getElementById("detail-dot");
+                dot.style.background = cat.accentColor;
+                dot.style.boxShadow = `0 0 8px ${cat.accentColor}`;
+                document.getElementById("detail-name").textContent = cat.title;
+                document.getElementById("detail-sub").textContent =
+                    "— " + cat.subtitle;
+                document.getElementById("detail-count").textContent =
+                    cat.wagons.length +
+                    " модел" +
+                    (cat.wagons.length === 1 ? "ь" : "и");
+                document.getElementById("detail-intro-text").textContent =
+                    cat.intro;
+
+                const cards = document.getElementById("detail-cards");
+                cards.innerHTML = "";
+                cat.wagons.forEach((wagon, i) => {
+                    cards.appendChild(
+                        buildWagonCard(wagon, cat.title, cat.accentColor, i),
+                    );
+                });
+
+                const layer = document.getElementById("detail-layer");
+                layer.classList.add("visible");
+                layer.scrollTop = 0;
+
+                setHeaderMode("back");
+
+                // Make the top header fully opaque when user scrolls the detail list.
+                const headerEl = document.getElementById("header");
+                if (!layer.dataset.scrollHeaderBound) {
+                    layer.dataset.scrollHeaderBound = "1";
+                    layer.addEventListener(
+                        "scroll",
+                        () => {
+                            const solid = layer.scrollTop > 0;
+                            headerEl.classList.toggle("header-solid", solid);
+                        },
+                        { passive: true },
+                    );
+                }
+                headerEl.classList.remove("header-solid");
+            }
+
+            function closeDetail() {
+                mode = "catalog";
+                document
+                    .getElementById("detail-layer")
+                    .classList.remove("visible");
+                setHeaderMode("catalog");
+
+                const headerEl = document.getElementById("header");
+                headerEl.classList.remove("header-solid");
+            }
+
+            function buildWagonCard(wagon, categoryTitle, accent, index) {
+                const sc = STATUS_COLORS[wagon.status];
+                const sl = STATUS_LABELS[wagon.status];
+
+                const card = document.createElement("div");
+                card.className = "wagon-card";
+                card.style.animationDelay = `${index * 0.07}s`;
+
+                const specsHtml = wagon.specs
+                    .map(
+                        (s) => `
+    <div class="spec-item">
+      <span class="spec-lbl">${s.label}</span>
+      <span class="spec-val">${s.value}</span>
+    </div>
+  `,
+                    )
+                    .join("");
+
+                card.innerHTML = `
+    <div class="wagon-card-top">
+      <div class="wagon-card-img">
+        <img src="${wagon.image}" alt="${wagon.model}" loading="lazy" />
+      </div>
+      <div class="wagon-card-body">
+        <div class="wagon-card-head">
+          <span class="wagon-model">${wagon.model}</span>
+          <span class="wagon-price" style="color:${accent}">${wagon.price}</span>
+        </div>
+        <p class="wagon-desc">${wagon.description}</p>
+        <p class="wagon-purpose"><span>Груз:</span> ${wagon.purpose}</p>
+        <div class="specs-grid">${specsHtml}</div>
+      </div>
+    </div>
+    <div class="wagon-card-bottom">
+      <span class="status-badge" style="background:${sc}20;color:${sc}">
+        <span class="status-dot" style="background:${sc}"></span>
+        ${sl}
+      </span>
+      <button class="action-btn" onclick="alert('Формируем КП для ${escStr(wagon.model)}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+        КП
+      </button>
+      <button class="action-btn" onclick="alert('Оставить заявку на ${escStr(wagon.model)}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Заявка
+      </button>
+      <button class="action-btn ai" onclick="askAI('${escStr(categoryTitle)}', '${escStr(wagon.model)}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        Спросить ИИ
+      </button>
+    </div>
+  `;
+                return card;
+            }
+
+            function escStr(s) {
+                return s.replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // AI CHAT
+            // ═══════════════════════════════════════════════════════════════════════════
+            function openChat(initialQuery) {
+                const headerEl = document.getElementById("header");
+                mode = "chat";
+                document.getElementById("chat-layer").classList.add("visible");
+                document.getElementById("catalog-layer").style.opacity = "0";
+                document.getElementById("catalog-layer").style.pointerEvents =
+                    "none";
+                document
+                    .getElementById("detail-layer")
+                    .classList.remove("visible");
+                document.getElementById("suggestion-chips").style.display =
+                    "none";
+                headerEl.classList.add("header-solid");
+                setHeaderMode("chat");
+                if (currentSessionId) {
+                    loadSession(currentSessionId);
+                } else {
+                    renderCurrentChat();
+                }
+                if (initialQuery) {
+                    setTimeout(() => sendMessage(initialQuery), 80);
+                }
+            }
+
+            function closeChat() {
+                const headerEl = document.getElementById("header");
+                mode = "catalog";
+                document
+                    .getElementById("chat-layer")
+                    .classList.remove("visible");
+                document.getElementById("catalog-layer").style.opacity = "1";
+                document.getElementById("catalog-layer").style.pointerEvents =
+                    "auto";
+                document.getElementById("suggestion-chips").style.display = "";
+                headerEl.classList.remove("header-solid");
+                setHeaderMode("catalog");
+            }
+
+            function handleBack() {
+                if (mode === "chat") closeChat();
+                else if (mode === "detail") closeDetail();
+            }
+
+            function askAI(categoryTitle, modelName) {
+                openChat(`${categoryTitle} ${modelName} - Расскажи о вагоне`);
+            }
+
+            async function sendMessage(query) {
+                const trimmed = query.trim();
+                if (!trimmed) return;
+
+                ensureChatSession(trimmed);
+
+                document.getElementById("chat-empty").style.display = "none";
+
+                const userMessage = saveChatMessage("user", trimmed, []);
+                renderMessage(userMessage);
+                scrollChatToBottom();
+
+                const typingId = "typing-" + Date.now();
+                appendTyping(typingId);
+                scrollChatToBottom();
+
+                try {
+                    const session = getCurrentSession();
+                    const historyPayload = session
+                        ? session.messages.slice(-20).map((msg) => ({
+                              role:
+                                  msg.role === "assistant"
+                                      ? "assistant"
+                                      : "user",
+                              content: msg.content,
+                          }))
+                        : [{ role: "user", content: trimmed }];
+
+                    const response = await fetch(CHAT_WEBHOOK_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            query: trimmed,
+                            chat_history: historyPayload,
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Network response was not ok: " + response.status,
+                        );
+                    }
+
+                    const data = await response.json();
+                    const aiText = extractAiAnswer(data);
+                    const wagons = extractAiWagons(data);
+
+                    removeTyping(typingId);
+                    const msg = saveChatMessage("assistant", aiText, wagons);
+                    renderMessage(msg);
+                    scrollChatToBottom();
+                } catch (e) {
+                    console.error("Chat request failed", e);
+                    removeTyping(typingId);
+                    const errMsg = saveChatMessage(
+                        "assistant",
+                        "Произошла ошибка. Пожалуйста, повторите запрос.",
+                        [],
+                    );
+                    renderMessage(errMsg);
+                    scrollChatToBottom();
+                }
+            }
+
+            function escapeHtml(value) {
+                return String(value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function sanitizeMessageHtml(content) {
+                const template = document.createElement("template");
+                template.innerHTML = String(content || "");
+
+                const blockedTags = new Set([
+                    "script",
+                    "style",
+                    "iframe",
+                    "object",
+                    "embed",
+                    "link",
+                    "meta",
+                ]);
+
+                const walker = document.createTreeWalker(
+                    template.content,
+                    NodeFilter.SHOW_ELEMENT,
+                );
+
+                const elements = [];
+                while (walker.nextNode()) {
+                    elements.push(walker.currentNode);
+                }
+
+                elements.forEach((el) => {
+                    const tag = el.tagName.toLowerCase();
+                    if (blockedTags.has(tag)) {
+                        el.remove();
+                        return;
+                    }
+
+                    Array.from(el.attributes).forEach((attr) => {
+                        const name = attr.name.toLowerCase();
+                        const value = attr.value.trim();
+
+                        if (name.startsWith("on")) {
+                            el.removeAttribute(attr.name);
+                            return;
+                        }
+
+                        if (
+                            (name === "href" || name === "src") &&
+                            /^javascript:/i.test(value)
+                        ) {
+                            el.removeAttribute(attr.name);
+                        }
+                    });
+                });
+
+                return template.innerHTML;
+            }
+
+            function renderMessage(msg) {
+                const container = document.getElementById("chat-messages");
+                const row = document.createElement("div");
+                row.className = `msg-row ${msg.role === "user" ? "user" : ""}`;
+                row.id = `msg-${msg.id}`;
+
+                const avatarInner =
+                    msg.role === "assistant"
+                        ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>`
+                        : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#6b7a90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+                const avatarClass = msg.role === "assistant" ? "ai" : "user-av";
+
+                let wagonsHtml = "";
+                if (msg.wagons && msg.wagons.length > 0) {
+                    wagonsHtml =
+                        '<div class="msg-wagons">' +
+                        msg.wagons
+                            .map((w) => {
+                                const cat = CATALOG.find(
+                                    (c) => c.id === w.categoryId,
+                                );
+                                const acc = cat ? cat.accentColor : "#5eead4";
+                                const sc = STATUS_COLORS[w.status];
+                                const sl = STATUS_LABELS[w.status];
+                                return `<div class="msg-wagon-mini">
+        <div class="msg-wagon-img"><img src="${w.image}" alt="${w.model}" /></div>
+        <div class="msg-wagon-info">
+          <div class="msg-wagon-head">
+            <span class="msg-wagon-model">${w.model}</span>
+            <span class="msg-wagon-price" style="color:${acc}">${w.price}</span>
+          </div>
+          <p class="msg-wagon-desc">${w.description}</p>
+          <div class="msg-wagon-actions">
+            <span class="status-badge" style="background:${sc}20;color:${sc};font-size:10px;padding:2px 6px;">
+              <span class="status-dot" style="background:${sc}"></span>${sl}
+            </span>
+          </div>
+        </div>
+      </div>`;
+                            })
+                            .join("") +
+                        "</div>";
+                }
+
+                const msgTime = new Date(msg.timestamp || Date.now());
+                const timeStr = msgTime.toLocaleTimeString("ru", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+
+                row.innerHTML = `
+    <div class="msg-avatar ${avatarClass}">${avatarInner}</div>
+    <div class="msg-body">
+      <div class="msg-bubble ${msg.role}">${sanitizeMessageHtml(msg.content)}</div>
+      ${wagonsHtml}
+      <span class="msg-time">${timeStr}</span>
+    </div>
+  `;
+                container.appendChild(row);
+            }
+
+            function appendTyping(id) {
+                const container = document.getElementById("chat-messages");
+                const row = document.createElement("div");
+                row.className = "msg-row";
+                row.id = id;
+                row.innerHTML = `
+    <div class="msg-avatar ai">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+    </div>
+    <div class="msg-body">
+      <div class="msg-bubble ai"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
+    </div>`;
+                container.appendChild(row);
+            }
+
+            function removeTyping(id) {
+                const el = document.getElementById(id);
+                if (el) el.remove();
+            }
+
+            function scrollChatToBottom() {
+                setTimeout(() => {
+                    const container = document.getElementById("chat-messages");
+                    container.scrollTop = container.scrollHeight;
+                }, 60);
+            }
+
+            function extractAiAnswer(data) {
+                if (
+                    data &&
+                    typeof data.answer === "string" &&
+                    data.answer.trim()
+                ) {
+                    return data.answer;
+                }
+                if (
+                    data &&
+                    typeof data.output === "string" &&
+                    data.output.trim()
+                ) {
+                    return data.output;
+                }
+                if (data && data.answer) {
+                    return JSON.stringify(data.answer);
+                }
+                if (data && data.output) {
+                    return JSON.stringify(data.output);
+                }
+                return "Извините, я не смог получить ответ.";
+            }
+
+            function extractAiWagons(data) {
+                if (!data) return [];
+                if (Array.isArray(data.wagons)) return data.wagons;
+                if (Array.isArray(data.items)) return data.items;
+                return [];
+            }
+
+            function renderCurrentChat() {
+                const container = document.getElementById("chat-messages");
+                const empty = document.getElementById("chat-empty");
+
+                container.innerHTML = "";
+
+                if (!chatMessages.length) {
+                    container.appendChild(empty);
+                    empty.style.display = "";
+                    return;
+                }
+
+                empty.style.display = "none";
+                chatMessages.forEach((message) => renderMessage(message));
+                scrollChatToBottom();
+            }
+
+            function loadSession(id) {
+                const session = chatHistory.find((item) => item.id === id);
+                if (!session) return;
+
+                currentSessionId = id;
+                syncActiveMessages();
+                renderCurrentChat();
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // INPUT
+            // ═══════════════════════════════════════════════════════════════════════════
+            function bindInput() {
+                const input = document.getElementById("ai-query");
+                const sendBtn = document.getElementById("send-btn");
+                const micBtn = document.getElementById("ai-mic-btn");
+
+                input.addEventListener("input", () => {
+                    sendBtn.className = input.value.trim() ? "active" : "";
+                });
+                input.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSend();
+                    }
+                });
+
+                if (micBtn) {
+                    micBtn.addEventListener("click", toggleVoiceInput);
+                }
+            }
+
+            function setMicListeningState(isListening) {
+                speechRecognitionActive = isListening;
+                const micBtn = document.getElementById("ai-mic-btn");
+                if (!micBtn) return;
+                micBtn.classList.toggle("is-listening", isListening);
+                micBtn.title = isListening
+                    ? "Остановить голосовой ввод"
+                    : "Голосовой ввод";
+                micBtn.setAttribute(
+                    "aria-label",
+                    isListening
+                        ? "Остановить голосовой ввод"
+                        : "Голосовой ввод",
+                );
+            }
+
+            function toggleVoiceInput() {
+                if (speechRecognitionActive && speechRecognition) {
+                    speechRecognition.stop();
+                    return;
+                }
+
+                const SpeechRecognition =
+                    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+                if (!SpeechRecognition) {
+                    alert(
+                        "Голосовой ввод не поддерживается в этом браузере. Откройте сайт в Chrome или Safari.",
+                    );
+                    return;
+                }
+
+                const input = document.getElementById("ai-query");
+                const sendBtn = document.getElementById("send-btn");
+                const recognition = new SpeechRecognition();
+                let transcript = input.value.trim();
+
+                speechRecognition = recognition;
+                recognition.lang = "ru-RU";
+                recognition.interimResults = true;
+                recognition.maxAlternatives = 1;
+
+                recognition.onstart = () => {
+                    setMicListeningState(true);
+                    input.focus();
+                };
+
+                recognition.onresult = (event) => {
+                    const spoken = Array.from(event.results)
+                        .map((result) => result[0]?.transcript || "")
+                        .join(" ")
+                        .trim();
+
+                    if (!spoken) return;
+
+                    transcript = spoken;
+                    input.value = spoken;
+                    sendBtn.className = spoken.trim() ? "active" : "";
+                };
+
+                recognition.onerror = (event) => {
+                    console.error("Voice input failed", event);
+                    setMicListeningState(false);
+                    speechRecognition = null;
+
+                    if (event.error === "not-allowed") {
+                        alert(
+                            "Браузер не дал доступ к микрофону. Разрешите доступ к микрофону для этого сайта.",
+                        );
+                    } else if (event.error !== "aborted") {
+                        alert(
+                            "Не удалось распознать речь. Попробуйте еще раз.",
+                        );
+                    }
+                };
+
+                recognition.onend = () => {
+                    setMicListeningState(false);
+                    speechRecognition = null;
+                    input.value = transcript;
+                    sendBtn.className = transcript.trim() ? "active" : "";
+                };
+
+                recognition.start();
+            }
+
+            function handleSend() {
+                const input = document.getElementById("ai-query");
+                const query = input.value.trim();
+                if (!query) return;
+                input.value = "";
+                document.getElementById("send-btn").className = "";
+
+                if (mode !== "chat") {
+                    openChat(query);
+                } else {
+                    sendMessage(query);
+                }
+            }
+
+            // ─── Suggestion chips ───────────────────────────────────────────────────
+            function buildSuggestionChips() {
+                const container = document.getElementById("suggestion-chips");
+                container.innerHTML = "";
+                AI_SUGGESTIONS.forEach((s) => {
+                    const chip = document.createElement("button");
+                    chip.className = "chip";
+                    chip.textContent = s;
+                    chip.addEventListener("click", () => {
+                        openChat(`Расскажи про ${s}`);
+                    });
+                    container.appendChild(chip);
+                });
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // HISTORY PANEL
+            // ═══════════════════════════════════════════════════════════════════════════
+            function openHistory() {
+                document
+                    .getElementById("history-backdrop")
+                    .classList.add("open");
+                document.getElementById("history-panel").classList.add("open");
+            }
+            function closeHistory() {
+                document
+                    .getElementById("history-backdrop")
+                    .classList.remove("open");
+                document
+                    .getElementById("history-panel")
+                    .classList.remove("open");
+            }
+            function clearHistory() {
+                chatHistory = [];
+                chatMessages = [];
+                currentSessionId = null;
+                clearPersistedChatHistory();
+                document.getElementById("ai-query").value = "";
+                document.getElementById("send-btn").className = "";
+                closeHistory();
+                renderCurrentChat();
+                renderHistoryPanel();
+            }
+
+            function renderHistoryPanel() {
+                const body = document.getElementById("history-body");
+                const footer = document.getElementById("history-footer-text");
+                const clearBtn = document.getElementById("history-clear-btn");
+
+                if (chatHistory.length === 0) {
+                    clearBtn.style.display = "none";
+                    body.innerHTML = `<div class="history-empty">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <p>История ваших запросов<br>появится здесь</p>
+    </div>`;
+                    footer.textContent = "Нет запросов";
+                    return;
+                }
+
+                clearBtn.style.display = "flex";
+                body.innerHTML =
+                    '<div class="history-items">' +
+                    chatHistory
+                        .map((item) => {
+                            const ts = new Date(item.timestamp || Date.now());
+                            const dateStr = ts.toLocaleDateString("ru", {
+                                day: "2-digit",
+                                month: "short",
+                            });
+                            const timeStr = ts.toLocaleTimeString("ru", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            });
+                            const title = escapeHtml(
+                                item.title || "Новый запрос",
+                            );
+                            return `<button class="history-item" onclick="reopenHistory('${item.id}')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      <div class="history-item-text">
+        <div class="history-item-query">${title}</div>
+        <div class="history-item-date">${dateStr}, ${timeStr}</div>
+      </div>
+    </button>`;
+                        })
+                        .join("") +
+                    "</div>";
+
+                const n = chatHistory.length;
+                footer.textContent = `${n} запрос${n === 1 ? "" : n < 5 ? "а" : "ов"}`;
+            }
+
+            function reopenHistory(id) {
+                const item = chatHistory.find((session) => session.id === id);
+                if (!item) return;
+                closeHistory();
+                setTimeout(() => {
+                    currentSessionId = item.id;
+                    syncActiveMessages();
+                    openChat();
+                }, 300);
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // HEADER MODE
+            // ═══════════════════════════════════════════════════════════════════════════
+            function setHeaderMode(m) {
+                const tag = document.getElementById("header-tag");
+                const back = document.getElementById("btn-back-header");
+                if (m === "catalog") {
+                    tag.style.display = "inline";
+                    back.style.display = "none";
+                } else {
+                    tag.style.display = "none";
+                    back.style.display = "flex";
+                }
+            }
+
+            // ═══════════════════════════════════════════════════════════════════════════
+            // KEYBOARD
+            // ═══════════════════════════════════════════════════════════════════════════
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    if (
+                        document
+                            .getElementById("history-panel")
+                            .classList.contains("open")
+                    )
+                        closeHistory();
+                    else if (mode === "chat") closeChat();
+                    else if (mode === "detail") closeDetail();
+                }
+                if (mode === "catalog") {
+                    if (
+                        e.key === "ArrowDown" &&
+                        activeIndex < CATALOG.length - 1
+                    )
+                        goToIndex(activeIndex + 1);
+                    if (e.key === "ArrowUp" && activeIndex > 0)
+                        goToIndex(activeIndex - 1);
+                }
             });
-            } 
 
-            if (window.lucide) lucide.createIcons();
-        </script><script type=module src=/js/trains.js></script><script type=module src=/js/home.js></script></body></html>
+            // ═══════════════════════════════════════════════════════════════════════════
+            // START
+            // ═══════════════════════════════════════════════════════════════════════════
+            init();
+        </script>
+    </body>
+</html>
+

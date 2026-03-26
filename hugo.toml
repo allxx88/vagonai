@@ -1,7 +1,9 @@
 baseURL = 'https://example.org/'
 languageCode = 'ru-ru'
 title = 'VAGONAI'
-theme = ''
+
+[pagination]
+  pagerSize = 10
 
 [markup]
   [markup.goldmark]

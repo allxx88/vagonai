@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="blog-shell">
+    <div class="blog-grid blog-grid-2">
+        <article class="blog-card p-6 md:p-10">
+            <a
+                href="/blog/"
+                class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#9aaabb] hover:text-[#5eead4] transition-colors mb-8"
+            >
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Все статьи
+            </a>
+
+            <div class="flex flex-wrap items-center gap-3 mb-5 text-xs uppercase tracking-[0.18em] text-[#6b7a90]">
+                <span class="blog-chip">Материал блога</span>
+                <span>{{ .Date.Format "02.01.2006" }}</span>
+            </div>
+
+            <h1 class="blog-display text-4xl md:text-6xl font-bold text-[#f0f2f5] leading-[0.95] mb-5">
+                {{ .Title }}
+            </h1>
+
+            {{ with .Description }}
+            <p class="max-w-3xl text-base md:text-lg text-[#9aaabb] leading-relaxed mb-8">
+                {{ . }}
+            </p>
+            {{ end }}
+
+            <div class="blog-divider mb-8"></div>
+
+            <div class="blog-prose">
+                {{ .Content }}
+            </div>
+        </article>
+
+        <aside class="space-y-5">
+            <div class="blog-card-soft p-6 sticky top-28">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-[#6b7a90] mb-3">
+                    Meta
+                </div>
+                <h2 class="blog-display text-2xl text-[#f0f2f5] mb-4">
+                    О статье
+                </h2>
+                <div class="space-y-4 text-sm text-[#9aaabb]">
+                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <div class="text-[#6b7a90] text-[11px] uppercase tracking-[0.18em] mb-1">Дата публикации</div>
+                        <div class="text-[#f0f2f5]">{{ .Date.Format "02.01.2006" }}</div>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <div class="text-[#6b7a90] text-[11px] uppercase tracking-[0.18em] mb-1">Раздел</div>
+                        <div class="text-[#f0f2f5]">Блог PROVAGON</div>
+                    </div>
+                    <a
+                        href="/blog/"
+                        class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-[#5eead4]/30 hover:text-[#5eead4] transition-all"
+                    >
+                        <span>Ко всем материалам</span>
+                        <i data-lucide="layout-list" class="w-4 h-4"></i>
+                    </a>
+                    <a
+                        href="/"
+                        class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-[#5eead4]/30 hover:text-[#5eead4] transition-all"
+                    >
+                        <span>На главную</span>
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+{{ end }}

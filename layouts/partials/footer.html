@@ -1,51 +1,102 @@
+{{ $isBlog := eq .Section "blog" }}
 <footer
-    class="bg-white text-zinc-900 py-16 px-8 border-t border-black/10 relative z-10"
+    class="{{ if $isBlog }}bg-transparent text-[#f0f2f5]{{ else }}bg-white text-zinc-900{{ end }} py-16 px-8 {{ if $isBlog }}relative{{ else }}border-t border-black/10 relative{{ end }} z-10"
 >
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div class="col-span-1 md:col-span-2">
-            <h2 class="text-2xl font-black tracking-tighter mb-6">
-                VAGON<span class="text-[#318b5d]">AI</span>
-            </h2>
-            <p class="text-zinc-600 max-w-md leading-relaxed">
-                Цифровая система продаж грузовых вагонов нового поколения.
-                Отраслевая экспертиза и современные ИИ-алгоритмы для точного
-                подбора и расчёта.
-            </p>
+    <div class="max-w-7xl mx-auto">
+        {{ if $isBlog }}
+        <div class="blog-card px-6 py-8 md:px-10 md:py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="blog-display text-2xl font-bold uppercase tracking-[0.24em] mb-5">
+                        <span class="text-[#5eead4]">ПРО</span>ВАГОН
+                    </div>
+                    <p class="max-w-xl text-[#9aaabb] leading-relaxed">
+                        Блог о покупке, эксплуатации и аналитике рынка грузовых
+                        вагонов. Материалы оформлены в новой визуальной системе
+                        PROVAGON и остаются частью текущего Hugo-сайта.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-[#6b7a90] mb-5">
+                        Разделы
+                    </h4>
+                    <ul class="space-y-3 text-sm text-[#9aaabb]">
+                        <li><a href="/" class="hover:text-[#5eead4] transition-colors">Главная</a></li>
+                        <li><a href="/blog/" class="hover:text-[#5eead4] transition-colors">Все статьи</a></li>
+                        <li><a href="/#catalog" class="hover:text-[#5eead4] transition-colors">Каталог</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-[#6b7a90] mb-5">
+                        Контакты
+                    </h4>
+                    <ul class="space-y-3 text-sm text-[#9aaabb]">
+                        <li>
+                            <a href="tel:+79094000027" class="hover:text-[#5eead4] transition-colors">
+                                +7 (909) 400-00-27
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@vagonai.ru" class="hover:text-[#5eead4] transition-colors">
+                                info@vagonai.ru
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="blog-divider mt-10 mb-6"></div>
+            <div class="text-xs uppercase tracking-[0.18em] text-[#6b7a90]">
+                © 2026 PROVAGON. Все права защищены.
+            </div>
         </div>
-        <div>
-            <h4 class="font-bold mb-6 text-zinc-900">Продукция</h4>
-            <ul
-                id="footer-products"
-                class="grid grid-cols-2 gap-x-4 gap-y-3 text-zinc-700 text-sm"
-            >
-                <!-- Products injected by JS -->
-            </ul>
+        {{ else }}
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-2xl font-black tracking-tighter mb-6">
+                    VAGON<span class="text-[#318b5d]">AI</span>
+                </h2>
+                <p class="text-zinc-600 max-w-md leading-relaxed">
+                    Цифровая система продаж грузовых вагонов нового поколения.
+                    Отраслевая экспертиза и современные ИИ-алгоритмы для точного
+                    подбора и расчёта.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-zinc-900">Продукция</h4>
+                <ul
+                    id="footer-products"
+                    class="grid grid-cols-2 gap-x-4 gap-y-3 text-zinc-700 text-sm"
+                >
+                    <!-- Products injected by JS -->
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-zinc-900">Контакты</h4>
+                <ul class="space-y-3 text-zinc-700 text-sm">
+                    <li>
+                        <a
+                            href="tel:+79094000027"
+                            class="hover:text-[#318b5d] transition-colors"
+                            >+7 (909)40000-27</a
+                        >
+                    </li>
+                    <li>info@vagonai.ru</li>
+                    <li class="mt-4">
+                        <a
+                            href="/blog"
+                            class="text-[#318b5d] font-bold hover:underline"
+                            >Блог</a
+                        >
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <h4 class="font-bold mb-6 text-zinc-900">Контакты</h4>
-            <ul class="space-y-3 text-zinc-700 text-sm">
-                <li>
-                    <a
-                        href="tel:+79094000027"
-                        class="hover:text-[#318b5d] transition-colors"
-                        >+7 (909)40000-27</a
-                    >
-                </li>
-                <li>info@vagonai.ru</li>
-                <li class="mt-4">
-                    <a
-                        href="/blog"
-                        class="text-[#318b5d] font-bold hover:underline"
-                        >Блог</a
-                    >
-                </li>
-            </ul>
+        <div
+            class="max-w-7xl mx-auto mt-16 pt-8 border-t border-black/10 text-center text-zinc-500 text-xs"
+        >
+            © 2026 VAGONAI. Все права защищены.
         </div>
-    </div>
-    <div
-        class="max-w-7xl mx-auto mt-16 pt-8 border-t border-black/10 text-center text-zinc-500 text-xs"
-    >
-        © 2026 VAGONAI. Все права защищены.
+        {{ end }}
     </div>
 </footer>
 

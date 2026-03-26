@@ -1,7 +1,0 @@
-baseURL = 'http://localhost:1313/'
-languageCode = 'ru-ru'
-title = 'VAGONAI'
-theme = []
-
-[pagination]
-  pagerSize = 20

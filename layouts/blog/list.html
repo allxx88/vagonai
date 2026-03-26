@@ -1,0 +1,123 @@
+{{ define "main" }}
+{{ $paginator := .Paginate .Pages }}
+<section class="blog-shell">
+    <div class="blog-grid blog-grid-2">
+        <div class="space-y-6">
+            <div class="blog-card p-6 md:p-10">
+                <span class="blog-chip mb-6">
+                    <i data-lucide="newspaper" class="w-4 h-4"></i>
+                    Provagon Blog
+                </span>
+                <h1 class="blog-display text-4xl md:text-6xl font-bold text-[#f0f2f5] leading-[0.95] mb-5">
+                    Блог в новом стиле PROVAGON
+                </h1>
+                <p class="max-w-2xl text-base md:text-lg text-[#9aaabb] leading-relaxed">
+                    Аналитика рынка грузовых вагонов, обзоры заводов,
+                    рекомендации по покупке и материалы для собственников
+                    подвижного состава.
+                </p>
+                <div class="blog-divider my-8"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="blog-card-soft p-4">
+                        <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Статей</div>
+                        <div class="blog-display text-3xl text-[#f0f2f5]">{{ len .Pages }}</div>
+                    </div>
+                    <div class="blog-card-soft p-4">
+                        <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Тематика</div>
+                        <div class="text-sm text-[#f0f2f5]">Покупка, рынок, модели</div>
+                    </div>
+                    <div class="blog-card-soft p-4">
+                        <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Формат</div>
+                        <div class="text-sm text-[#f0f2f5]">Лонгриды и практические обзоры</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                {{ range $paginator.Pages }}
+                <article class="blog-card p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(94,234,212,0.22)]">
+                    <div class="flex flex-wrap items-center gap-3 mb-5 text-xs uppercase tracking-[0.18em] text-[#6b7a90]">
+                        <span class="blog-chip !py-2 !px-3">Статья</span>
+                        <span>{{ .Date.Format "02.01.2006" }}</span>
+                    </div>
+                    <h2 class="blog-display text-2xl md:text-4xl font-bold text-[#f0f2f5] leading-tight mb-4">
+                        <a href="{{ .RelPermalink }}" class="hover:text-[#5eead4] transition-colors">
+                            {{ .Title }}
+                        </a>
+                    </h2>
+                    <p class="text-[#9aaabb] leading-relaxed mb-6">
+                        {{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 220 }}{{ end }}
+                    </p>
+                    <a
+                        href="{{ .RelPermalink }}"
+                        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#5eead4] hover:text-white transition-colors"
+                    >
+                        Читать статью
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </article>
+                {{ end }}
+            </div>
+
+            {{ if gt $paginator.TotalPages 1 }}
+            <nav class="flex flex-wrap items-center justify-between gap-4 blog-card-soft p-4 md:p-5">
+                <div class="text-sm text-[#6b7a90]">
+                    Страница {{ $paginator.PageNumber }} из {{ $paginator.TotalPages }}
+                </div>
+                <div class="flex items-center gap-3">
+                    {{ if $paginator.HasPrev }}
+                    <a
+                        href="{{ $paginator.Prev.URL }}"
+                        class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-[#f0f2f5] hover:border-[#5eead4]/30 hover:text-[#5eead4] transition-all"
+                    >
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        Назад
+                    </a>
+                    {{ end }}
+                    {{ if $paginator.HasNext }}
+                    <a
+                        href="{{ $paginator.Next.URL }}"
+                        class="inline-flex items-center gap-2 rounded-xl bg-[#5eead4] px-4 py-2 text-sm font-semibold text-[#0a0c12] hover:bg-[#7af3df] transition-all"
+                    >
+                        Вперёд
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    {{ end }}
+                </div>
+            </nav>
+            {{ end }}
+        </div>
+
+        <aside class="space-y-5">
+            <div class="blog-card-soft p-6 sticky top-28">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-[#6b7a90] mb-3">
+                    Навигация
+                </div>
+                <h3 class="blog-display text-2xl text-[#f0f2f5] mb-4">
+                    Что есть в блоге
+                </h3>
+                <p class="text-sm text-[#9aaabb] leading-relaxed mb-5">
+                    Подборки материалов для покупателей, владельцев вагонов и
+                    команд, которые следят за рынком.
+                </p>
+                <div class="space-y-3 text-sm text-[#9aaabb]">
+                    <a href="/" class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-[#5eead4]/30 hover:text-[#5eead4] transition-all">
+                        <span>Вернуться на главную</span>
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                    </a>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <div class="text-[#f0f2f5] mb-1">Темы</div>
+                        <div class="text-[#6b7a90]">Рынок, заводы, стоимость, подбор вагонов</div>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <div class="text-[#f0f2f5] mb-1">Контакт</div>
+                        <a href="mailto:info@vagonai.ru" class="hover:text-[#5eead4] transition-colors">
+                            info@vagonai.ru
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+{{ end }}
