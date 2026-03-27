@@ -244,17 +244,17 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 0;
-                width: 30px;
-                height: 30px;
-                padding: 0;
+                gap: 5px;
+                min-width: 21px;
+                height: 21px;
+                padding: 0 7px;
                 border-radius: 8px;
                 background: var(--cyan);
                 color: #0a0c12;
                 text-decoration: none;
-                font-size: 0;
+                font-size: 8px;
                 font-weight: 600;
-                letter-spacing: 0.16em;
+                letter-spacing: 0.08em;
                 text-transform: uppercase;
                 font-family: var(--font-sans);
                 white-space: nowrap;
@@ -284,8 +284,12 @@
                 box-shadow: 0 14px 28px rgba(167, 139, 250, 0.32);
             }
             .header-cta svg {
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
+                flex-shrink: 0;
+            }
+            .header-cta-label {
+                line-height: 1;
             }
             .header-link {
                 display: flex;
@@ -1293,8 +1297,17 @@
                     width: 240px;
                     aspect-ratio: 3 / 2;
                 }
-                .header-phone {
-                    display: none !important;
+                .header-right {
+                    gap: 8px;
+                    width: auto;
+                }
+                .header-cta {
+                    gap: 4px;
+                    padding: 0 6px;
+                    font-size: 7px;
+                }
+                .header-cta-label {
+                    display: none;
                 }
                 #history-panel {
                     width: 100%;
@@ -1408,6 +1421,7 @@
                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
                             />
                         </svg>
+                        <span class="header-cta-label">Телефон</span>
                     </a>
                     <a href="mailto:info@provagon.ru" class="header-cta header-cta-email" aria-label="Email">
                         <svg
@@ -1424,6 +1438,7 @@
                             <rect width="20" height="16" x="2" y="4" rx="2" />
                             <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
                         </svg>
+                        <span class="header-cta-label">Email</span>
                     </a>
                     <a href="/blog/" class="header-cta header-cta-blog" aria-label="Блог">
                         <svg
@@ -1440,6 +1455,7 @@
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
                         </svg>
+                        <span class="header-cta-label">Блог</span>
                     </a>
                     <button class="header-btn" onclick="openHistory()" aria-label="История">
                         <svg
