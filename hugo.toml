@@ -1,6 +1,7 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://provagon.ru/'
 languageCode = 'ru-ru'
 title = 'VAGONAI'
+enableRobotsTXT = true
 
 [pagination]
   pagerSize = 10

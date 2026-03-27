@@ -1,0 +1,27 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n" | safeHTML -}}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- with site.Home }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {{- end }}
+  {{- with site.GetPage "/blog" }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  {{- end }}
+  {{- range where site.RegularPages "Section" "blog" }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {{- end }}
+</urlset>
