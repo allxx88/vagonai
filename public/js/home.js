@@ -279,7 +279,7 @@ async function processMessage(text) {
         : [{ role: "user", content: text }];
 
     const response = await fetch(
-      "https://shumorusilu.beget.app/webhook/chat_vagon",
+      "https://lobukamubiz.beget.app/webhook/chat_vagon",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -364,7 +364,9 @@ function bindVoice(btn) {
     window.SpeechRecognition || window.webkitSpeechRecognition;
   btn.addEventListener("click", () => {
     if (!SpeechRecognition) {
-      alert("Голосовой ввод недоступен в этом браузере. Разрешите микрофон или используйте современную версию.");
+      alert(
+        "Голосовой ввод недоступен в этом браузере. Разрешите микрофон или используйте современную версию.",
+      );
       return;
     }
     try {
