@@ -1,6 +1,6 @@
 baseURL = 'https://provagon.ru/'
 languageCode = 'ru-ru'
-title = 'VAGONAI'
+title = 'PROVAGON'
 enableRobotsTXT = true
 
 [pagination]
