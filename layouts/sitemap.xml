@@ -16,12 +16,14 @@
     <priority>0.9</priority>
   </url>
   {{- end }}
-  {{- range where site.RegularPages "Section" "blog" }}
+  {{- with site.GetPage "/blog" }}
+  {{- range .RegularPagesRecursive.ByLastmod.Reverse }}
   <url>
     <loc>{{ .Permalink }}</loc>
     <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  {{- end }}
   {{- end }}
 </urlset>
