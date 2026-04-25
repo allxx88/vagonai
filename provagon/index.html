@@ -305,6 +305,38 @@
             .header-link:hover {
                 color: var(--cyan);
             }
+            .header-history-btn {
+                padding: 0;
+            }
+            .header-history-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+            .header-menu-toggle {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                border-radius: 10px;
+                border: 1px solid var(--border);
+                background: rgba(255, 255, 255, 0.04);
+                color: var(--fg-mid);
+                cursor: pointer;
+                transition:
+                    color 0.2s,
+                    border-color 0.2s,
+                    background 0.2s;
+            }
+            .header-menu-toggle:hover {
+                color: var(--cyan);
+                border-color: var(--border-hover);
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .header-menu-toggle svg {
+                width: 15px;
+                height: 15px;
+            }
             .btn-back {
                 display: none;
                 align-items: center;
@@ -1138,6 +1170,118 @@
                 height: 14px;
             }
 
+            /* ─── Mobile Menu ─────────────────────────────────────────────────── */
+            #mobile-menu-backdrop {
+                position: fixed;
+                inset: 0;
+                z-index: 61;
+                background: rgba(0, 0, 0, 0.48);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s ease;
+            }
+            #mobile-menu-backdrop.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            #mobile-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 62;
+                width: min(90vw, 340px);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                background: rgba(13, 16, 24, 0.97);
+                backdrop-filter: blur(28px) saturate(1.35);
+                border-left: 1px solid rgba(255, 255, 255, 0.08);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: -10px 0 42px rgba(0, 0, 0, 0.42);
+            }
+            #mobile-menu.open {
+                transform: translateX(0);
+            }
+            .mobile-menu-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 18px 16px 14px;
+                border-bottom: 1px solid var(--border);
+            }
+            .mobile-menu-title {
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--fg);
+            }
+            .mobile-menu-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 16px;
+            }
+            .mobile-menu-section + .mobile-menu-section {
+                margin-top: 18px;
+            }
+            .mobile-menu-section-title {
+                margin-bottom: 10px;
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--fg-dim);
+            }
+            .mobile-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .mobile-menu-item,
+            .mobile-menu-link {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 12px 14px;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                background: rgba(255, 255, 255, 0.03);
+                color: var(--fg);
+                text-decoration: none;
+                font-size: 12px;
+                line-height: 1.35;
+                font-family: var(--font-sans);
+                transition:
+                    border-color 0.2s,
+                    background 0.2s,
+                    color 0.2s;
+            }
+            .mobile-menu-item {
+                cursor: pointer;
+            }
+            .mobile-menu-item:hover,
+            .mobile-menu-link:hover {
+                border-color: var(--border-hover);
+                background: rgba(255, 255, 255, 0.06);
+                color: var(--cyan);
+            }
+            .mobile-menu-item-count,
+            .mobile-menu-link-meta {
+                flex-shrink: 0;
+                font-size: 10px;
+                color: var(--fg-dim);
+                letter-spacing: 0.06em;
+            }
+            .mobile-menu-link-text {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
             /* ─── History Panel ───────────────────────────────────────────────── */
             #history-backdrop {
                 position: fixed;
@@ -1283,32 +1427,218 @@
             }
 
             /* ─── Responsive ──────────────────────────────────────────────────── */
-            @media (max-width: 640px) {
-                .scene-content {
-                    padding-left: 20px;
-                    padding-right: 20px;
+            @media (max-width: 768px) {
+                #app {
+                    zoom: 1;
                 }
-                .scene-intro {
-                    display: none;
+                #header {
+                    height: 52px;
+                    padding: 0 12px;
+                    gap: 10px;
                 }
-                .wagon-card-img {
-                    width: 240px;
-                    aspect-ratio: 3 / 2;
+                .header-left {
+                    min-width: 0;
+                    width: auto;
+                    flex: 1;
+                }
+                .header-center {
+                    flex: 0 1 auto;
+                    min-width: 0;
                 }
                 .header-right {
                     gap: 8px;
                     width: auto;
+                    flex-shrink: 0;
                 }
-                .header-cta {
+                .logo {
+                    font-size: 14px;
+                    letter-spacing: 0.2em;
+                    white-space: nowrap;
+                }
+                .header-tag {
+                    display: inline-block;
+                    max-width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 8px;
+                    letter-spacing: 0.14em;
+                }
+                .btn-back {
                     gap: 4px;
-                    padding: 0 6px;
-                    font-size: 7px;
+                    font-size: 8px;
+                    letter-spacing: 0.14em;
                 }
-                .header-cta-label {
+                .btn-back span {
                     display: none;
                 }
-                #history-panel {
+                .header-cta {
+                    display: none;
+                }
+                .header-history-btn {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 10px;
+                    border: 1px solid var(--border);
+                    background: rgba(255, 255, 255, 0.04);
+                }
+                .header-history-btn:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                    border-color: var(--border-hover);
+                }
+                .header-menu-toggle {
+                    display: inline-flex;
+                }
+                .scene-content {
+                    justify-content: flex-end;
+                    padding: 84px 16px 128px;
+                }
+                .scene-tag {
+                    margin-bottom: 10px;
+                    font-size: 8px;
+                }
+                .scene-title {
+                    font-size: clamp(28px, 9vw, 40px);
+                    margin-bottom: 8px;
+                }
+                .scene-subtitle {
+                    max-width: 240px;
+                    font-size: 12px;
+                    margin-bottom: 14px;
+                }
+                .scene-intro {
+                    display: none;
+                }
+                .scene-stats {
+                    gap: 14px;
+                    margin-bottom: 18px;
+                }
+                .stat-val {
+                    font-size: 20px;
+                }
+                .stat-lbl {
+                    font-size: 9px;
+                }
+                .scene-cta {
+                    font-size: 12px;
+                    padding: 9px 14px;
+                }
+                .scene-scroll-hint {
+                    display: none;
+                }
+                #nav-dots {
+                    right: 10px;
+                    gap: 6px;
+                }
+                .wagon-card-top {
+                    flex-direction: column;
+                }
+                .wagon-card-img {
                     width: 100%;
+                    aspect-ratio: 16 / 9;
+                }
+                .wagon-card-body {
+                    padding: 14px;
+                }
+                .wagon-card-head {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .wagon-card-bottom {
+                    padding: 10px 14px;
+                }
+                .specs-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                #chat-messages {
+                    padding: 68px 14px 120px;
+                }
+                .msg-row {
+                    gap: 8px;
+                    margin-bottom: 16px;
+                }
+                .msg-body {
+                    max-width: calc(100% - 36px);
+                }
+                .msg-wagon-mini {
+                    flex-direction: column;
+                    gap: 6px;
+                }
+                .msg-wagon-img {
+                    width: 100%;
+                    max-width: 180px;
+                }
+                #ai-input-bar {
+                    padding: 6px 10px calc(env(safe-area-inset-bottom, 0px) + 12px);
+                }
+                .suggestion-chips {
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    gap: 6px;
+                    margin-bottom: 8px;
+                    padding: 0 0 6px;
+                }
+                .chip {
+                    font-size: 8px;
+                    padding: 3px 7px;
+                }
+                .input-row {
+                    max-width: none;
+                    border-radius: 11px;
+                }
+                .input-icon {
+                    padding: 0 10px;
+                }
+                #ai-query {
+                    min-width: 0;
+                    padding: 12px 6px;
+                    font-size: 12px;
+                }
+                .input-actions {
+                    gap: 2px;
+                    padding-right: 4px;
+                }
+                .icon-btn,
+                #send-btn {
+                    width: 30px;
+                    height: 30px;
+                }
+                .detail-topbar {
+                    top: 52px;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    padding: 12px 14px;
+                }
+                .detail-divider {
+                    display: none;
+                }
+                .detail-count {
+                    width: 100%;
+                    margin-left: 18px;
+                }
+                .detail-intro {
+                    padding: 16px 14px;
+                }
+                .detail-intro p {
+                    font-size: 12px;
+                }
+                .detail-cards {
+                    padding: 16px 14px 120px;
+                }
+                #history-panel {
+                    width: min(100%, 360px);
+                }
+            }
+            @media (max-width: 420px) {
+                .header-tag {
+                    max-width: 96px;
+                }
+                .logo {
+                    font-size: 13px;
+                    letter-spacing: 0.16em;
+                }
+                .header-right {
+                    gap: 6px;
                 }
             }
 
@@ -1455,7 +1785,11 @@
                         </svg>
                         <span class="header-cta-label">Блог</span>
                     </a>
-                    <button class="header-btn" onclick="openHistory()" aria-label="История">
+                    <button
+                        class="header-btn header-history-btn"
+                        onclick="openHistory()"
+                        aria-label="История"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="14"
@@ -1470,9 +1804,82 @@
                             <circle cx="12" cy="12" r="10" />
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
-                    </a>
+                    </button>
+                    <button
+                        class="header-menu-toggle"
+                        onclick="openMobileMenu()"
+                        aria-label="Открыть меню"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="3" x2="21" y1="6" y2="6" />
+                            <line x1="3" x2="21" y1="12" y2="12" />
+                            <line x1="3" x2="21" y1="18" y2="18" />
+                        </svg>
+                    </button>
                 </div>
             </header>
+
+            <div id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+            <aside id="mobile-menu" aria-label="Мобильное меню">
+                <div class="mobile-menu-header">
+                    <span class="mobile-menu-title">Меню</span>
+                    <button
+                        class="icon-btn"
+                        onclick="closeMobileMenu()"
+                        aria-label="Закрыть меню"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mobile-menu-body">
+                    <div class="mobile-menu-section">
+                        <div class="mobile-menu-section-title">
+                            Каталог вагонов
+                        </div>
+                        <div class="mobile-menu-list" id="mobile-wagon-list"></div>
+                    </div>
+                    <div class="mobile-menu-section">
+                        <div class="mobile-menu-section-title">Контакты</div>
+                        <div class="mobile-menu-list">
+                            <a class="mobile-menu-link" href="/blog/">
+                                <span class="mobile-menu-link-text">Блог</span>
+                                <span class="mobile-menu-link-meta">/blog</span>
+                            </a>
+                            <a class="mobile-menu-link" href="tel:+79094000027">
+                                <span class="mobile-menu-link-text"
+                                    >+7 909 400 00 27</span
+                                >
+                                <span class="mobile-menu-link-meta">Звонок</span>
+                            </a>
+                            <a class="mobile-menu-link" href="mailto:info@provagon.ru">
+                                <span class="mobile-menu-link-text"
+                                    >info@provagon.ru</span
+                                >
+                                <span class="mobile-menu-link-meta">Почта</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
             <!-- ══════════════ CATALOG LAYER ══════════════════════════════════════ -->
             <div id="catalog-layer">
@@ -1728,6 +2135,7 @@
                     "url('images/wagons/hero-bg.jpg')";
                 buildScenes();
                 buildNavDots();
+                buildMobileMenu();
                 buildSuggestionChips();
                 updateScenesPosition(false);
                 updateNavDots();
@@ -2593,10 +3001,54 @@
                 });
             }
 
+            function buildMobileMenu() {
+                const container = document.getElementById("mobile-wagon-list");
+                if (!container) return;
+
+                container.innerHTML = "";
+                CATALOG.forEach((cat, idx) => {
+                    const button = document.createElement("button");
+                    button.className = "mobile-menu-item";
+                    button.type = "button";
+                    button.innerHTML = `
+      <span>${cat.title}</span>
+      <span class="mobile-menu-item-count">${cat.wagons.length} моделей</span>
+    `;
+                    button.addEventListener("click", () =>
+                        openMobileMenuCategory(idx),
+                    );
+                    container.appendChild(button);
+                });
+            }
+
+            function openMobileMenu() {
+                closeHistory();
+                document
+                    .getElementById("mobile-menu-backdrop")
+                    .classList.add("open");
+                document.getElementById("mobile-menu").classList.add("open");
+            }
+
+            function closeMobileMenu() {
+                document
+                    .getElementById("mobile-menu-backdrop")
+                    .classList.remove("open");
+                document.getElementById("mobile-menu").classList.remove("open");
+            }
+
+            function openMobileMenuCategory(idx) {
+                closeMobileMenu();
+                setTimeout(() => {
+                    if (mode === "chat") closeChat();
+                    openDetail(idx);
+                }, 180);
+            }
+
             // ═══════════════════════════════════════════════════════════════════════════
             // HISTORY PANEL
             // ═══════════════════════════════════════════════════════════════════════════
             function openHistory() {
+                closeMobileMenu();
                 document
                     .getElementById("history-backdrop")
                     .classList.add("open");
@@ -2701,6 +3153,12 @@
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape") {
                     if (
+                        document
+                            .getElementById("mobile-menu")
+                            .classList.contains("open")
+                    )
+                        closeMobileMenu();
+                    else if (
                         document
                             .getElementById("history-panel")
                             .classList.contains("open")
