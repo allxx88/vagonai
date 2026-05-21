@@ -4,7 +4,7 @@ title = 'PROVAGON'
 enableRobotsTXT = true
 
 [pagination]
-  pagerSize = 10
+  pagerSize = 30
 
 [markup]
   [markup.goldmark]
