@@ -392,16 +392,31 @@ $imgs) -}} {{- end -}}
     #site-header.header-solid .header-actions {
         top: 0.75rem;
     }
+    .price-popup-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 79;
+        background: rgba(3, 7, 18, 0.68);
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.28s ease;
+    }
+    .price-popup-overlay.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
     .price-popup {
         position: fixed;
-        right: clamp(1rem, 3vw, 2rem);
-        bottom: clamp(1rem, 3vw, 2rem);
+        left: 50%;
+        top: 50%;
         z-index: 80;
-        width: min(360px, calc(100vw - 2rem));
-        min-height: 230px;
+        width: min(560px, calc(100vw - 2rem));
+        min-height: 360px;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 24px;
+        border-radius: 28px;
         background:
             linear-gradient(135deg, rgba(8, 11, 18, 0.86), rgba(8, 11, 18, 0.52)),
             var(--price-popup-image);
@@ -412,7 +427,7 @@ $imgs) -}} {{- end -}}
             0 0 0 1px rgba(49, 139, 93, 0.16);
         color: #ffffff;
         opacity: 0;
-        transform: translateY(18px) scale(0.98);
+        transform: translate(-50%, -46%) scale(0.96);
         pointer-events: none;
         transition:
             opacity 0.28s ease,
@@ -420,7 +435,7 @@ $imgs) -}} {{- end -}}
     }
     .price-popup.is-visible {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translate(-50%, -50%) scale(1);
         pointer-events: auto;
     }
     .price-popup::before {
@@ -435,10 +450,10 @@ $imgs) -}} {{- end -}}
     .price-popup__content {
         position: relative;
         display: flex;
-        min-height: 230px;
+        min-height: 360px;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 1.2rem;
+        padding: clamp(1.35rem, 4vw, 2rem);
     }
     .price-popup__close {
         position: absolute;
@@ -477,10 +492,10 @@ $imgs) -}} {{- end -}}
         text-transform: uppercase;
     }
     .price-popup__title {
-        max-width: 15rem;
-        margin: 0 0 1rem;
+        max-width: 25rem;
+        margin: 0 0 1.15rem;
         font-family: var(--font-display);
-        font-size: clamp(1.55rem, 5vw, 2rem);
+        font-size: clamp(2rem, 6vw, 3.15rem);
         font-weight: 800;
         line-height: 1.02;
         letter-spacing: 0;
@@ -514,19 +529,42 @@ $imgs) -}} {{- end -}}
             inset 0 1px 0 rgba(255, 255, 255, 0.28);
         transform: translateY(-1px);
     }
+    .price-popup__secondary {
+        display: inline-flex;
+        width: fit-content;
+        margin-top: 0.75rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 0.72rem 0.95rem;
+        color: #ffffff;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+    }
+    .price-popup__secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+    }
     @media (max-width: 640px) {
         .price-popup {
-            right: 1rem;
-            bottom: 1rem;
             width: calc(100vw - 2rem);
-            min-height: 210px;
-            border-radius: 20px;
+            min-height: 320px;
+            border-radius: 22px;
         }
         .price-popup__content {
-            min-height: 210px;
+            min-height: 320px;
         }
         .price-popup__title {
-            max-width: 13rem;
+            max-width: 17rem;
         }
     }
 </style>

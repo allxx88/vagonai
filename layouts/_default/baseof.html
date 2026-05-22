@@ -65,6 +65,11 @@
 
             {{ block "main" . }}{{ end }} {{ partial "footer.html" . }}
 
+            <div
+                id="price-popup-overlay"
+                class="price-popup-overlay"
+                aria-hidden="true"
+            ></div>
             <aside
                 id="price-popup"
                 class="price-popup"
@@ -92,6 +97,13 @@
                     >
                         Получить прайс
                         <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="price-popup__secondary"
+                        data-price-popup-close
+                    >
+                        Закрыть
                     </button>
                 </div>
             </aside>
@@ -227,6 +239,9 @@
                 historyOverlay.onclick = () => toggleHistory(false);
 
             const pricePopup = document.getElementById("price-popup");
+            const pricePopupOverlay = document.getElementById(
+                "price-popup-overlay",
+            );
             const pricePopupCloseButtons = document.querySelectorAll(
                 "[data-price-popup-close]",
             );
@@ -235,6 +250,10 @@
                 if (!pricePopup) return;
                 pricePopup.classList.remove("is-visible");
                 pricePopup.setAttribute("aria-hidden", "true");
+                if (pricePopupOverlay) {
+                    pricePopupOverlay.classList.remove("is-visible");
+                    pricePopupOverlay.setAttribute("aria-hidden", "true");
+                }
                 sessionStorage.setItem("provagon_price_popup_closed", "1");
             }
 
@@ -245,12 +264,19 @@
                 window.setTimeout(() => {
                     pricePopup.classList.add("is-visible");
                     pricePopup.setAttribute("aria-hidden", "false");
-                }, 1200);
+                    if (pricePopupOverlay) {
+                        pricePopupOverlay.classList.add("is-visible");
+                        pricePopupOverlay.setAttribute("aria-hidden", "false");
+                    }
+                }, 3000);
             }
 
             pricePopupCloseButtons.forEach((button) => {
                 button.addEventListener("click", closePricePopup);
             });
+            if (pricePopupOverlay) {
+                pricePopupOverlay.addEventListener("click", closePricePopup);
+            }
 
             window.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") closePricePopup();
