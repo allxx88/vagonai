@@ -64,6 +64,37 @@
             </div>
 
             {{ block "main" . }}{{ end }} {{ partial "footer.html" . }}
+
+            <aside
+                id="price-popup"
+                class="price-popup"
+                style="--price-popup-image: url('/images/wagons/poluvagon.png')"
+                aria-labelledby="price-popup-title"
+                aria-hidden="true"
+            >
+                <div class="price-popup__content">
+                    <button
+                        type="button"
+                        class="price-popup__close"
+                        data-price-popup-close
+                        aria-label="Закрыть окно"
+                    >
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                    <span class="price-popup__eyebrow">PROVAGON</span>
+                    <h2 id="price-popup-title" class="price-popup__title">
+                        Получить актуальный прайс на вагоны
+                    </h2>
+                    <button
+                        type="button"
+                        class="price-popup__button"
+                        data-price-popup-close
+                    >
+                        Получить прайс
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </aside>
         </div>
 
         <!-- Three.js Import Map -->
@@ -194,6 +225,36 @@
             if (closeHistory) closeHistory.onclick = () => toggleHistory(false);
             if (historyOverlay)
                 historyOverlay.onclick = () => toggleHistory(false);
+
+            const pricePopup = document.getElementById("price-popup");
+            const pricePopupCloseButtons = document.querySelectorAll(
+                "[data-price-popup-close]",
+            );
+
+            function closePricePopup() {
+                if (!pricePopup) return;
+                pricePopup.classList.remove("is-visible");
+                pricePopup.setAttribute("aria-hidden", "true");
+                sessionStorage.setItem("provagon_price_popup_closed", "1");
+            }
+
+            if (
+                pricePopup &&
+                sessionStorage.getItem("provagon_price_popup_closed") !== "1"
+            ) {
+                window.setTimeout(() => {
+                    pricePopup.classList.add("is-visible");
+                    pricePopup.setAttribute("aria-hidden", "false");
+                }, 1200);
+            }
+
+            pricePopupCloseButtons.forEach((button) => {
+                button.addEventListener("click", closePricePopup);
+            });
+
+            window.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") closePricePopup();
+            });
 
 
 

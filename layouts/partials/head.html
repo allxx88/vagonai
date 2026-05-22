@@ -392,4 +392,141 @@ $imgs) -}} {{- end -}}
     #site-header.header-solid .header-actions {
         top: 0.75rem;
     }
+    .price-popup {
+        position: fixed;
+        right: clamp(1rem, 3vw, 2rem);
+        bottom: clamp(1rem, 3vw, 2rem);
+        z-index: 80;
+        width: min(360px, calc(100vw - 2rem));
+        min-height: 230px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 24px;
+        background:
+            linear-gradient(135deg, rgba(8, 11, 18, 0.86), rgba(8, 11, 18, 0.52)),
+            var(--price-popup-image);
+        background-size: cover;
+        background-position: center;
+        box-shadow:
+            0 28px 70px rgba(0, 0, 0, 0.35),
+            0 0 0 1px rgba(49, 139, 93, 0.16);
+        color: #ffffff;
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+        pointer-events: none;
+        transition:
+            opacity 0.28s ease,
+            transform 0.28s ease;
+    }
+    .price-popup.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+    .price-popup::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 18% 10%, rgba(94, 234, 212, 0.2), transparent 34%),
+            linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.62));
+        pointer-events: none;
+    }
+    .price-popup__content {
+        position: relative;
+        display: flex;
+        min-height: 230px;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.2rem;
+    }
+    .price-popup__close {
+        position: absolute;
+        top: 0.85rem;
+        right: 0.85rem;
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+    }
+    .price-popup__close:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-1px);
+    }
+    .price-popup__eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 0.65rem;
+        border-radius: 999px;
+        background: rgba(94, 234, 212, 0.16);
+        padding: 0.35rem 0.65rem;
+        color: #b6fff2;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
+    .price-popup__title {
+        max-width: 15rem;
+        margin: 0 0 1rem;
+        font-family: var(--font-display);
+        font-size: clamp(1.55rem, 5vw, 2rem);
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: 0;
+        text-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+    .price-popup__button {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 0.55rem;
+        border-radius: 14px;
+        background: #ef233c;
+        padding: 0.85rem 1rem;
+        color: #ffffff;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        box-shadow:
+            0 16px 34px rgba(239, 35, 60, 0.38),
+            inset 0 1px 0 rgba(255, 255, 255, 0.24);
+        transition:
+            background-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
+    }
+    .price-popup__button:hover {
+        background: #ff304a;
+        box-shadow:
+            0 20px 42px rgba(239, 35, 60, 0.48),
+            inset 0 1px 0 rgba(255, 255, 255, 0.28);
+        transform: translateY(-1px);
+    }
+    @media (max-width: 640px) {
+        .price-popup {
+            right: 1rem;
+            bottom: 1rem;
+            width: calc(100vw - 2rem);
+            min-height: 210px;
+            border-radius: 20px;
+        }
+        .price-popup__content {
+            min-height: 210px;
+        }
+        .price-popup__title {
+            max-width: 13rem;
+        }
+    }
 </style>
