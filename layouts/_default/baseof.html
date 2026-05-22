@@ -139,14 +139,19 @@
                     document.documentElement.classList.remove("price-popup-open");
                 }
 
+                let popupTimer;
                 function schedulePopup() {
-                    window.setTimeout(openPopup, 3000);
+                    if (popupTimer) return;
+                    popupTimer = window.setTimeout(openPopup, 900);
                 }
 
-                if (document.readyState === "complete") {
-                    schedulePopup();
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", schedulePopup, {
+                        once: true,
+                    });
+                    window.setTimeout(schedulePopup, 1200);
                 } else {
-                    window.addEventListener("load", schedulePopup, { once: true });
+                    schedulePopup();
                 }
 
                 closeButtons.forEach((button) => {
