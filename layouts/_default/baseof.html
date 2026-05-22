@@ -65,11 +65,19 @@
 
             {{ block "main" . }}{{ end }} {{ partial "footer.html" . }}
 
-            <div
+            <input
+                id="price-popup-toggle"
+                class="price-popup-toggle"
+                type="checkbox"
+                checked
+                aria-hidden="true"
+            />
+            <label
                 id="price-popup-overlay"
                 class="price-popup-overlay"
+                for="price-popup-toggle"
                 aria-hidden="true"
-            ></div>
+            ></label>
             <aside
                 id="price-popup"
                 class="price-popup"
@@ -78,33 +86,39 @@
                 aria-hidden="true"
             >
                 <div class="price-popup__content">
-                    <button
-                        type="button"
+                    <label
+                        for="price-popup-toggle"
                         class="price-popup__close"
                         data-price-popup-close
                         aria-label="Закрыть окно"
+                        role="button"
+                        tabindex="0"
                     >
                         <i data-lucide="x" class="w-4 h-4"></i>
-                    </button>
+                    </label>
                     <span class="price-popup__eyebrow">PROVAGON</span>
                     <h2 id="price-popup-title" class="price-popup__title">
                         Получить актуальный прайс на вагоны
                     </h2>
-                    <button
-                        type="button"
+                    <label
+                        for="price-popup-toggle"
                         class="price-popup__button"
                         data-price-popup-close
+                        role="button"
+                        tabindex="0"
                     >
                         Получить прайс
                         <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                    </button>
-                    <button
-                        type="button"
+                    </label>
+                    <label
+                        for="price-popup-toggle"
                         class="price-popup__secondary"
                         data-price-popup-close
+                        role="button"
+                        tabindex="0"
                     >
                         Закрыть
-                    </button>
+                    </label>
                 </div>
             </aside>
         </div>
@@ -113,6 +127,7 @@
             (function () {
                 const popup = document.getElementById("price-popup");
                 const overlay = document.getElementById("price-popup-overlay");
+                const toggle = document.getElementById("price-popup-toggle");
                 const closeButtons = document.querySelectorAll(
                     "[data-price-popup-close]",
                 );
@@ -130,6 +145,7 @@
                 }
 
                 function closePopup() {
+                    if (toggle) toggle.checked = false;
                     popup.classList.remove("is-visible");
                     popup.setAttribute("aria-hidden", "true");
                     if (overlay) {
@@ -156,6 +172,12 @@
 
                 closeButtons.forEach((button) => {
                     button.addEventListener("click", closePopup);
+                    button.addEventListener("keydown", (event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            closePopup();
+                        }
+                    });
                 });
                 if (overlay) overlay.addEventListener("click", closePopup);
                 window.addEventListener("keydown", (event) => {
