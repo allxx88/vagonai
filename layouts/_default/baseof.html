@@ -109,6 +109,56 @@
             </aside>
         </div>
 
+        <script>
+            (function () {
+                const popup = document.getElementById("price-popup");
+                const overlay = document.getElementById("price-popup-overlay");
+                const closeButtons = document.querySelectorAll(
+                    "[data-price-popup-close]",
+                );
+
+                if (!popup) return;
+
+                function openPopup() {
+                    popup.classList.add("is-visible");
+                    popup.setAttribute("aria-hidden", "false");
+                    if (overlay) {
+                        overlay.classList.add("is-visible");
+                        overlay.setAttribute("aria-hidden", "false");
+                    }
+                    document.documentElement.classList.add("price-popup-open");
+                }
+
+                function closePopup() {
+                    popup.classList.remove("is-visible");
+                    popup.setAttribute("aria-hidden", "true");
+                    if (overlay) {
+                        overlay.classList.remove("is-visible");
+                        overlay.setAttribute("aria-hidden", "true");
+                    }
+                    document.documentElement.classList.remove("price-popup-open");
+                }
+
+                function schedulePopup() {
+                    window.setTimeout(openPopup, 3000);
+                }
+
+                if (document.readyState === "complete") {
+                    schedulePopup();
+                } else {
+                    window.addEventListener("load", schedulePopup, { once: true });
+                }
+
+                closeButtons.forEach((button) => {
+                    button.addEventListener("click", closePopup);
+                });
+                if (overlay) overlay.addEventListener("click", closePopup);
+                window.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") closePopup();
+                });
+            })();
+        </script>
+
         <!-- Three.js Import Map -->
         <script type="importmap">
             {
@@ -237,50 +287,6 @@
             if (closeHistory) closeHistory.onclick = () => toggleHistory(false);
             if (historyOverlay)
                 historyOverlay.onclick = () => toggleHistory(false);
-
-            const pricePopup = document.getElementById("price-popup");
-            const pricePopupOverlay = document.getElementById(
-                "price-popup-overlay",
-            );
-            const pricePopupCloseButtons = document.querySelectorAll(
-                "[data-price-popup-close]",
-            );
-
-            function closePricePopup() {
-                if (!pricePopup) return;
-                pricePopup.classList.remove("is-visible");
-                pricePopup.setAttribute("aria-hidden", "true");
-                if (pricePopupOverlay) {
-                    pricePopupOverlay.classList.remove("is-visible");
-                    pricePopupOverlay.setAttribute("aria-hidden", "true");
-                }
-                sessionStorage.setItem("provagon_price_popup_closed", "1");
-            }
-
-            if (
-                pricePopup &&
-                sessionStorage.getItem("provagon_price_popup_closed") !== "1"
-            ) {
-                window.setTimeout(() => {
-                    pricePopup.classList.add("is-visible");
-                    pricePopup.setAttribute("aria-hidden", "false");
-                    if (pricePopupOverlay) {
-                        pricePopupOverlay.classList.add("is-visible");
-                        pricePopupOverlay.setAttribute("aria-hidden", "false");
-                    }
-                }, 3000);
-            }
-
-            pricePopupCloseButtons.forEach((button) => {
-                button.addEventListener("click", closePricePopup);
-            });
-            if (pricePopupOverlay) {
-                pricePopupOverlay.addEventListener("click", closePricePopup);
-            }
-
-            window.addEventListener("keydown", (event) => {
-                if (event.key === "Escape") closePricePopup();
-            });
 
 
 
