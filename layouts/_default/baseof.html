@@ -131,10 +131,17 @@
                 const closeButtons = document.querySelectorAll(
                     "[data-price-popup-close]",
                 );
+                const storageKey = "provagon_price_popup_closed_v2";
 
                 if (!popup) return;
+                if (sessionStorage.getItem(storageKey) === "1") {
+                    if (toggle) toggle.checked = false;
+                    return;
+                }
 
                 function openPopup() {
+                    if (sessionStorage.getItem(storageKey) === "1") return;
+                    if (toggle) toggle.checked = true;
                     popup.classList.add("is-visible");
                     popup.setAttribute("aria-hidden", "false");
                     if (overlay) {
@@ -146,6 +153,7 @@
 
                 function closePopup() {
                     if (toggle) toggle.checked = false;
+                    sessionStorage.setItem(storageKey, "1");
                     popup.classList.remove("is-visible");
                     popup.setAttribute("aria-hidden", "true");
                     if (overlay) {
@@ -158,7 +166,7 @@
                 let popupTimer;
                 function schedulePopup() {
                     if (popupTimer) return;
-                    popupTimer = window.setTimeout(openPopup, 900);
+                    popupTimer = window.setTimeout(openPopup, 5000);
                 }
 
                 if (document.readyState === "loading") {
@@ -171,7 +179,14 @@
                 }
 
                 closeButtons.forEach((button) => {
-                    button.addEventListener("click", closePopup);
+                    button.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        closePopup();
+                    });
+                    button.addEventListener("touchend", (event) => {
+                        event.preventDefault();
+                        closePopup();
+                    });
                     button.addEventListener("keydown", (event) => {
                         if (event.key === "Enter" || event.key === " ") {
                             event.preventDefault();
@@ -179,7 +194,16 @@
                         }
                     });
                 });
-                if (overlay) overlay.addEventListener("click", closePopup);
+                if (overlay) {
+                    overlay.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        closePopup();
+                    });
+                    overlay.addEventListener("touchend", (event) => {
+                        event.preventDefault();
+                        closePopup();
+                    });
+                }
                 window.addEventListener("keydown", (event) => {
                     if (event.key === "Escape") closePopup();
                 });
