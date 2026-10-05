@@ -77,3 +77,9 @@ Workflow уже настроен на деплой при пуше в `main`.
    `git push origin main`
 
 После пуша GitHub Actions автоматически пересоберет Hugo и опубликует сайт в Pages.
+
+## Webhook чата после перезапуска ngrok
+
+Адрес хранится в `static/api/endpoint.json`. Чат читает его перед каждым запросом.
+Скрипт `scripts/update_webhook.py` обновляет файл через GitHub API.
+Настройка Ubuntu и интеграция с сервисом n8n описаны в [docs/webhook.md](docs/webhook.md).

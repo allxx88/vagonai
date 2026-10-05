@@ -1,3 +1,28 @@
+async function getChatWebhookUrl() {
+    const configUrl = new URL("api/endpoint.json", document.baseURI);
+    configUrl.searchParams.set("t", Date.now().toString());
+    const response = await fetch(configUrl, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000),
+    });
+    if (!response.ok) throw new Error("Webhook configuration unavailable");
+    const config = await response.json();
+    const url = new URL(config.webhook_url);
+    if (url.protocol !== "https:" || url.username || url.password ||
+        url.pathname !== "/webhook/chat_vagon" || url.search || url.hash) {
+        throw new Error("Invalid webhook configuration");
+    }
+    return url.href;
+}
+
+function getChatWebhookHeaders(url) {
+    const headers = { "Content-Type": "application/json" };
+    if (/\.ngrok(?:-free)?\.(app|dev|io)$/.test(new URL(url).hostname)) {
+        headers["ngrok-skip-browser-warning"] = "1";
+    }
+    return headers;
+}
+
 // --- Data ---
 const WAGON_TYPES = [
   "Вагоны-хопперы",
@@ -278,11 +303,12 @@ async function processMessage(text) {
           }))
         : [{ role: "user", content: text }];
 
+    const webhookUrl = await getChatWebhookUrl();
     const response = await fetch(
-      "https://lobukamubiz.beget.app/webhook/chat_vagon",
+      webhookUrl,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getChatWebhookHeaders(webhookUrl),
         body: JSON.stringify({
           query: text,
           chat_history: historyPayload,
