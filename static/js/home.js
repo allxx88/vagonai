@@ -321,6 +321,7 @@ async function processMessage(text) {
         body: JSON.stringify({
           query: text,
           session_id: getMemorySessionId(currentSessionId),
+          visitor_token: localStorage.getItem("vagonai_memory_visitor_id"),
           chat_history: historyPayload,
         }),
       },

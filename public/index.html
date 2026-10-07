@@ -2116,13 +2116,17 @@
             let scrollAccum = 0;
             let isTransitioning = false;
             const CHAT_STORAGE_KEY = "vagonai_chat_history";
-function getMemorySessionId(sessionId) {
+function getVisitorToken() {
     let visitorId = localStorage.getItem("vagonai_memory_visitor_id");
     if (!visitorId) {
         visitorId = crypto.randomUUID();
         localStorage.setItem("vagonai_memory_visitor_id", visitorId);
     }
-    return `${visitorId}:${sessionId}`;
+    return visitorId;
+}
+
+function getMemorySessionId(sessionId) {
+    return `${getVisitorToken()}:${sessionId}`;
 }
 
 async function getChatWebhookUrl() {
@@ -2172,6 +2176,67 @@ function getChatWebhookHeaders(url) {
                 updateNavDots();
                 bindInput();
                 renderHistoryPanel();
+                restoreVisitorHistory();
+            }
+
+            let visitorProfile = {};
+            let historyLoad = null;
+            let chatRequestPending = false;
+
+            function showVisitorGreeting() {
+                const heading = document.querySelector("#chat-empty h3");
+                if (heading) heading.textContent = visitorProfile.name
+                    ? `Здравствуйте, ${visitorProfile.name}!`
+                    : "Задайте вопрос о вагонах";
+            }
+
+            async function restoreVisitorHistory() {
+                if (historyLoad) return historyLoad;
+                if (chatRequestPending) return;
+                historyLoad = (async () => {
+                    const footer = document.getElementById("history-footer-text");
+                    footer.textContent = "Загружаем последние 10 сообщений…";
+                    try {
+                        const url = new URL(await getChatWebhookUrl());
+                        url.pathname = "/webhook/chat_vagon_history";
+                        const response = await fetch(url.href, {
+                            method: "POST",
+                            headers: getChatWebhookHeaders(url.href),
+                            body: JSON.stringify({visitor_token: getVisitorToken()}),
+                            cache: "no-store",
+                            signal: AbortSignal.timeout(15000),
+                        });
+                        if (!response.ok) throw new Error("History unavailable");
+                        const data = await response.json();
+                        if (!Array.isArray(data.messages)) throw new Error("Invalid history");
+                        visitorProfile = data.profile || {};
+                        const sessions = new Map();
+                        data.messages.slice(-10).forEach((message) => {
+                            const id = String(message.session_id || "");
+                            if (!/^[\w:-]{1,100}$/.test(id)) return;
+                            if (!sessions.has(id)) sessions.set(id, {
+                                id, title: "Диалог", timestamp: Number(id) || Date.now(), messages: [],
+                            });
+                            const session = sessions.get(id);
+                            if (message.role === "user" && session.title === "Диалог") {
+                                session.title = String(message.content).slice(0, 45);
+                            }
+                            session.messages.push({id: "db-" + message.id, role: message.role,
+                                content: String(message.content), timestamp: Number(id) || Date.now(), wagons: []});
+                        });
+                        // Database is authoritative; localStorage is only an offline cache.
+                        chatHistory = Array.from(sessions.values()).reverse();
+                        persistChatHistory();
+                        syncActiveMessages();
+                        renderHistoryPanel();
+                        showVisitorGreeting();
+                    } catch (error) {
+                        console.error("History restore failed", error);
+                        renderHistoryPanel();
+                        footer.textContent = "База временно недоступна. Показана сохранённая копия.";
+                    }
+                })();
+                try { await historyLoad; } finally { historyLoad = null; }
             }
 
             function hydrateChatState() {
@@ -2628,7 +2693,10 @@ function getChatWebhookHeaders(url) {
                 const trimmed = query.trim();
                 if (!trimmed) return;
 
+                if (chatRequestPending) return;
+                if (historyLoad) await historyLoad;
                 ensureChatSession(trimmed);
+                chatRequestPending = true;
 
                 document.getElementById("chat-empty").style.display = "none";
 
@@ -2659,6 +2727,7 @@ function getChatWebhookHeaders(url) {
                         body: JSON.stringify({
                             query: trimmed,
                             session_id: getMemorySessionId(currentSessionId),
+                            visitor_token: getVisitorToken(),
                             chat_history: historyPayload,
                         }),
                     });
@@ -2687,6 +2756,8 @@ function getChatWebhookHeaders(url) {
                     );
                     renderMessage(errMsg);
                     scrollChatToBottom();
+                } finally {
+                    chatRequestPending = false;
                 }
             }
 
@@ -3086,6 +3157,7 @@ function getChatWebhookHeaders(url) {
                     .getElementById("history-backdrop")
                     .classList.add("open");
                 document.getElementById("history-panel").classList.add("open");
+                restoreVisitorHistory();
             }
             function closeHistory() {
                 document
@@ -3151,7 +3223,8 @@ function getChatWebhookHeaders(url) {
                     "</div>";
 
                 const n = chatHistory.length;
-                footer.textContent = `${n} запрос${n === 1 ? "" : n < 5 ? "а" : "ов"}`;
+                const messageCount = chatHistory.reduce((total, session) => total + session.messages.length, 0);
+                footer.textContent = `Последние ${Math.min(messageCount, 10)} сообщений из базы`;
             }
 
             function reopenHistory(id) {
