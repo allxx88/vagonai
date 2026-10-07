@@ -3316,7 +3316,7 @@ function getChatWebhookHeaders(url) {
             const catalogueInput = document.querySelector('.input-row');
             function updateDesktopImageBottom() {
                 document.documentElement.style.setProperty('--desktop-image-bottom',
-                    (window.innerHeight - catalogueInput.getBoundingClientRect().top + 10) + 'px');
+                    ((window.innerHeight - catalogueInput.getBoundingClientRect().top + 10) / (parseFloat(getComputedStyle(document.getElementById('app')).zoom) || 1)) + 'px');
             }
             new ResizeObserver(updateDesktopImageBottom).observe(catalogueInput);
             window.addEventListener('resize', updateDesktopImageBottom);
