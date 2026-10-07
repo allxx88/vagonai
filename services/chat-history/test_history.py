@@ -1,9 +1,11 @@
 """Integration checks against chat_memory; uses and removes only its own fixture."""
 import json,uuid
-from app import connect,handle,owner
+from app import connect,handle,owner,explicit_profile
 
 token=str(uuid.uuid4());other=str(uuid.uuid4());key=owner({'visitor_token':token})[1]
 try:
+    assert explicit_profile("Меня зовут Алексей я хочу полувагон")["name"] == "Алексей"
+    assert "company" not in explicit_profile("Какая у меня компания и email?")
     handle('/prepare',{'visitor_token':token,'session_id':token+':fixture','query':'Меня зовут Алексей, моя компания ТестЛогистика. Email test@example.com, телефон +7 900 000 00 01.'})
     with connect() as c:
         for i in range(12):

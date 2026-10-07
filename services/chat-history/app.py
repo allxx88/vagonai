@@ -20,9 +20,9 @@ def merge_profile(c,key,delta):
     return c.execute('SELECT profile FROM visitor_profiles WHERE owner_hash=%s',(key,)).fetchone()['profile']
 def explicit_profile(text):
     out={}
-    patterns={'email':r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', 'phone':r'(?<!\w)(?:\+7|8)[\s(\d)-]{9,20}', 'name':r'(?:меня зовут|мо[её] имя|имя\s*:)\s*([А-ЯЁA-Z][а-яёa-z]+(?:\s+[А-ЯЁA-Z][а-яёa-z]+){0,2})','company':r'(?:моя компания|наша компания|я из компании|работаю в компании|компания\s*:)\s*[«"]?([^\n,;?."»]{2,100})'}
+    patterns={'email':r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', 'phone':r'(?<!\w)(?:\+7|8)[\s(\d)-]{9,20}', 'name':r'(?i:меня зовут|мо[её] имя|имя\s*:)\s*([А-ЯЁа-яёA-Za-z][а-яёa-z]+(?:\s+[А-ЯЁA-Z][а-яёa-z]+){0,2})','company':r'(?:моя компания|наша компания|я из компании|работаю в компании|компания\s*:)\s*[«"]?([^\n,;?."»]{2,100})'}
     for k,p in patterns.items():
-        m=re.search(p,text,re.I)
+        m=re.search(p,text,0 if k=="name" else re.I)
         if m:out[k]=m.group(1) if k in ('name','company') else m.group()
     return out
 
