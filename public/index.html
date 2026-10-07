@@ -2947,10 +2947,10 @@ function getChatWebhookHeaders(url) {
                 const container = document.getElementById("chat-messages");
                 const empty = document.getElementById("chat-empty");
 
-                container.innerHTML = "";
+                // Keep the empty-state element in the DOM across session switches.
+                container.replaceChildren(empty);
 
                 if (!chatMessages.length) {
-                    container.appendChild(empty);
                     empty.style.display = "";
                     return;
                 }

@@ -2,12 +2,12 @@
 
 Подготовлено 7 октября 2026 в workflow `8fbv0vLrGbslOMwX`.
 
-- Отправитель: `provagon@outlook.com`.
+- Отправитель: `info@provagon.ru`.
 - Получатель: email из профиля клиента в PostgreSQL.
 - Копия (CC): `provagon@outlook.com`.
 - Тема: «Провагон — коммерческое предложение».
 - Формат: HTML-письмо с выбранными моделями, количеством и ценами сайта.
-- Фактическая отправка пока отключена: аккаунт Outlook ещё не подключён.
+- Отправка включена: SMTP credential Beget подключён в n8n.
 
 ## Когда формируется письмо
 
@@ -25,41 +25,25 @@
 Автоматические повторы почтовой ноды отключены: при потере ответа почтового
 провайдера письмо могло уже уйти.
 
-## Подключение Outlook.com
+## Подключение SMTP Beget
 
-Microsoft требует OAuth2 / Modern Authentication:
-https://support.microsoft.com/en-us/outlook/pop-imap-and-smtp-settings-for-outlook-com
-Обычного пароля в SMTP-ноду может быть недостаточно. В workflow оставлена
-исходная нода Send email, её From/To/CC/HTML исправлены, но она отключена.
-Основной подготовленный путь использует **Send Offer via Outlook**.
+Используется нода **Send Offer via Beget** (Send Email).
+Откройте её → Credential → Create new credential → SMTP:
 
-1. Откройте Send Offer via Outlook → Credential → Create new credential.
-2. Для собственного сервера n8n зарегистрируйте приложение Microsoft:
-   https://aka.ms/appregistrations
-3. Supported account types: личные Microsoft accounts и организационные
-   аккаунты (multi-tenant + personal Microsoft accounts).
-4. Платформа Redirect URI — Web. Скопируйте OAuth Redirect URL из n8n.
-5. Скопируйте Application (client) ID в поле Client ID.
-6. Certificates & secrets → New client secret. Его **Value**, а не ID,
-   введите самостоятельно в Client Secret n8n.
-7. Включите Custom Scopes и используйте `openid offline_access User.Read Mail.Send`.
-   Эти разрешения нужны для входа, обновления токена и отправки почты.
-   Доступ к календарям и контактам не требуется.
-8. Connect my account → войдите именно как `provagon@outlook.com`
-   и самостоятельно завершите разрешение доступа и сохранение credential.
-9. Сообщите, что подключение сохранено. После этого можно активировать ноду
-   Outlook и включить `MAIL_ENABLED: "true"` в Compose сервиса.
+- User: `info@provagon.ru`.
+- Password: пароль этого почтового ящика, вводится самостоятельно в n8n.
+- Host: `smtp.beget.com`.
+- Port: `465`.
+- SSL/TLS: включено (TLS сразу при подключении).
+- Проверку сертификата оставьте включённой.
 
-Инструкция n8n: https://docs.n8n.io/integrations/builtin/credentials/microsoft/
-
-После смены ngrok адреса callback OAuth меняется. Перед повторным подключением
-обновите Redirect URI приложения Microsoft адресом, который показывает n8n.
-Работающий refresh token не следует удалять только из-за смены ngrok URL.
+Сохраните credential и выберите его в ноде. Приложение Microsoft и OAuth
+больше не нужны; адрес ngrok не влияет на SMTP-подключение.
 
 ## Включение после авторизации
 
 Перед включением проверьте выбранный credential и аккаунт отправителя.
-Активируйте Send Offer via Outlook, сохраните и опубликуйте workflow.
+Активируйте Send Offer via Beget, сохраните и опубликуйте workflow.
 Затем в `services/chat-history/compose.yml` установите `MAIL_ENABLED: "true"`:
 
 ```bash
@@ -75,7 +59,7 @@ docker --context desktop-linux compose \
 
 Результат хранится в таблице `commercial_offers` базы `chat_memory`:
 `draft` — подготовлено без подключённой почты, `pending` — передано на отправку,
-`sent` — Outlook API подтвердил приём, `failed` — ошибка почтовой ноды.
+`sent` — SMTP-сервер подтвердил приём адресата, `failed` — ошибка почтовой ноды.
 `sent` означает принятие провайдером, доставка в ящик адресата не гарантируется
 этим статусом. Агент не должен объявлять отправку без подтверждённого статуса.
 
@@ -96,4 +80,4 @@ python3 services/chat-history/prepare_mail_workflow.py backup-before-mail.json \
 Не запускайте генератор повторно поверх уже расширенного workflow.
 При обновлении `static/catalog-data.js` обновите и `catalog.json`; текущий
 снимок цен используется для защиты от выдуманных цен в письме.
-Секреты Microsoft хранятся только в credentials n8n, не в репозитории.
+Пароль почты хранятся только в credentials n8n, не в репозитории.

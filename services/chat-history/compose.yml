@@ -4,7 +4,7 @@ services:
     container_name: vagonai-chat-history
     restart: unless-stopped
     environment:
-      MAIL_ENABLED: "false"
+      MAIL_ENABLED: "true"
       APP_PASSWORD: ${APP_PASSWORD:?Set application database password}
     networks:
       n8n:

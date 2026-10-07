@@ -14,7 +14,7 @@ try:
     draft=handle('/offer/prepare',data)
     assert draft['status']=='draft' and draft['dispatch_ready'] is False
     assert draft['to_email']=='test@example.com' and draft['cc_email']=='provagon@outlook.com'
-    assert draft['from_email']=='provagon@outlook.com'
+    assert draft['from_email']=='info@provagon.ru'
     assert '4 550 000' in draft['html'] and '<th>Количество' in draft['html']
     assert 'Тест' in draft['html'] and 'ПРОВАГОН' in draft['html']
     no_consent=handle('/offer/prepare',{**data,'query':'Покажи характеристики'})

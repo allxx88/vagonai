@@ -2697,6 +2697,7 @@ function getChatWebhookHeaders(url) {
 
                 if (chatRequestPending) return;
                 if (historyLoad) await historyLoad;
+                if (chatRequestPending) return;
                 ensureChatSession(trimmed);
                 chatRequestPending = true;
 
@@ -2947,10 +2948,10 @@ function getChatWebhookHeaders(url) {
                 const container = document.getElementById("chat-messages");
                 const empty = document.getElementById("chat-empty");
 
-                container.innerHTML = "";
+                // Keep the empty-state element in the DOM across session switches.
+                container.replaceChildren(empty);
 
                 if (!chatMessages.length) {
-                    container.appendChild(empty);
                     empty.style.display = "";
                     return;
                 }
@@ -3229,15 +3230,15 @@ function getChatWebhookHeaders(url) {
                 footer.textContent = `Сообщения из базы: ${Math.min(messageCount, 10)} из последних 10`;
             }
 
-            function reopenHistory(id) {
+            async function reopenHistory(id) {
+                if (chatRequestPending) return;
+                if (historyLoad) await historyLoad;
                 const item = chatHistory.find((session) => session.id === id);
                 if (!item) return;
                 closeHistory();
-                setTimeout(() => {
-                    currentSessionId = item.id;
-                    syncActiveMessages();
-                    openChat();
-                }, 300);
+                currentSessionId = item.id;
+                syncActiveMessages();
+                openChat();
             }
 
             // ═══════════════════════════════════════════════════════════════════════════

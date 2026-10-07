@@ -3,7 +3,8 @@ import hashlib,html,json,os,re,uuid
 from pathlib import Path
 
 CATALOG={w['id']:{**w,'category':c['title']} for c in json.loads(Path('/app/catalog.json').read_text()) for w in c['wagons']}
-SENDER='provagon@outlook.com'
+SENDER='info@provagon.ru'
+COPY_TO='provagon@outlook.com'
 def ensure_tables(c):
     c.execute('''CREATE TABLE IF NOT EXISTS commercial_offers(
         id uuid PRIMARY KEY, owner_hash text NOT NULL, session_id text NOT NULL,
@@ -26,7 +27,7 @@ def parse_analysis(raw):
 def offer_html(profile,items):
     esc=lambda value:html.escape(str(value),quote=True)
     rows=''.join('<tr><td>'+esc(CATALOG[x['model_id']]['category'])+'</td><td>'+esc(CATALOG[x['model_id']]['model'])+'</td><td>'+str(x['quantity'])+'</td><td>'+esc(CATALOG[x['model_id']]['price'])+'</td></tr>' for x in items)
-    return '<!doctype html><html lang="ru"><head><meta charset="utf-8"></head><body style="font-family:Arial,sans-serif;color:#19252d"><h1 style="color:#318b5d">ПРОВАГОН</h1><h2>Коммерческое предложение</h2><p>Здравствуйте'+(', '+esc(profile['name']) if profile.get('name') else '')+'!</p>'+('<p>Для компании: '+esc(profile['company'])+'</p>' if profile.get('company') else '')+'<p>Благодарим за обращение. Предлагаем следующие позиции из каталога Провагон:</p><table border="1" cellpadding="10" cellspacing="0"><thead><tr><th>Тип</th><th>Модель</th><th>Количество, шт.</th><th>Цена за единицу по каталогу</th></tr></thead><tbody>'+rows+'</tbody></table><p>Цены приведены в том виде, в котором опубликованы в каталоге. Окончательная стоимость, наличие, комплектация, налоги, сроки поставки и условия оплаты уточняются перед заключением договора.</p><p>С уважением,<br><strong>Провагон</strong><br><a href="https://provagon.ru/">provagon.ru</a><br><a href="mailto:provagon@outlook.com">provagon@outlook.com</a></p></body></html>'
+    return '<!doctype html><html lang="ru"><head><meta charset="utf-8"></head><body style="font-family:Arial,sans-serif;color:#19252d"><h1 style="color:#318b5d">ПРОВАГОН</h1><h2>Коммерческое предложение</h2><p>Здравствуйте'+(', '+esc(profile['name']) if profile.get('name') else '')+'!</p>'+('<p>Для компании: '+esc(profile['company'])+'</p>' if profile.get('company') else '')+'<p>Благодарим за обращение. Предлагаем следующие позиции из каталога Провагон:</p><table border="1" cellpadding="10" cellspacing="0"><thead><tr><th>Тип</th><th>Модель</th><th>Количество, шт.</th><th>Цена за единицу по каталогу</th></tr></thead><tbody>'+rows+'</tbody></table><p>Цены приведены в том виде, в котором опубликованы в каталоге. Окончательная стоимость, наличие, комплектация, налоги, сроки поставки и условия оплаты уточняются перед заключением договора.</p><p>С уважением,<br><strong>Провагон</strong><br><a href="https://provagon.ru/">provagon.ru</a><br><a href="mailto:info@provagon.ru">info@provagon.ru</a></p></body></html>'
 def prepare(c,key,token,data):
     if not requested(data.get('query','')):return {'dispatch_ready':False,'status':'not_requested'}
     sid=data.get('session_id','')
@@ -60,7 +61,7 @@ def prepare(c,key,token,data):
             if not row:return {'dispatch_ready':False,'status':'pending'}
         else:return {'dispatch_ready':False,'status':row['status'],'offer_id':str(row['id'])}
     return {'dispatch_ready':enabled,'status':row['status'],'offer_id':str(row['id']),
-        'visitor_token':token,'to_email':recipient,'cc_email':SENDER,'from_email':SENDER,'subject':subject,'html':content}
+        'visitor_token':token,'to_email':recipient,'cc_email':COPY_TO,'from_email':SENDER,'subject':subject,'html':content}
 def update(c,key,data):
     status=data.get('status')
     if status not in ('sent','failed'):raise ValueError('Invalid status')

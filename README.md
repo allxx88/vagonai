@@ -869,6 +869,6 @@ Deploy-скрипт собирает Hugo и добавляет изменени
 
 ### Коммерческие предложения по почте
 
-Подготовлена отправка HTML-КП Провагон с `provagon@outlook.com` клиенту
-и копией на тот же адрес. Подключение Microsoft Outlook, включение отправки,
+Подготовлена отправка HTML-КП Провагон с `info@provagon.ru` клиенту
+и копией на `provagon@outlook.com`. Подключение SMTP Beget, включение отправки,
 условия формирования КП и проверка: [docs/commercial-offer-email.md](docs/commercial-offer-email.md).
