@@ -2048,7 +2048,7 @@
                             class="icon-btn"
                             id="history-clear-btn"
                             onclick="clearHistory()"
-                            title="Очистить историю"
+                            title="Очистить локальную копию"
                             style="display: none"
                         >
                             <svg
@@ -2184,6 +2184,8 @@ function getChatWebhookHeaders(url) {
             let chatRequestPending = false;
 
             function showVisitorGreeting() {
+                const headerGreeting = document.getElementById("header-tag");
+                if (headerGreeting && visitorProfile.name) headerGreeting.textContent = `Здравствуйте, ${visitorProfile.name}!`;
                 const heading = document.querySelector("#chat-empty h3");
                 if (heading) heading.textContent = visitorProfile.name
                     ? `Здравствуйте, ${visitorProfile.name}!`
@@ -2204,7 +2206,7 @@ function getChatWebhookHeaders(url) {
                             headers: getChatWebhookHeaders(url.href),
                             body: JSON.stringify({visitor_token: getVisitorToken()}),
                             cache: "no-store",
-                            signal: AbortSignal.timeout(15000),
+                            signal: AbortSignal.timeout(30000),
                         });
                         if (!response.ok) throw new Error("History unavailable");
                         const data = await response.json();
@@ -3224,7 +3226,7 @@ function getChatWebhookHeaders(url) {
 
                 const n = chatHistory.length;
                 const messageCount = chatHistory.reduce((total, session) => total + session.messages.length, 0);
-                footer.textContent = `Последние ${Math.min(messageCount, 10)} сообщений из базы`;
+                footer.textContent = `Сообщения из базы: ${Math.min(messageCount, 10)} из последних 10`;
             }
 
             function reopenHistory(id) {

@@ -1,0 +1,17 @@
+services:
+  chat-history:
+    build: .
+    container_name: vagonai-chat-history
+    restart: unless-stopped
+    environment:
+      APP_PASSWORD: ${APP_PASSWORD:?Set application database password}
+    networks:
+      n8n:
+        aliases: [vagonai-chat-history]
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+networks:
+  n8n:
+    external: true
+    name: n8n_n8n-network
