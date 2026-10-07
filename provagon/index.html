@@ -1649,12 +1649,13 @@
         
             /* Separate wagon artwork from the readable catalogue panel. */
             .scene { background: #0a0c12; }
-            .scene-img { inset: 64px 20px var(--desktop-image-bottom, 89px) 38%; background-size: contain; background-position: center bottom; }
-            .scene-img::after { background: none; }
-            .scene-content { width: 38%; padding: 84px 40px 140px 64px; background: #0a0c12; }
+            .scene-img { inset: 64px 0 var(--desktop-image-bottom, 89px) 33%; background-size: contain; background-position: left bottom; }
+            .scene-img::after { background: linear-gradient(to right, #0a0c12 0%, rgba(10,12,18,0) 10%); }
+            .scene-content { width: 38%; padding: 84px 40px 140px 64px; background: linear-gradient(to right, #0a0c12 0%, #0a0c12 84%, rgba(10,12,18,0) 100%); }
             .scene-title { font-size: clamp(36px, 4.3vw, 72px); overflow-wrap: anywhere; }
             .scene-subtitle, .scene-intro { color: #c4cad4; }
             @media (max-width: 768px) {
+                .scene-img::after { background: none; }
                 .scene-img { inset: 60px 12px auto; height: calc(100% - 430px); min-height: 110px; background-size: contain; background-position: center; }
                 .scene-content { position: absolute; inset: auto 0 124px; width: 100%; height: auto; padding: 18px 32px 12px 16px; background: #0a0c12; }
                 .scene-title { font-size: clamp(26px, 8vw, 36px); }
