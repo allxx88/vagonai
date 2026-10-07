@@ -1,3 +1,12 @@
+function getMemorySessionId(sessionId) {
+    let visitorId = localStorage.getItem("vagonai_memory_visitor_id");
+    if (!visitorId) {
+        visitorId = crypto.randomUUID();
+        localStorage.setItem("vagonai_memory_visitor_id", visitorId);
+    }
+    return `${visitorId}:${sessionId}`;
+}
+
 async function getChatWebhookUrl() {
     const configUrl = new URL("api/endpoint.json", document.baseURI);
     configUrl.searchParams.set("t", Date.now().toString());
@@ -311,6 +320,7 @@ async function processMessage(text) {
         headers: getChatWebhookHeaders(webhookUrl),
         body: JSON.stringify({
           query: text,
+          session_id: getMemorySessionId(currentSessionId),
           chat_history: historyPayload,
         }),
       },

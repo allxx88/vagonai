@@ -2116,6 +2116,15 @@
             let scrollAccum = 0;
             let isTransitioning = false;
             const CHAT_STORAGE_KEY = "vagonai_chat_history";
+function getMemorySessionId(sessionId) {
+    let visitorId = localStorage.getItem("vagonai_memory_visitor_id");
+    if (!visitorId) {
+        visitorId = crypto.randomUUID();
+        localStorage.setItem("vagonai_memory_visitor_id", visitorId);
+    }
+    return `${visitorId}:${sessionId}`;
+}
+
 async function getChatWebhookUrl() {
     const configUrl = new URL("api/endpoint.json", document.baseURI);
     configUrl.searchParams.set("t", Date.now().toString());
@@ -2649,6 +2658,7 @@ function getChatWebhookHeaders(url) {
                         headers: getChatWebhookHeaders(webhookUrl),
                         body: JSON.stringify({
                             query: trimmed,
+                            session_id: getMemorySessionId(currentSessionId),
                             chat_history: historyPayload,
                         }),
                     });
