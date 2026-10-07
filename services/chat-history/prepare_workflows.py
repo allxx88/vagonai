@@ -13,7 +13,9 @@ if (typeof query !== 'string' || !query.trim() || query.length > 20000) throw ne
 if (typeof token !== 'string' || !/^[0-9a-fA-F-]{36}$/.test(token)) throw new Error('Обновите страницу сайта');
 if (typeof body.session_id !== 'string' || !body.session_id.startsWith(token + ':')) throw new Error('Некорректный диалог');
 return {query:query.trim(), prompt:query.trim(), visitor_token:token, session_id:body.session_id, chat_history:Array.isArray(body.chat_history)?body.chat_history:[]};'''
+ if n['name']=='Агент Продавец':n.update(retryOnFail=True,maxTries=3,waitBetweenTries=3000)
  if n['name']=='Агент анализ заявки':
+  n['onError']='continueRegularOutput'
   # Keep commercial analysis; extract profile using an additional isolated branch instead.
   pass
 w['nodes'].append(http('Load Visitor Profile','/prepare','={{ JSON.stringify($json) }}',[-360,64]))
