@@ -4,12 +4,15 @@ services:
     container_name: vagonai-chat-history
     restart: unless-stopped
     environment:
+      MAIL_ENABLED: "false"
       APP_PASSWORD: ${APP_PASSWORD:?Set application database password}
     networks:
       n8n:
         aliases: [vagonai-chat-history]
     volumes:
       - ./app.py:/app/app.py:ro
+      - ./offers.py:/app/offers.py:ro
+      - ./catalog.json:/app/catalog.json:ro
     read_only: true
     security_opt: [no-new-privileges:true]
     cap_drop: [ALL]
