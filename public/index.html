@@ -3348,7 +3348,7 @@ function getChatWebhookHeaders(url) {
                 const scene = document.querySelector('.scene');
                 const photo = scene.querySelector('.scene-img').getBoundingClientRect();
                 const text = scene.querySelector('.scene-content').getBoundingClientRect();
-                document.documentElement.style.setProperty('--mobile-hint-top', ((photo.bottom + text.top) / 2) + 'px');
+                document.documentElement.style.setProperty('--mobile-hint-top', photo.bottom + 'px');
             }
             new ResizeObserver(positionMobileSwipeHint).observe(document.querySelector('.scene-content'));
             window.addEventListener('resize', positionMobileSwipeHint);
