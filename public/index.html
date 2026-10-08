@@ -3364,6 +3364,9 @@ function getChatWebhookHeaders(url) {
             new ResizeObserver(positionMobileSwipeHint).observe(document.querySelector('.scene-content'));
             window.addEventListener('resize', positionMobileSwipeHint);
             positionMobileSwipeHint();
+            document.addEventListener('click', () => {
+                document.getElementById('swipe-hint')?.remove();
+            }, {once: true, capture: true});
             let hintTouchStart = null;
             document.addEventListener('touchstart', (event) => {
                 hintTouchStart = mode === 'catalog' && event.touches.length === 1
