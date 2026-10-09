@@ -1,0 +1,28 @@
+{{ $offset := mul (sub .PageNumber 1) .PageSize }}
+{{ $first := 0 }}
+{{ if gt .TotalNumberOfElements 0 }}{{ $first = add $offset 1 }}{{ end }}
+{{ $last := add $offset (len .Pages) }}
+<nav aria-label="Страницы блога" class="flex flex-wrap items-center justify-between gap-4 blog-card-soft p-4 md:p-5">
+    <div class="text-sm text-[#9aaabb]">
+        <div>Статьи {{ $first }}–{{ $last }} из {{ .TotalNumberOfElements }}</div>
+        <div class="text-[#6b7a90]">Страница {{ .PageNumber }} из {{ .TotalPages }}</div>
+    </div>
+    {{ if gt .TotalPages 1 }}
+    <div class="flex flex-wrap items-center gap-2">
+        {{ if .HasPrev }}
+        <a href="{{ .Prev.URL }}" rel="prev" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#f0f2f5] hover:text-[#5eead4]">Назад</a>
+        {{ end }}
+        {{ $current := .PageNumber }}
+        {{ range .Pagers }}
+            {{ if eq .PageNumber $current }}
+            <span aria-current="page" class="rounded-xl bg-[#5eead4] px-3 py-2 text-sm font-semibold text-[#0a0c12]">{{ .PageNumber }}</span>
+            {{ else }}
+            <a href="{{ .URL }}" aria-label="Страница {{ .PageNumber }}" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#f0f2f5] hover:text-[#5eead4]">{{ .PageNumber }}</a>
+            {{ end }}
+        {{ end }}
+        {{ if .HasNext }}
+        <a href="{{ .Next.URL }}" rel="next" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#f0f2f5] hover:text-[#5eead4]">Вперёд</a>
+        {{ end }}
+    </div>
+    {{ end }}
+</nav>

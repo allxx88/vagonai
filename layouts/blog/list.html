@@ -1,5 +1,6 @@
 {{ define "main" }}
-{{ $paginator := .Paginate .Pages }}
+{{ $articles := .RegularPagesRecursive.ByDate.Reverse }}
+{{ $paginator := .Paginate $articles }}
 <section class="blog-shell">
     <div class="blog-grid blog-grid-2">
         <div class="space-y-6">
@@ -9,7 +10,7 @@
                     Блог ПРОВАГОН
                 </span>
                 <h1 class="blog-display text-4xl md:text-6xl font-bold text-[#f0f2f5] leading-[0.95] mb-5">
-                    Блог в новом стиле PROVAGON
+                    Блог ПРОВАГОН
                 </h1>
                 <p class="max-w-2xl text-base md:text-lg text-[#9aaabb] leading-relaxed">
                     Аналитика рынка грузовых вагонов, обзоры заводов,
@@ -19,8 +20,8 @@
                 <div class="blog-divider my-8"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="blog-card-soft p-4">
-                        <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Статей</div>
-                        <div class="blog-display text-3xl text-[#f0f2f5]">{{ len .Pages }}</div>
+                        <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Всего статей</div>
+                        <div id="blog-total" class="blog-display text-3xl text-[#f0f2f5]">{{ $paginator.TotalNumberOfElements }}</div>
                     </div>
                     <div class="blog-card-soft p-4">
                         <div class="text-[11px] uppercase tracking-[0.2em] text-[#6b7a90] mb-2">Тематика</div>
@@ -33,7 +34,9 @@
                 </div>
             </div>
 
-            <div class="space-y-5">
+            {{ partial "blog-pagination.html" $paginator }}
+
+            <div id="blog-articles" class="space-y-5">
                 {{ range $paginator.Pages }}
                 <article class="blog-card p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(94,234,212,0.22)]">
                     <div class="flex flex-wrap items-center gap-3 mb-5 text-xs uppercase tracking-[0.18em] text-[#6b7a90]">
@@ -59,33 +62,7 @@
                 {{ end }}
             </div>
 
-            {{ if gt $paginator.TotalPages 1 }}
-            <nav class="flex flex-wrap items-center justify-between gap-4 blog-card-soft p-4 md:p-5">
-                <div class="text-sm text-[#6b7a90]">
-                    Страница {{ $paginator.PageNumber }} из {{ $paginator.TotalPages }}
-                </div>
-                <div class="flex items-center gap-3">
-                    {{ if $paginator.HasPrev }}
-                    <a
-                        href="{{ $paginator.Prev.URL }}"
-                        class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-[#f0f2f5] hover:border-[#5eead4]/30 hover:text-[#5eead4] transition-all"
-                    >
-                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                        Назад
-                    </a>
-                    {{ end }}
-                    {{ if $paginator.HasNext }}
-                    <a
-                        href="{{ $paginator.Next.URL }}"
-                        class="inline-flex items-center gap-2 rounded-xl bg-[#5eead4] px-4 py-2 text-sm font-semibold text-[#0a0c12] hover:bg-[#7af3df] transition-all"
-                    >
-                        Вперёд
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                    {{ end }}
-                </div>
-            </nav>
-            {{ end }}
+            {{ partial "blog-pagination.html" $paginator }}
         </div>
 
         <aside class="space-y-5">

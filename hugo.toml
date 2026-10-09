@@ -2,6 +2,8 @@ baseURL = 'https://provagon.ru/'
 languageCode = 'ru-ru'
 title = 'PROVAGON'
 enableRobotsTXT = true
+# Include the complete editorial date range requested for the blog.
+buildFuture = true
 
 [pagination]
   pagerSize = 30
