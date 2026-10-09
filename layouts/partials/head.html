@@ -1,8 +1,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ if eq .Section "blog" }}
+{{ $canonical := .Permalink }}
+{{ if .IsSection }}
+{{ $paginator := .Paginate .RegularPagesRecursive.ByDate.Reverse }}
+{{ $canonical = $paginator.URL | absURL }}
+{{ end }}
+<link rel="canonical" href="{{ $canonical }}" />
+{{ end }}
 <title>
     {{ if .IsHome }}VAGONAI - ИИ-агент по прямым продажам грузовых вагонов от
-    завода{{ else if eq .Section "blog" }}{{ .Title }} | Блог ПРОВАГОН{{ else }}{{ .Title }} | VAGONAI{{ end }}
+    завода{{ else if eq .Section "blog" }}{{ .Title }}{{ if .IsSection }}{{ if gt .Paginator.PageNumber 1 }} — страница {{ .Paginator.PageNumber }}{{ end }}{{ end }} | Блог ПРОВАГОН{{ else }}{{ .Title }} | VAGONAI{{ end }}
 </title>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png" />

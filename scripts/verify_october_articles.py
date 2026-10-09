@@ -69,7 +69,9 @@ def verify(build):
         chars = len(re.sub(r"\s+", " ", "".join(page.text)).strip())
         assert chars >= 12000, (m["number"], chars)
         assert page.images, m["number"]
-        assert len(page.links) >= 5, m["number"]
+        # Sales contacts were removed at the user's request. Navigation and
+        # relevant article links must still be present in the body.
+        assert len(page.links) >= 3, m["number"]
         for image in page.images:
             path = unquote(urlsplit(image).path).lstrip("/")
             assert (ROOT / "static" / path).is_file(), image
