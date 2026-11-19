@@ -1,0 +1,87 @@
+{
+  "articles": 6,
+  "visible_body_char_range": [
+    16080,
+    17876
+  ],
+  "total_articles": 109,
+  "pagination": [
+    30,
+    30,
+    30,
+    19
+  ],
+  "sitemap_urls": 111,
+  "checks": [
+    "15,000+ rendered body characters",
+    "one H1",
+    "unique title and description",
+    "canonical and Article JSON-LD",
+    "catalog images exist",
+    "internal links resolve",
+    "reciprocal links",
+    "all articles listed once",
+    "sitemap and robots",
+    "no contacts or search-promotion notes"
+  ],
+  "pages": [
+    {
+      "url": "https://provagon.ru/blog/arenda-gruzovykh-vagonov/",
+      "visible_body_chars": 16080,
+      "internal_and_external_links": 6,
+      "images": 1,
+      "existing_backlinks": [
+        "полувагоны-для-угля-щебня-и-металла-отличия-и-применение.md",
+        "выгодно-ли-владеть-железнодорожными-вагонами.md"
+      ]
+    },
+    {
+      "url": "https://provagon.ru/blog/sobstvenniki-vagonov-proverka-i-sotrudnichestvo/",
+      "visible_body_chars": 16437,
+      "internal_and_external_links": 6,
+      "images": 1,
+      "existing_backlinks": [
+        "где-купить-полувагон-без-посредников-напрямую-от-собственника.md"
+      ]
+    },
+    {
+      "url": "https://provagon.ru/blog/vagonnyy-park-upravlenie-i-raschet/",
+      "visible_body_chars": 16163,
+      "internal_and_external_links": 5,
+      "images": 1,
+      "existing_backlinks": [
+        "выгодно-ли-владеть-железнодорожными-вагонами.md",
+        "ходовые-части-грузовых-вагонов-тележки-колесные-пары.md"
+      ]
+    },
+    {
+      "url": "https://provagon.ru/blog/podacha-vagonov-pod-pogruzku/",
+      "visible_body_chars": 16702,
+      "internal_and_external_links": 7,
+      "images": 1,
+      "existing_backlinks": [
+        "как-выбрать-грузовой-вагон-под-конкретный-тип-груза.md"
+      ]
+    },
+    {
+      "url": "https://provagon.ru/blog/sdat-vagon-v-arendu/",
+      "visible_body_chars": 16260,
+      "internal_and_external_links": 6,
+      "images": 1,
+      "existing_backlinks": [
+        "выгодно-ли-владеть-железнодорожными-вагонами.md",
+        "купить-крытый-вагон-цена-модели-и-поставка-с-завода.md"
+      ]
+    },
+    {
+      "url": "https://provagon.ru/blog/arenda-vagona-rzhd-kak-zakazat/",
+      "visible_body_chars": 17876,
+      "internal_and_external_links": 8,
+      "images": 1,
+      "existing_backlinks": [
+        "как-выбрать-грузовой-вагон-под-конкретный-тип-груза.md",
+        "железнодорожные-платформы-для-контейнеров-обзор-современных-решений.md"
+      ]
+    }
+  ]
+}

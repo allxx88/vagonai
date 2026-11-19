@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Аренда грузовых вагонов: стоимость, выбор и условия передачи",
+    "slug": "arenda-gruzovykh-vagonov",
+    "url": "https://provagon.ru/blog/arenda-gruzovykh-vagonov/",
+    "source": "content/blog/arenda-gruzovykh-vagonov.md",
+    "image": "/images/wagons/12-9046x1.png",
+    "body_chars": 16092,
+    "sha256": "c7b59df963d6c73dcc9b43f59e47bed1507cdf8f374268b6ce2b5f14c30100ae",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "аренда вагонов",
+        "frequency": 3236
+      },
+      {
+        "query": "железнодорожный вагон аренда вагонов",
+        "frequency": 3236
+      },
+      {
+        "query": "вагоны в аренду",
+        "frequency": 1360
+      },
+      {
+        "query": "грузовой вагон вагоны в аренду",
+        "frequency": 1360
+      },
+      {
+        "query": "аренда вагонов жд",
+        "frequency": 443
+      }
+    ]
+  },
+  {
+    "title": "Собственники вагонов: проверка партии и условий сделки",
+    "slug": "sobstvenniki-vagonov-proverka-i-sotrudnichestvo",
+    "url": "https://provagon.ru/blog/sobstvenniki-vagonov-proverka-i-sotrudnichestvo/",
+    "source": "content/blog/sobstvenniki-vagonov-proverka-i-sotrudnichestvo.md",
+    "image": "/images/wagons/12-955x1.png",
+    "body_chars": 16451,
+    "sha256": "ccdf45c021a235a6a7a1b1c2b037da1417d7bd9296edef6733a9458190b2efed",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "собственники вагонов",
+        "frequency": 1960
+      }
+    ]
+  },
+  {
+    "title": "Вагонный парк: расчёт количества, оборот и управление",
+    "slug": "vagonnyy-park-upravlenie-i-raschet",
+    "url": "https://provagon.ru/blog/vagonnyy-park-upravlenie-i-raschet/",
+    "source": "content/blog/vagonnyy-park-upravlenie-i-raschet.md",
+    "image": "/images/wagons/12-963x1.png",
+    "body_chars": 16177,
+    "sha256": "6793fd2197904b39d191a6c7d1148760002328b13a2f274e302cc47aafcb3c87",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "вагонный парк",
+        "frequency": 890
+      }
+    ]
+  },
+  {
+    "title": "Подача вагонов под погрузку: заявка, график и готовность",
+    "slug": "podacha-vagonov-pod-pogruzku",
+    "url": "https://provagon.ru/blog/podacha-vagonov-pod-pogruzku/",
+    "source": "content/blog/podacha-vagonov-pod-pogruzku.md",
+    "image": "/images/wagons/19-970-01x1.png",
+    "body_chars": 16710,
+    "sha256": "0d515bcdd486cf32bcb5effc3fed839cc99e765abaf13d2a2d6a3bbb4a0ff632",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "подача вагонов под погрузку",
+        "frequency": 454
+      }
+    ]
+  },
+  {
+    "title": "Как сдать вагон в аренду: подготовка, расходы и возврат",
+    "slug": "sdat-vagon-v-arendu",
+    "url": "https://provagon.ru/blog/sdat-vagon-v-arendu/",
+    "source": "content/blog/sdat-vagon-v-arendu.md",
+    "image": "/images/wagons/11-965x1.png",
+    "body_chars": 16260,
+    "sha256": "50eaf0518ef70a2300cffbc604bcf7df9726bd78d8a215645d5bfe887b3f7b37",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "сдать вагон в аренду",
+        "frequency": 304
+      }
+    ]
+  },
+  {
+    "title": "Аренда вагона РЖД: как выбрать услугу и получить расчёт",
+    "slug": "arenda-vagona-rzhd-kak-zakazat",
+    "url": "https://provagon.ru/blog/arenda-vagona-rzhd-kak-zakazat/",
+    "source": "content/blog/arenda-vagona-rzhd-kak-zakazat.md",
+    "image": "/images/wagons/13-935Аx1.png",
+    "body_chars": 17882,
+    "sha256": "7d6cf6758cf7a9d68df57c54c2fabd06c3066edc97ab11ed32a6ab6ec9771f41",
+    "query_source": "User-provided phrases and frequencies; not independently verified",
+    "queries": [
+      {
+        "query": "аренда вагона ржд",
+        "frequency": 269
+      }
+    ]
+  }
+]
